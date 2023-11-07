@@ -1,0 +1,126 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+/* Additional styles */
+@import "additional-styles/utility-patterns.css";
+@import "additional-styles/flatpickr.css";
+
+@import "tailwindcss/utilities";
+
+:root {
+  --color-131921: #131921;
+  --color-3b4149: #3b4149;
+  --color-febd69: #f0af5b;
+  --color-d0903d: #d0903d;
+  --color-232f3e: #232f3e;
+  --color-bf4800: #bf4800;
+  --color-f5f5f7: #f5f5f7;
+  --color-ededed: #ededed;
+  --color-777777: #777777;
+  --color-1c1c1b: #1c1c1b;
+
+  /* swiper */
+  --swiper-theme-color: #131921 !important;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+::selection {
+  background: gray;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-febd69);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-d0903d);
+}
+
+.ql-editor {
+  font-size: 17px !important;
+  min-height: 100px;
+}
+
+.ql-toolbar.ql-snow {
+  border: 1px solid rgb(241 245 249) !important;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.ql-container.ql-snow {
+  height: auto !important;
+  border: 1px solid rgb(241 245 249) !important;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top: none !important;
+}
+
+@media (max-width: 600px) {
+  .ql-container.ql-snow * {
+    font-size: 13px;
+  }
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spin {
+  -moz-appearance: textfield;
+}
+
+button,
+img {
+  user-select: none;
+}
+
+/* swiper css */
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  object-fit: cover;
+}
+
+.swiper-pagination-bullets {
+  bottom: 1px !important;
+}
