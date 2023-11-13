@@ -41,7 +41,7 @@ const Map = () => {
           <div
             className={`${
               activeFilter ? "inline-block" : "hidden"
-            } lg:inline-block lg:w-[250px]`}
+            } lg:inline-block lg:w-[350px]`}
           >
             <div className="flex flex-col gap-3 w-full  text-sm select-none">
               <div className="flex flex-col gap-2 w-full items-center justify-end">
