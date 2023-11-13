@@ -28,17 +28,13 @@ const Header = () => {
             </h2>
           </div>
 
+          <div className="w-full"></div>
+
           <div>
             <div className="flex items-center justify-end gap-3">
               <div className="bg-colorBlack text-center font-medium p-2 rounded-full  hover:bg-colorPrimary flex items-center gap-1 text-[10px]  border whitespace-nowrap border-white text-white">
                 <FaSearch className="text-base" />
               </div>
-              <Link
-                to="/"
-                className="bg-colorBlack text-center font-medium p-2 rounded-full  hover:bg-colorPrimary flex items-center gap-1 text-[10px]  border whitespace-nowrap border-white text-white"
-              >
-                <MdAddCircle className="text-base" />
-              </Link>
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ import { SingleBlog, SingleProduct, SingleService } from "./pages/single";
 import { Contact, Home, OurStore, NotFound } from "./pages";
 
 import TextSkeleton from "./components/skeleton/TextSkeleton";
-// import FormSkeleton from "./components/skeleton/FormSkeleton";
+import Map from "./pages/map/Map";
 
 const Help = lazy(() => import("./pages/Help"));
 
@@ -34,6 +34,7 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path="/map" element={<Map />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="elaqe" element={<Contact />} />
