@@ -7,39 +7,24 @@ const data = [
   {
     id: 1,
     url: "/images/photo/p5.jpeg",
-    title: "Suzuki",
-    subTitle: "Hayabusa",
+    title: "Alış-veriş üçün ən rahat məkan!",
   },
   {
     id: 2,
     url: "/images/photo/p1.jpeg",
-    title: "Harley-Davidson",
-    subTitle: "Sportster S",
+    title: "Alış-veriş üçün ən rahat məkan!",
   },
   {
     id: 3,
     url: "/images/photo/p2.jpeg",
-    title: "Kawasaki",
-    subTitle: "Ninja 400",
-  },
-  {
-    id: 4,
-    url: "/images/photo/p3.jpeg",
-    title: "Yamaha",
-    subTitle: "Mt-15",
-  },
-  {
-    id: 5,
-    url: "/images/photo/p4.jpeg",
-    title: "Ducati",
-    subTitle: "Panigale V4 R",
+    title: "Alış-veriş üçün ən rahat məkan!",
   },
 ];
 
 const HomeSlider = () => {
   return (
-    <div className="flex flex-wrap">
-      <div className="bg-white w-full px-4 py-4 pt-6 rounded-lg select-none">
+    <div className="container  flex flex-wrap my-4">
+      <div className="bg-white w-full h-auto rounded-lg p-4  select-none">
         <Swiper
           slidesPerView={1}
           grabCursor={true}
@@ -58,19 +43,18 @@ const HomeSlider = () => {
         >
           {data?.map((item) => (
             <SwiperSlide key={item?.id}>
-              <div className="flex flex-col items-center justify-between md:flex-row py-1 px-2  sm:border-r-2 sm:border-gray-100 group mb-6 w-full">
-                <div className="flex flex-col gap-1 ">
-                  <h6 className="text-xs md:text-base">{item.title}</h6>
-                  <p className="text-[10px] md:text-base whitespace-nowrap">
-                    {item.subTitle}
-                  </p>
-                </div>
-                <div className="group-hover:scale-105 transition-all duration-100 ">
+              <div className="flex items-center group mb-6 w-full">
+                <div className="w-full transition-all duration-100 rounded-lg overflow-hidden relative">
                   <img
                     src={item.url}
                     alt="marka"
-                    className="w-[120px] h-[100px]"
+                    className="w-full h-[300px]  md:h-[500px] rounded-lg"
                   />
+                  <div className="flex flex-col gap-1 absolute bottom-20 left-20 text-white text-2xl ">
+                    <h6 className="text-xs md:text-4xl shadow-inner">
+                      {item.title}
+                    </h6>
+                  </div>
                 </div>
               </div>
             </SwiperSlide>

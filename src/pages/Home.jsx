@@ -1,12 +1,19 @@
 import { Meta } from "../components/layout";
-import { HomeAccardion, HomeSlider } from "../components/home";
+import {
+  HomeCategories,
+  HomeInformation,
+  HomeSlider,
+  HomeLatestBlogs,
+} from "../components/home";
 
 const Home = () => {
   return (
-    <main className="flex flex-col gap-5 pb-10">
-      <Meta title="Site" />
+    <main className="flex flex-col gap-14 pb-10">
+      <Meta title="Nizami mall" />
       <HomeSlider />
-      <HomeAccardion />
+      <HomeCategories />
+      <HomeInformation />
+      <HomeLatestBlogs />
     </main>
   );
 };

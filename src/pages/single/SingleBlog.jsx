@@ -1,27 +1,13 @@
-import { Meta, BreadCrumb } from "../../components/layout";
+import { Meta } from "../../components/layout";
 
 const SingleBlog = () => {
   return (
     <div>
       <Meta title="MT-15-in yeni versiyası" />
-      <BreadCrumb
-        title="MT-15-in yeni versiyası"
-        path="/blogs"
-        prev="Yeniliklər"
-      />
-      <section className="container p-4">
-        <div className="p-3 bg-white rounded-lg my-4">
-          <div class="p-4">
-            <div className=" min-h-[150px] md:h-full">
-              <img
-                class="h-full w-full max-w-full object-contain rounded-lg"
-                src="https://images.unsplash.com/photo-1638517900432-6ee4655d76f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bXQxNXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                alt=""
-              />
-            </div>
-          </div>
 
-          <div className="p-4 flex flex-col gap-2 col-span-3">
+      <section className="container p-4">
+        <div className="p-3 bg-white rounded-lg my-4  grid grid-cols-2 gap-4">
+          <div className="p-4 w-full flex flex-col gap-2">
             <p className="text-xs md:text-sm  font-normal text-colorLight">
               18 dec 2023
             </p>
@@ -50,6 +36,15 @@ const SingleBlog = () => {
               inceptos est risus auctor ac senectus volutpat viverra ullamcorper
               a nec suscipit posuere sit dis. Enim elit duis.
             </p>
+          </div>
+          <div className="p-4 w-full group">
+            <div className=" min-h-[300px] md:h-full overflow-hidden rounded-lg w-full">
+              <img
+                className="h-full w-full max-w-full object-contain rounded-lg group-hover:scale-110 transition-all duration-200"
+                src="https://images.unsplash.com/photo-1682685797736-dabb341dc7de?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
           </div>
         </div>
       </section>

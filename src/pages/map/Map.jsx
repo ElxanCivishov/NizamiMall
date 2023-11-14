@@ -15,30 +15,30 @@ const floor = [
     component: <FloorTwo />,
   },
   {
-    num: 1,
+    num: 3,
     component: <FloorThree />,
   },
 ];
 
 const Map = () => {
   const [activeFilter, setActiveFilter] = useState(false);
-  const [floorNumber, setFloorNumber] = useState(3);
+  const [floorNumber, setFloorNumber] = useState(1);
 
   return (
     <div>
       <Meta title="Mall xəritəsi" />
       <BreadCrumb title="Mall xəritəsi" />
       <section className="container p-4">
-        <div className="w-full flex items-center justify-end mb-2">
+        {/* <div className="w-full flex items-center justify-end mb-2">
           <span
             className="block lg:hidden max-w-max cursor-pointer bg-colorBlack text-white border rounded-md  text-sm py-1 px-3 select-none"
             onClick={() => setActiveFilter(!activeFilter)}
           >
             Axtar
           </span>
-        </div>
+        </div> */}
         <div className="flex flex-col lg:flex-row gap-4 w-full">
-          <div
+          {/* <div
             className={`${
               activeFilter ? "inline-block" : "hidden"
             } lg:inline-block lg:w-[350px]`}
@@ -81,7 +81,7 @@ const Map = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="flex flex-col gap-2 w-full overflow-auto">
             <div className="flex items-center justify-center bg-white rounded-lg p-2 gap-2 w-full select-none">
               <div
@@ -90,6 +90,7 @@ const Map = () => {
                     ? "bg-colorPrimary text-white"
                     : "bg-white text-black"
                 }`}
+                onClick={() => setFloorNumber(1)}
               >
                 <span>1</span>
               </div>
@@ -116,7 +117,7 @@ const Map = () => {
             </div>
             <div className="flex items-center justify-between bg-white rounded-lg p-2 gap-2 w-full">
               {/* <FloorOne /> */}
-              <FloorThree />
+              {floor.map((item) => item.num === floorNumber && item.component)}
             </div>
           </div>
         </div>

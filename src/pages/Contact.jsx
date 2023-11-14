@@ -12,21 +12,19 @@ import scrollToTop from "../helper/scrollToTop";
 
 const initialValue = {
   name: "",
-  email: "",
+  surname: "",
   mobile: "",
   subject: "",
-  message: "",
 };
 
 let schema = yup.object().shape({
   name: yup.string().required(" "),
-  email: yup.string().email().required(" "),
+  surname: yup.string().required(" "),
   mobile: yup
     .string()
     .required(" ")
     .matches(/^\+994\s\d{9}$/, "Format: +994 xxxxxxxxx"),
-  subject: yup.string().required(" ").max(100, "Max 100 simvol"),
-  message: yup.string().required(" ").max(500, "Max 500 simvol"),
+  subject: yup.string().required(" ").max(200, "Max 200 simvol"),
 });
 
 const Contact = () => {
@@ -51,13 +49,7 @@ const Contact = () => {
 
   useEffect(() => {
     trigger();
-  }, [
-    watch("name"),
-    watch("mobile"),
-    watch("email"),
-    watch("subject"),
-    watch("message"),
-  ]);
+  }, [watch("name"), watch("surname"), watch("mobile"), watch("subject")]);
 
   useEffect(() => {
     dispatch(addValidation(false));
@@ -92,86 +84,78 @@ const Contact = () => {
 
   return (
     <div>
-      <Meta title="Bizimlə əlaqə" />
-      <BreadCrumb title="Bizimlə əlaqə" />
-      <section className="container p-4">
-        <div className="bg-white p-5">
-          <div className="w-100">
-            <h3 className="text-xl text-zinc-600 font-semibold md:text-center px-4 mb-3">
-              Müraciət göndər
-            </h3>
-            <p className="text-sm text-zinc-500 font-semibold md:text-center px-4 mb-5">
-              Müraciətinizə qısa zaman ərzində baxılacaqdır. Lazım gəldiyi
-              təqdirdə sizə geri dönüş edəcəyik. Müraciətiniz bizim üçün
-              önəmlidir. Təşəkkürlər!
-            </p>
-            <form
-              action=""
-              className="flex flex-col space-y-3 gap-2 px-4"
-              onSubmit={handleSubmit(onSubmit)}
-              noValidate
-            >
-              <div className="grid md:grid-cols-2 gap-3">
-                <FormInput
-                  register={register("name")}
-                  errors={errors.name}
-                  label="Adınız"
-                  placeholder="adınız..."
-                />
-                <FormInput
-                  register={register("email")}
-                  errors={errors.email}
-                  label="Email adresiniz"
-                  placeholder="email..."
-                  type="email"
-                />
-                <FormInput
-                  register={register("mobile")}
-                  errors={errors.mobile}
-                  label="Nömrəniz"
-                  placeholder="nömrəniz..."
-                  type="tel"
-                />
-                <FormInput
-                  register={register("subject")}
-                  errors={errors.subject}
-                  placeholder="başlıq..."
-                  label="Başlıq"
-                />
-              </div>
-              <FormTextarea
-                register={register("message")}
-                errors={errors.message}
-                label="Mesajınız?"
-                placeholder="mesajınız..."
-                value={watch("message")}
-                rows={5}
+      <Meta title="İcarə üçün müraciət" />
+      <section className="container p-4 my-5">
+        <div className="w-full max-w-3xl mx-auto bg-white p-5">
+          <h3 className="text-xl text-zinc-600 font-semibold md:text-center px-4 mb-3">
+            İcarə Üçün Müraciət
+          </h3>
+          <p className="text-sm text-zinc-500 font-semibold md:text-center tracking-wide px-4 mb-5">
+            Müraciətinizə qısa zaman ərzində baxılacaqdır. Sizə geri dönüş
+            edəcəyik. Müraciətiniz bizim üçün önəmlidir. Təşəkkürlər!
+          </p>
+          <form
+            action=""
+            className="flex flex-col space-y-3 gap-2 md:gap-8 px-4"
+            onSubmit={handleSubmit(onSubmit)}
+            noValidate
+          >
+            <div className="grid md:grid-cols-2 gap-4">
+              <FormInput
+                register={register("name")}
+                errors={errors.name}
+                label="Adınız"
+                required={true}
+                placeholder="Adınız..."
+              />
+              <FormInput
+                register={register("surname")}
+                errors={errors.surname}
+                label="Soyadınız"
+                required={true}
+                placeholder="Soyadınız..."
               />
 
-              {isError && message && showMessage && (
-                <div className="w-full text-center px-3 py-2 rounded-lg font-semibold my-3 text-sm border border-red-500 text-red-500">
-                  {message}
-                </div>
-              )}
+              <FormInput
+                register={register("mobile")}
+                errors={errors.mobile}
+                label="Nömrəniz"
+                required={true}
+                placeholder="Nömrəniz..."
+                type="tel"
+              />
+              <FormInput
+                register={register("subject")}
+                errors={errors.subject}
+                required={true}
+                placeholder="Xidmət və ya məhsulun növü..."
+                label="Xidmət və ya məhsulun növü"
+              />
+            </div>
 
-              {isSuccess && message && showMessage && (
-                <div className="w-full text-center px-3 py-2 rounded-lg font-semibold my-3 text-sm border border-emerald-500 text-emerald-500">
-                  {message}
-                </div>
-              )}
-
-              <div className="flex items-center justify-center">
-                <Button
-                  onClick={() => handleClick()}
-                  classBtn="border-0 w-40"
-                  disabled={!isDirty || isLoading}
-                  type="submit"
-                  isLoading={isLoading}
-                  label="Göndər"
-                />
+            {isError && message && showMessage && (
+              <div className="w-full text-center px-3 py-2 rounded-lg font-semibold my-3 text-sm border border-red-500 text-red-500">
+                {message}
               </div>
-            </form>
-          </div>
+            )}
+
+            {isSuccess && message && showMessage && (
+              <div className="w-full text-center px-3 py-2 rounded-lg font-semibold my-3 text-sm border border-emerald-500 text-emerald-500">
+                {message}
+              </div>
+            )}
+
+            <div className="flex items-center justify-center">
+              <Button
+                onClick={() => handleClick()}
+                classBtn="border-0 w-40"
+                disabled={!isDirty || isLoading}
+                type="submit"
+                isLoading={isLoading}
+                label="Göndər"
+              />
+            </div>
+          </form>
         </div>
       </section>
     </div>
