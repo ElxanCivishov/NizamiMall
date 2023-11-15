@@ -56,16 +56,16 @@ const Header = () => {
               <LinkBtn
                 label={
                   <span className="flex items-center gap-2">
+                    <FaLocationDot />
                     <span className="hidden md:inline-block">
                       Mall xəritəsi
                     </span>
-                    <FaLocationDot />
                   </span>
                 }
                 path="/map"
                 classBtn="max-w-max p-2 text-xs md:text-base font-medium text-center rounded-lg   text-white select-none hover:opacity-80 bg-colorPrimary"
               />
-              <LinkBtn
+              {/* <LinkBtn
                 label={
                   <span className="flex items-center gap-2">
                     <span className="hidden md:inline-block">Axtarış</span>
@@ -74,7 +74,7 @@ const Header = () => {
                 }
                 path="/axtaris"
                 classBtn="max-w-max p-2 text-xs md:text-base font-medium text-center rounded-lg   text-white select-none hover:opacity-80 bg-colorPrimary"
-              />
+              /> */}
             </div>
           </div>
         </nav>

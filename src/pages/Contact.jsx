@@ -3,12 +3,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { BreadCrumb, Meta } from "../components/layout";
-import { Button, FormInput, FormTextarea } from "../components/elements";
+import { Meta } from "../components/layout";
+import { Button, FormInput } from "../components/elements";
 
 import { addValidation } from "../features/dataSlice";
 import { RESET, createContact } from "../features/contact/contactSlice";
-import scrollToTop from "../helper/scrollToTop";
+
+import contactImg from "/images/contact.png";
 
 const initialValue = {
   name: "",
@@ -62,7 +63,6 @@ const Contact = () => {
       setTimeout(() => {
         setShowMessage(false);
         dispatch(RESET());
-        scrollToTop(5000);
       }, 5000);
     }
     if (isSuccess) {
@@ -85,11 +85,14 @@ const Contact = () => {
   return (
     <div>
       <Meta title="İcarə üçün müraciət" />
-      <section className="container p-4 my-5">
-        <div className="w-full max-w-3xl mx-auto bg-white p-5">
+      <section className="container p-4 my-5 ">
+        <div className="w-full  mx-auto bg-white p-5 rounded-lg">
           <h3 className="text-xl text-zinc-600 font-semibold md:text-center px-4 mb-3">
             İcarə Üçün Müraciət
           </h3>
+          <div className="flex items-center justify-center">
+            <img src={contactImg} alt="rent" className="h-[200px]" />
+          </div>
           <p className="text-sm text-zinc-500 font-semibold md:text-center tracking-wide px-4 mb-5">
             Müraciətinizə qısa zaman ərzində baxılacaqdır. Sizə geri dönüş
             edəcəyik. Müraciətiniz bizim üçün önəmlidir. Təşəkkürlər!

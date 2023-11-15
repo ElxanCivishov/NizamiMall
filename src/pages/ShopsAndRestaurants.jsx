@@ -11,22 +11,47 @@ const tabs = [
   },
   {
     id: 2,
-    title: "Servislər",
+    title: "Mağaza",
     component: <ServiceCard />,
   },
   {
     id: 3,
-    title: "Salonlar",
-    component: <ServiceCard />,
-  },
-  {
-    id: 4,
-    title: "Aksesuarlar",
+    title: "Restoran",
     component: <ServiceCard />,
   },
 ];
 
 const data = [
+  {
+    id: 1,
+    url: "/images/photo/p1.jpeg",
+    title: "Brawo market",
+  },
+  {
+    id: 2,
+    url: "/images/photo/p1.jpeg",
+    title: "Brawo market",
+  },
+  {
+    id: 3,
+    url: "/images/photo/p1.jpeg",
+    title: "Brawo market",
+  },
+  {
+    id: 1,
+    url: "/images/photo/p1.jpeg",
+    title: "Brawo market",
+  },
+  {
+    id: 2,
+    url: "/images/photo/p1.jpeg",
+    title: "Brawo market",
+  },
+  {
+    id: 3,
+    url: "/images/photo/p1.jpeg",
+    title: "Brawo market",
+  },
   {
     id: 1,
     url: "/images/photo/p1.jpeg",
@@ -63,8 +88,8 @@ const ShopsAndRestaurants = () => {
           </p>
         </div>
 
-        <div className="px-4  my-5 ">
-          <ul className="flex flex-wrap justify-between md:justify-start md:gap-2 w-full md:w-auto my-3 font-medium text-center text-gray-500">
+        <div className="p-4  my-5 ">
+          <ul className="flex flex-wrap justify-between md:justify-start md:gap-2 w-full md:w-auto font-medium text-center text-gray-500">
             {tabs?.map((tab, index) => (
               <li
                 className="mr-1 sm:mr-2 mb-2 cursor-pointer"
@@ -74,9 +99,9 @@ const ShopsAndRestaurants = () => {
                 <p
                   className={`${
                     activeTab === index
-                      ? "text-zinc-800 border-colorBorder"
+                      ? "text-colorPrimary border-colorPrimary"
                       : " text-gray-500 border-transparent"
-                  } inline-flex items-center justify-center  border-b-2  rounded-t-lg hover:text-zinc-800 hover:border-colorBorder group gap-1 md:gap-2 text-[9px] sm:text-xs md:text-base transition-all duration-200`}
+                  } inline-flex items-center justify-center  border-b-2  rounded-t-lg hover:text-colorPrimary hover:border-colorPrimary group gap-1 md:gap-2 text-[9px] sm:text-xs md:text-base transition-all duration-200`}
                 >
                   <span>{tab.icon}</span>
                   <span>{tab.title}</span>
@@ -86,20 +111,28 @@ const ShopsAndRestaurants = () => {
           </ul>
         </div>
 
-        <div className="wishlist px-4 bg-white ">
-          {data?.map((item, index) =>
-            activeTab === index ? (
-              <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 my-3 transition-all duration-400">
-                <Link to={item.path}>
-                  <div className="w-full h-[150px] p-4 flex items-center justify-center gap-2 bg-white hover:bg-colorPrimary transition-all duration-200 rounded-lg shadow-lg group hover:-translate-y-2">
-                    <span className="group-hover:text-white text-base md:text-xl">
-                      {item.title}
-                    </span>
+        <div className="p-4 bg-white ">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 my-3 transition-all duration-400">
+            {data?.map((item, index) => (
+              <Link to={item.path}>
+                <div className="w-full border border-slate-100 p-4 flex flex-col  gap-2   transition-all duration-200 rounded-lg shadow-lg group hover:-translate-y-2">
+                  <div className="w-full flex  items-center justify-center">
+                    <img
+                      src="/images/shops/aztel.jpg"
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                </Link>
-              </div>
-            ) : null
-          )}
+                  <h2 className="group-hover:text-colorPrimary text-base md:text-xl">
+                    {item.title}
+                  </h2>
+                  <span className="group-hover:text-colorPrimary text-base md:text-xl">
+                    {item.title}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </main>
