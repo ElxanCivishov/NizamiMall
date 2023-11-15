@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BlogCard } from "../components/cards";
-import { BreadCrumb, Meta } from "../components/layout";
+import { Meta } from "../components/layout";
 import { FaSearch } from "react-icons/fa";
 
 const Blogs = () => {

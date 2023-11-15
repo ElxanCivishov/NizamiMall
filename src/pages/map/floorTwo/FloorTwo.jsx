@@ -2,83 +2,254 @@ import { useState } from "react";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 
 const svgPaths = [
+  // unix ayaqqabı
   {
     uid: 1,
-    className: "cls-4",
-    d: "M903.28,.6c-29.3,7.2-58.6,14.3-87.7,21.5,15.1,55.8,30.3,111.5,45.4,167.3,29.8-7,59.7-14.2,89.5-21.2-15.7-55.8-31.4-111.8-47.2-167.6Z",
+    className: "cls-40",
+    d: "M287.48,265.23l1,.2,120.5,24.3-7-31.5-47-5.6-2.9-10.7-65.1,14.7c.2,2.9,.3,5.8,.5,8.6Z",
   },
+  // elpidio baku
   {
     uid: 2,
-    className: "cls-4",
-    d: "M758.48,213.7c-14.6-55.8-29.3-111.8-43.9-167.6l100.9-24.4,.2,.3c15.1,55.8,30.3,111.5,45.4,167.3-34.2,8.2-68.4,16.3-102.6,24.4Z",
+    className: "cls-40",
+    d: "M478.98,158.73c-8.3,2.3-16.7,4.7-25,7l19,68,26-3c-6.7-24-13.3-48-20-72Z",
   },
+  // aska sport
   {
     uid: 3,
-    className: "cls-4",
-    d: "M436.38,112.9c8.1,29.8,16.3,59.7,24.4,89.5-48.8,13-97.6,26-146.4,39.1-11.9-29.3-23.9-58.6-35.8-87.9,52.5-13.6,105.2-27.2,157.8-40.7Z",
+    className: "cls-40",
+    d: "M381.98,76.73l9,3,30-6c5.7,19.8,11.5,39.6,17.2,59.4l-37.2,9.6c-6.3-22-12.7-44-19-66Z",
   },
+  // luxury
+  {
+    uid: 4,
+    className: "cls-40",
+    d: "M577.98,228.13c-9.7,.2-19.3,.4-29,.6,.3-11.7,.7-23.3,1-35-5-16.3-10-32.7-15-49,8.5-2.4,17-4.8,25.5-7.2,6.4,17,12.7,34,19,50.9-.5,13.3-1,26.5-1.5,39.7Z",
+  },
+  // aska butik
+  {
+    uid: 5,
+    className: "cls-40",
+    d: "M786.98,115.73c1,17.3,2,34.7,3,52-13.3,.7-26.7,1.3-40,2-.5-8.4-.9-16.8-1.4-25.2-.5-9.3-1.1-18.5-1.6-27.8,13.3-.3,26.7-.7,40-1Z",
+  },
+  // glent
   {
     uid: 6,
-    className: "cls-4",
-    d: "M145.08,197.5c12.5,27.7,24.9,55.3,37.4,83,43.9-13,87.9-26,131.8-39.1-11.9-29.3-23.9-58.6-35.8-87.9-44.4,14.7-89,29.3-133.4,44Z",
+    className: "cls-40",
+    d: "M681.98,16.13c-.7,22.3-1.3,44.6-2.1,66.9,22.7-.1,45.4-.2,68.1-.3,0-11.1,0-22.2,.1-33.4,.1-11.3,.1-22.5,.3-33.7-22.2,.2-44.3,.3-66.4,.5Z",
   },
+  // vn toys
   {
     uid: 7,
-    className: "cls-4",
-    d: "M398.88,438.3c-7,22.3-14.2,44.4-21.2,66.7-47.2-8.1-94.4-16.3-141.6-24.4-4.6-.8-27.2-5.5-40.2-26.2-9.3-14.8-8.3-30.1-8.3-36.8,0,0,.7-15.3,8.3-30.1,15.8-30.4,63.5-44.6,110.6-57.9,55.3-15.8,98.3-27.7,123-34.3,2.8,25.5,5.4,50.9,8.1,76.5-21.2,4.4-42.3,8.9-63.6,13.3-.7,11.7-.8,24.1-.3,36.8,.2,3.4,.2,6.7,.3,10.1,8.7,2.1,16.8,4.2,24.9,6.3Z",
+    className: "cls-40",
+    d: "M593.48,26.43c4.8,20.9,9.6,41.9,14.4,62.8l72-6.2,1.5-67.4c-7.1-3.1-24-9.5-45.8-6.7-21.4,2.7-36.1,12.8-42.1,17.5Z",
   },
+  // rounded bos sona orta
   {
     uid: 8,
-    className: "cls-4",
-    d: "M429.88,295.1c2.8,25.5,5.4,50.9,8.1,76.5,29.3-6,58.6-11.9,87.9-17.9-3.3-26.5-6.5-53.2-9.8-79.7-28.8,6.9-57.4,14.1-86.2,21.1Z",
+    className: "cls-40",
+    d: "M238.98,303.73c-4.7,15.3-9.3,30.7-14,46-12.2-3-24.3-5.9-36.5-8.9-20.9-5.1-41.9-10.3-62.8-15.4-2.7-2.6-6-6.5-8.8-11.8-4.8-9.3-5.2-18-5.1-22.6,0,0,.4-9.4,5.1-18.5,9.8-18.9,40-27.9,68-35.6,29-8,55.2-14.6,78-20,3.7,14.3,7.3,28.7,11,43-15.8,3.7-31.6,7.4-47.4,11.1-.4,7.2-.5,14.8-.2,22.6,.1,2.1,.1,4.1,.2,6.2,2.1,.7,4.3,1.4,6.4,2.1,2.1,.5,4.1,1.1,6.1,1.8Z",
   },
-
+  // mulen ruj
   {
     uid: 9,
-    className: "cls-4",
-    d: "M476.98,456.2c-26-6-52.1-11.9-78.1-17.9-7,22.3-14.2,44.4-21.2,66.7,26,6,52.1,11.9,78.1,17.9,7.1-22.3,14.2-44.4,21.2-66.7Z",
+    className: "cls-40",
+    d: "M339.98,196.73c2.6,9,5.1,18.2,7.6,27.5,2.6,9.6,5,19,7.3,28.4l47,5.6,2.5-27.8c-4.4-15.2-8.6-30.4-13-45.6-8.3,1.7-16.9,3.5-25.6,5.6-8.8,2-17.4,4.1-25.8,6.3Z",
   },
+  // prada parfum
   {
     uid: 10,
-    className: "cls-4",
-    d: "M546.38,740c10.6-30.6,21.2-61.2,31.6-91.8-39.1-8.6-78.1-17.4-117.2-26-12.2,30.3-24.4,60.5-36.6,90.8l122.2,27Z",
+    className: "cls-40",
+    d: "M534.98,144.73c4.7,16,9.3,32,14,48v36c-7.3,.3-14.7,.7-22,1-4.7-26.3-9.3-52.7-14-79,7.3-2,14.7-4,22-6Z",
   },
+
+  // ad dress
   {
     uid: 11,
-    className: "cls-4",
-    d: "M286.68,682.4c13-30.4,26-60.7,39.1-91.1,45.1,10.3,90,20.7,135.1,30.9l-36.6,90.8c-45.9-10.3-91.8-20.4-137.6-30.6Z",
+    className: "cls-40",
+    d: "M453.98,165.73c-6.3,1.9-12.7,3.9-19,5.8l17.5,66.9c6.8-1.6,13.7-3.1,20.5-4.7-6.3-22.7-12.7-45.3-19-68Z",
   },
+  // ayna boutique
   {
     uid: 12,
-    className: "cls-4",
-    d: "M556.78,475.7c-6.5,22.3-13,44.4-19.5,66.7-27.2-6.5-54.2-13-81.4-19.5,7-22.3,14.2-44.4,21.2-66.7,26.5,6.5,53.1,13,79.7,19.5Z",
+    className: "cls-40",
+    d: "M684.48,117.53l-1,51.5-45.3,5.1c-3.6-17.3-7.2-34.7-10.8-52,19.1-1.5,38.1-3.1,57.1-4.6Z",
   },
+  // shamplena
   {
     uid: 13,
-    className: "cls-4",
-    d: "M630.48,493.8c-8.3,23.3-16.6,46.5-24.9,69.8,25.5,6,50.9,11.9,76.5,17.9,7.6-23.3,15.1-46.7,22.8-70-24.8-5.8-49.5-11.9-74.4-17.7Z",
+    className: "cls-40",
+    d: "M560.48,137.53c10.6-2.8,21.3-5.5,31.9-8.2l17.5,51.5-30.4,7.7c-6.3-17-12.6-34-19-51Z",
   },
+  // pro cosmetics
   {
     uid: 14,
-    className: "cls-4",
-    d: "M436.38,112.9c8.1,29.8,16.3,59.7,24.4,89.5,40.7-9.3,81.4-18.4,122-27.7-6-32.5-11.9-65.1-17.9-97.6-13.2-2.4-38.4-5-68.3,3.3-30,8.2-50.2,23.5-60.2,32.5Z",
+    className: "cls-40",
+    d: "M627.38,122.13l11.1,51.9c-9.6,2.3-19,4.5-28.6,6.8-5.9-17.2-11.6-34.3-17.5-51.5,11.7-2.4,23.4-4.8,35-7.2Z",
   },
+  // aura studio
   {
     uid: 15,
-    className: "cls-4",
-    d: "M208.58,369.9c-3.3,3.1-20.5,19.9-21.2,47.2-.7,29.3,18.1,47.7,21.2,50.4-16.3,5.4-32.5,10.9-48.8,16.3-5-3.9-26.4-21.5-30.9-52.1-6.2-42.1,25.1-70.9,27.7-73.2,17.3,3.8,34.5,7.7,52,11.4Z",
+    className: "cls-40",
+    d: "M1068.88,198.23c2,16.5-2,29.6-4.6,36.5-46.3,1.3-92.6,2.8-138.9,4.1l-4.1-122.5-72,1c-.7-11.6-1.5-23.2-2.2-34.8h-99V15.53c4.2-2.9,15.2-9.6,30.7-9.9,13-.2,22.7,4.2,27.2,6.7l45.4-2c5.8-3.3,17.9-9.3,34.5-9.8,16.9-.5,29.5,4.7,35.5,7.7,14-3.9,33.7-7.8,57.1-7.7,26.1,.1,47.5,5.1,62.3,9.8,7,7.9,26.8,32.2,30.3,69.5,3.3,34.6-9.2,60.4-14.4,70-3.9,.5-7.9,1-11.8,1.5,4.8,4.9,20.8,21,24,46.9Z",
   },
+  // nb acessories
   {
     uid: 16,
-    className: "cls-4",
-    d: "",
+    className: "cls-40",
+    d: "M547.98,39.73l15,60c15-3.5,29.9-7,44.9-10.5-4.8-20.9-9.6-41.9-14.4-62.8-15.2,4.4-30.3,8.9-45.5,13.3Z",
+  },
+  // rose girl
+  {
+    uid: 17,
+    className: "cls-40",
+    d: "M547.98,39.73l15,60c-14,3.7-28,7.3-42,11l-18-60c15-3.7,30-7.3,45-11Z",
+  },
+  // bos zona sonianın yanı
+  {
+    uid: 18,
+    className: "cls-40",
+    d: "M306.98,101.73c4.3,20.7,8.7,41.3,13,62,10.3-2.7,20.7-5.3,31-8-6.3-24.3-12.7-48.7-19-73-2.3,1.2-4.6,2.5-7,4-7.6,4.8-13.5,10.1-18,15Z",
+  },
+  // catreen
+  {
+    uid: 19,
+    className: "cls-40",
+    d: "M459.98,62.73c5.7,20,11.3,40,17,60,14.7-4,29.3-8,44-12l-18-60c-14.3,4-28.7,8-43,12Z",
+  },
+  // dr.brown
+  {
+    uid: 20,
+    className: "cls-40",
+    d: "M306.98,101.73c4.3,20.7,8.7,41.3,13,62-12.3,3-24.7,6-37,9-4.5-20.6-9-41.3-13.5-61.9,12.5-3,25-6.1,37.5-9.1Z",
+  },
+  // sis
+  {
+    uid: 21,
+    className: "cls-40",
+    d: "M236.98,118.73c4.7,20.7,9.3,41.3,14,62-11.7,3-23.3,6-35,9-4.7-21-9.3-42-14-63,11.7-2.7,23.3-5.3,35-8Z",
+  },
+  // style bag
+  {
+    uid: 22,
+    className: "cls-40",
+    d: "M161.98,203.73l-24,6c-6-21.3-12-42.7-18-64,9.3-2,18.7-4,28-6,4.7,21.3,9.3,42.7,14,64Z",
+  },
+  // connect
+  {
+    uid: 23,
+    className: "cls-40",
+    d: "M37.98,209.73c13.7,8.3,27.3,16.7,41,25,12.7-6.3,25.3-12.7,38-19-10.7-20-21.3-40-32-60-7.1,5.2-15.4,12-23.6,20.9-11,11.9-18.4,23.7-23.4,33.1Z",
+  },
+  // flame.az
+  {
+    uid: 24,
+    className: "cls-40",
+    d: "M109.98,354.73c-11.3,26-22.7,52-34,78,10.7,3.7,21.3,7.3,32,11,11-27.7,22-55.3,33-83-10.3-2-20.7-4-31-6Z",
+  },
+  // zera
+  {
+    uid: 25,
+    className: "cls-40",
+    d: "M186.98,369.73c-15.3-3-30.7-6-46-9-11.3,27.7-22.7,55.3-34,83l45,12c11.7-28.7,23.3-57.3,35-86Z",
+  },
+  // junior gentleman ledies
+  {
+    uid: 26,
+    className: "cls-40",
+    d: "M186.98,369.73c-11.7,28.8-23.3,57.5-35,86.3,22.7,5.6,45.3,11.2,68,16.7,11.7-29.7,23.3-59.3,35-89-22.7-4.7-45.3-9.3-68-14Z",
+  },
+  // ram zotti
+  {
+    uid: 27,
+    className: "cls-40",
+    d: "M323.98,398.73l-69-15c-11.7,29.7-23.3,59.3-35,89,23.7,5.7,47.3,11.3,71,17,11-30.3,22-60.7,33-91Z",
+  },
+  // sahmat evi
+  {
+    uid: 28,
+    className: "cls-40",
+    d: "M400.98,413.73c-11,30.3-22,60.7-33,91-25.7-5-51.3-10-77-15,11-30.3,22-60.7,33-91,25.7,5,51.3,10,77,15Z",
+  },
+
+  // izim accessories
+  {
+    uid: 29,
+    className: "cls-40",
+    d: "M271.88,310.93c-11-2.4-21.9-4.8-32.9-7.2-4.7,15.3-9.3,30.7-14,46,10.8,2.9,21.6,5.7,32.5,8.6l14.4-47.4Z",
+  },
+  {
+    uid: 30,
+    className: "cls-40",
+    d: "M501.78,381.13c-10.9-.7-21.8-1.4-32.8-2.1",
+  },
+
+  // turkuaz
+  {
+    uid: 31,
+    className: "cls-40",
+    d: "M50.98,414.73c11.7-21,23.3-42,35-63-6-3.7-12-7.3-18-11-11.3,19-22.7,38-34,57,2.2,2.8,4.9,5.9,8,9s6.2,5.8,9,8Z",
+  },
+  // rizanna
+  {
+    uid: 32,
+    className: "cls-40",
+    d: "M45.98,312.73l-36.2,44.7c2.3,6.6,5.8,14.7,11.2,23.3,4.3,6.9,8.9,12.6,13,17,11.3-19,22.7-38,34-57-7.3-9.3-14.7-18.7-22-28Z",
+  },
+
+  // misstyle
+  {
+    uid: 33,
+    className: "cls-40",
+    d: "M84.98,155.73c10.3,20,20.7,40,31,60,7.3-2,14.7-4,22-6-6-21.3-12-42.7-18-64-11.7,3.3-23.3,6.7-35,10Z",
+  },
+  // agat ametist
+  {
+    uid: 34,
+    className: "cls-40",
+    d: "M175.98,132.73c-9.3,2.3-18.7,4.7-28,7,4.7,21.3,9.3,42.7,14,64,9.3-2.3,18.7-4.7,28-7-4.7-21.3-9.3-42.7-14-64Z",
+  },
+  // fiore silver
+  {
+    uid: 35,
+    className: "cls-40",
+    d: "M175.98,132.73c8.7-2,17.3-4,26-6,4.7,21,9.3,42,14,63-8.7,2.3-17.3,4.7-26,7-4.7-21.3-9.3-42.7-14-64Z",
+  },
+  // iris colection
+  {
+    uid: 36,
+    className: "cls-40",
+    d: "M236.98,118.73c4.7,20.7,9.3,41.3,14,62,10.7-2.7,21.3-5.3,32-8-4.5-20.6-9-41.3-13.5-61.9l-32.5,7.9Z",
+  },
+  // sonia
+  {
+    uid: 37,
+    className: "cls-40",
+    d: "M381.98,76.73c6.3,22,12.7,44,19,66-16.7,4.3-33.3,8.7-50,13-6.3-24.3-12.7-48.7-19-73,7.9-4.1,21.9-9.6,39-8,4,.4,7.7,1.1,11,2Z",
+  },
+  // roni wear
+  {
+    uid: 38,
+    className: "cls-40",
+    d: "M459.98,62.73c-13,3.7-26,7.3-39,11,5.7,19.7,11.3,39.3,17,59,13-3.3,26-6.7,39-10-5.7-20-11.3-40-17-60Z",
+  },
+  // Bakust reet
+  {
+    uid: 39,
+    className: "cls-40",
+    d: "M577.98,228.13l-1.3,69.8c-42.2-.4-84.4-.8-126.7-1.2,.8-19.4,1.6-38.9,2.5-58.3l20.5-4.7,26-3,79-2.6Z",
+  },
+  {
+    uid: 40,
+    className: "cls-40",
+    d: "M271.88,310.93c-11-2.4-21.9-4.8-32.9-7.2-4.7,15.3-9.3,30.7-14,46,10.8,2.9,21.6,5.7,32.5,8.6l14.4-47.4Z",
   },
 ];
 
 const dynamicNames = [
   {
     uid: 10,
-    text: "Donviand",
+    text: "Aura Studio",
     x1: 0,
     x2: 0,
     y1: 0,
@@ -86,7 +257,7 @@ const dynamicNames = [
   },
   {
     uid: 9,
-    text: "Lluvia",
+    text: "Glent",
     x1: 0,
     x2: 0,
     y1: 0,
@@ -94,7 +265,7 @@ const dynamicNames = [
   },
   {
     uid: 8,
-    text: "Chumak fasion",
+    text: "VN toys",
     x1: 3,
     x2: 3,
     y1: 20,
@@ -102,7 +273,7 @@ const dynamicNames = [
   },
   {
     uid: 2,
-    text: "Exclusive travel",
+    text: "NB accessories",
     x1: 0,
     x2: 10,
     y1: 20,
@@ -110,7 +281,7 @@ const dynamicNames = [
   },
   {
     uid: 1,
-    text: "Life teiecom",
+    text: "Rose Girl",
     x1: 0,
     x2: 0,
     y1: 20,
@@ -118,7 +289,7 @@ const dynamicNames = [
   },
   {
     uid: 6,
-    text: "Express telecom",
+    text: "Catreen",
     x1: 5,
     x2: 5,
     y1: 20,
@@ -126,7 +297,7 @@ const dynamicNames = [
   },
   {
     uid: 3,
-    text: "Trend 37 outlet",
+    text: "Roni Wear",
     x1: 15,
     x2: 10,
     y1: 20,
@@ -134,7 +305,7 @@ const dynamicNames = [
   },
   {
     uid: 12,
-    text: "Shtonak",
+    text: "Aska Sport",
     x1: 0,
     x2: 0,
     y1: 20,
@@ -142,7 +313,15 @@ const dynamicNames = [
   },
   {
     uid: 11,
-    text: "By Amina Collection",
+    text: "Sonia",
+    x1: 10,
+    x2: 10,
+    y1: 20,
+    y2: -30,
+  },
+  {
+    uid: 11,
+    text: "",
     x1: 10,
     x2: 10,
     y1: 20,
@@ -150,7 +329,7 @@ const dynamicNames = [
   },
   {
     uid: 14,
-    text: "Brawo men style",
+    text: "Dr.Brown",
     x1: -10,
     x2: -10,
     y1: 20,
@@ -158,7 +337,7 @@ const dynamicNames = [
   },
   {
     uid: 16,
-    text: "Amara parfume",
+    text: "Iris Collection",
     x1: 10,
     x2: 20,
     y1: 15,
@@ -166,7 +345,7 @@ const dynamicNames = [
   },
   {
     uid: 15,
-    text: "SHR lux saat",
+    text: "SIS",
     x1: 10,
     x2: 20,
     y1: 15,
@@ -174,7 +353,7 @@ const dynamicNames = [
   },
   {
     uid: 13,
-    text: "Boş zona",
+    text: "Fiore Silver",
     x1: 10,
     x2: 10,
     y1: 20,
@@ -182,7 +361,255 @@ const dynamicNames = [
   },
   {
     uid: 7,
-    text: "Boş zona",
+    text: "Agat Ametist",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Style bag",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Misstyle",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Connect",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Rizanna",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Turkuaz",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Plame.az",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Zera",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Junior gentleman ladies",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Ram zotti",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Şahmat evi",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Esko",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Aska Butik",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Ayna boutique",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Pro cosmetics",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Shamplena",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Luxury Brandiju",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Prada parfum",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "İntime Azerbaijan",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Elpidio Baku",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "AD Dress",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Mulem Ruj",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Parfume de as",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "VM Store",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Uniz ayaqqabı",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Eloor",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Ns moda",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "izim accessories",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "AzTel",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Hale accessory",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Bakust reet",
+    x1: 0,
+    x2: 0,
+    y1: 20,
+    y2: -10,
+  },
+  {
+    uid: 7,
+    text: "Dosso dossi",
     x1: 0,
     x2: 0,
     y1: 20,
@@ -191,75 +618,375 @@ const dynamicNames = [
 ];
 
 const svgTexts = [
+  // sahmat
   {
     uid: 10,
-    className: "cls-13",
-    transform: "translate(492.71 726.78) rotate(-73.96)",
+    className: "cls-10",
+    transform: "translate(333.04 491.06) rotate(-71.46)",
   },
+  // evi
   {
     uid: 9,
-    className: "cls-14",
-    transform: "translate(429.05 511.62) rotate(-73.96)",
+    className: "cls-10",
+    transform: "translate(365.01 474.67) rotate(-71.46)",
   },
+  // ramzotti
   {
     uid: 8,
-    className: "cls-9",
-    transform: "translate(478.61 361.23) rotate(-98.27)",
+    className: "cls-13",
+    transform: "translate(265.83 478.11) rotate(-73.13)",
   },
+  // zera
   {
     uid: 2,
-    className: "cls-12",
-    transform: "translate(796.15 177.62) rotate(-104.32)",
+    className: "cls-6",
+    transform: "translate(141.9 430.99) rotate(-68.17)",
   },
+  // esko
   {
     uid: 1,
-    className: "cls-12",
-    transform: "translate(909.73 138.47) rotate(-104.32)",
+    className: "cls-23",
+    transform: "translate(808.26 155.85) rotate(-90.72)",
   },
+  // aska butik
   {
     uid: 6,
-    className: "cls-10",
-    transform: "translate(242.27 260.66) rotate(-107.8) scale(1.1 1)",
+    className: "cls-23",
+    transform: "translate(765.04 158.07) rotate(-93.65)",
   },
+  // ayna boutique
   {
     uid: 3,
-    className: "cls-16",
-    transform: "translate(372.1 226.29) rotate(-104.43) scale(1.1 1)",
+    className: "cls-23",
+    transform: "translate(653.98 160.81) rotate(-93.65)",
   },
+
+  // procosmetics
   {
     uid: 12,
-    className: "cls-8",
-    transform: "translate(501.57 533.39) rotate(-73.96)",
+    className: "cls-22",
+    transform: "translate(617.13 163.1) rotate(-104.89)",
   },
+
+  // Shamplena
   {
     uid: 11,
-    className: "cls-11",
-    transform: "translate(367.63 698.81) rotate(-73.96)",
+    className: "cls-12",
+    transform: "translate(597.29 182.6) rotate(-108.15)",
   },
+  // Luxury brandiju
   {
     uid: 14,
-    className: "cls-6",
-    transform: "translate(505.11 167.78) rotate(-103.34) scale(1.1 1)",
+    className: "cls-9",
+    transform: "translate(562.78 193.85) rotate(-109.21)",
   },
+  // prada parfum
   {
     uid: 16,
-    className: "cls-15",
-    transform: "translate(601.27 169.88) rotate(-101.69) scale(1.1 1)",
+    className: "cls-9",
+    transform:
+      "translate(540.76 213.94) rotate(-100.6) scale(.88 1) skewX(-.21)",
   },
+  // intime Azerbaijan
   {
     uid: 15,
-    className: "cls-7",
-    transform: "translate(158.81 459.14) rotate(-87.88)",
+    className: "cls-21",
+    transform: "translate(505.3 207.19) rotate(-104.77)",
   },
+  // Elpidio Baku
   {
     uid: 13,
-    className: "cls-7",
-    transform: "translate(655.81 570.14) rotate(-75.88)",
+    className: "cls-12",
+    transform: "translate(488.05 222.9) rotate(-108.15)",
   },
+  // Add dress
+  {
+    uid: 7,
+    className: "cls-12",
+    transform: "translate(464.75 222.9) rotate(-108.15)",
+  },
+  //Flame.az
+  {
+    uid: 7,
+    className: "cls-31",
+    transform: "translate(100.25 430.8) rotate(-68.46)",
+  },
+  //Connect
+  {
+    uid: 7,
+    className: "cls-32",
+    transform: "translate(95.4 221.73) rotate(-127.97)",
+  },
+  //Junior gentleman ladies
+  {
+    uid: 7,
+    className: "cls-16",
+    transform: "translate(184.74 437.65) rotate(-70.74)",
+  },
+  //Misstyle
+  {
+    uid: 7,
+    className: "cls-33",
+    transform: "translate(126.53 204.31) rotate(-110.27)",
+  },
+
+  //style bag
+  {
+    uid: 7,
+    className: "cls-24",
+    transform: "translate(152.65 201.27) rotate(-105.67)",
+  },
+
+  //fiore silver
+  {
+    uid: 7,
+    className: "cls-32",
+    transform: "translate(198.71 179.09) rotate(-103.62)",
+  },
+
+  //Iris collection
+  {
+    uid: 7,
+    className: "cls-2",
+    transform: "translate(258.28 153.12) rotate(-101.5)",
+  },
+
+  // Dr.B rown
+  {
+    uid: 7,
+    className: "cls-2",
+    transform: "translate(303.08 162.82) rotate(-101.5)",
+  },
+
+  // Mulen ruj
+  {
+    uid: 7,
+    className: "cls-2",
+    transform: "translate(385.56 251.21) rotate(-101.5)",
+  },
+  // parfume de as
+  {
+    uid: 7,
+    className: "cls-5",
+    transform: "translate(329.25 243.06) rotate(-104.7)",
+  },
+
+  // Vm store
+  {
+    uid: 7,
+    className: "cls-5",
+    transform: "translate(291.99 255.86) rotate(-104.7)",
+  },
+
+  // Sonia
   {
     uid: 7,
     className: "cls-7",
-    transform: "translate(265.81 438.14) rotate(-47.88)",
+    transform: "translate(381.67 141.15) rotate(-102.38)",
+  },
+
+  // roni wear
+  {
+    uid: 7,
+    className: "cls-25",
+    transform: "translate(451.37 115.72) rotate(-106.24)",
+  },
+
+  // aska sport
+  {
+    uid: 7,
+    className: "cls-28",
+    transform: "translate(415.61 129.14) rotate(-106.24)",
+  },
+
+  // catreen
+  {
+    uid: 7,
+    className: "cls-14",
+    transform: "translate(500.29 115.45) rotate(-104.17)",
+  },
+
+  // aura studio
+  {
+    uid: 7,
+    className: "cls-20",
+    transform: "translate(928.56 69.21) rotate(-.58) scale(1.03 1)",
+  },
+
+  // rose girl
+  {
+    uid: 7,
+    className: "cls-11",
+    transform: "translate(543.34 102.88) rotate(-104.17)",
+  },
+
+  // nb accessories
+  {
+    uid: 7,
+    className: "cls-30",
+    transform: "translate(575.19 74.34) rotate(-106.93)",
+  },
+
+  // vn toys
+  {
+    uid: 7,
+    className: "cls-3",
+    transform: "translate(649.01 82.74) rotate(-93.96)",
+  },
+
+  // Bakust reet
+  {
+    uid: 7,
+    className: "cls-3",
+    transform: "translate(468.03 271.87) rotate(-1.21)",
+  },
+
+  // Unix ayyaqqabı
+  {
+    uid: 7,
+    className: "cls-19",
+    transform: "translate(321.11 263.4) rotate(9.93)",
+  },
+
+  // Eloor
+  {
+    uid: 7,
+    className: "cls-4",
+    transform: "translate(330.6 293.23) rotate(10.84)",
+  },
+
+  //  NS moda
+  {
+    uid: 7,
+    className: "cls-4",
+    transform: "translate(311.85 315.17) rotate(10.84)",
+  },
+
+  //  hale accessory
+  {
+    uid: 7,
+    className: "cls-18",
+    transform: "translate(355.82 369.07) rotate(-76.86) scale(.97 1)",
+  },
+
+  //  aztel
+  {
+    uid: 7,
+    className: "cls-8",
+    transform: "translate(292.31 363.14) rotate(-74.26) scale(.97 1)",
+  },
+
+  //   Dosso dossi
+  {
+    uid: 7,
+    className: "cls-26",
+    transform: "translate(458.96 320.97) rotate(3.47)",
+  },
+
+  //   glent
+  {
+    uid: 7,
+    className: "cls-17",
+    transform: "translate(721.8 77.3) rotate(-89.17)",
+  },
+
+  //   agat ametist
+  {
+    uid: 7,
+    className: "cls-32",
+    transform: "translate(168.31 184.2) rotate(-103.2)",
+  },
+
+  //   sis
+  {
+    uid: 7,
+    className: "cls-29",
+    transform: "translate(235.87 167.02) rotate(-103.2)",
+  },
+
+  //   izim accessories
+  {
+    uid: 7,
+    className: "cls-27",
+    transform: "translate(246.01 339.42) rotate(-74.26) scale(.97 1)",
+  },
+
+  //  turkuaz
+  {
+    uid: 7,
+    className: "cls-15",
+    transform: "translate(50.46 404.8) rotate(-59.5)",
+  },
+
+  //  rizanna
+  {
+    uid: 7,
+    className: "cls-15",
+    transform: "translate(24.61 376.52) rotate(-52.81)",
+  },
+
+  //  rizanna
+  {
+    uid: 7,
+    className: "cls-15",
+    transform: "translate(24.61 376.52) rotate(-52.81)",
+  },
+];
+
+const svgPolygons = [
+  {
+    uid: 41,
+    className: "cls-40",
+    points:
+      "282.98 288.73 404.28 319.03 403.58 343.93 274.78 311.63 282.98 288.73",
+  },
+  {
+    uid: 42,
+    className: "cls-40",
+    points:
+      "575.38 357.33 576.68 297.93 449.98 296.73 445.98 343.73 506.48 351.13 552.78 357.33 575.38 357.33",
+  },
+  {
+    uid: 43,
+    className: "cls-40",
+    points:
+      "282.98 288.73 287.48 265.23 408.98 289.73 404.28 319.03 282.98 288.73",
+  },
+  {
+    uid: 44,
+    className: "cls-40",
+    points:
+      "834.78 166.93 832.98 114.73 786.98 115.73 789.98 167.73 834.78 166.93",
+  },
+  {
+    uid: 45,
+    className: "cls-40",
+    points:
+      "330.98 325.93 319.18 373.73 394.28 392.23 403.58 343.93 330.98 325.93",
+  },
+  {
+    uid: 46,
+    className: "cls-40",
+    points:
+      "271.88 310.93 330.98 325.93 319.18 373.73 257.48 358.33 271.88 310.93",
+  },
+  {
+    uid: 47,
+    className: "cls-40",
+    points:
+      "300.08 206.53 263.08 215.73 273.38 260.03 310.38 251.83 300.08 206.53",
+  },
+  {
+    uid: 48,
+    className: "cls-40",
+    points:
+      "299.08 206.53 309.38 251.83 352.08 242.03 341.28 196.23 299.08 206.53",
+  },
+  {
+    uid: 49,
+    className: "cls-40",
+    points:
+      "526.98 229.73 498.98 230.73 478.98 158.73 512.98 150.73 526.88 229.23",
   },
 ];
 
@@ -269,6 +996,8 @@ const FloorTwo = () => {
   const handleClick = (item, e) => {
     setSelected(item);
   };
+
+  console.log(selected);
 
   const activeName = dynamicNames.find(
     (item) => item?.uid === selected?.uid
@@ -329,7 +1058,7 @@ const FloorTwo = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg w-full select-none">
+    <div className="bg-white rounded-lg w-full select-none h-auto">
       <div className="flex gap-2 items-center justify-between  px-2 py-1 mb-2">
         <div className="flex gap-1 items-center justify-between  p-2 rounded-lg text-black text-xs  md:text-base shadow-lg">
           <AiFillCheckCircle className="text-emerald-500 " />
@@ -345,931 +1074,163 @@ const FloorTwo = () => {
         </div>
       </div>
 
-      <div className="relative w-full max-full mx-auto group h-[400px] bg-slate-100  text-colorPrimary  mb-5">
+      <div className="relative w-full max-full mx-auto group  bg-slate-100  text-colorPrimary  mb-5 h-auto">
         <svg
-          version="1.1"
-          id="Layer_1"
           xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          x="0px"
-          y="0px"
-          viewBox="0 0 1080 1080"
-          // style="enable-background:new 0 0 1080 1080;"
-          xmlSpace="preserve"
-          className="w-full h-full "
+          viewBox="0 0 1072.13 505.31"
+          className="w-full h-full"
         >
-          <style type="text/css">
-            {`	.st0{fill:#FFFFFF;stroke:#4D4D4D;stroke-miterlimit:10;}
-	.st1{fill:none;stroke:#4D4D4D;stroke-miterlimit:10;}
-	.st2{fill:#4D4D4D;}
-	.st3{font-family:'Raleway-Regular';}
-	.st4{font-size:20.9308px;}
-	.st5{font-size:20.9326px;}
-	.st6{font-size:20.9319px;}
-	.st7{font-size:11.6567px;}
-	.st8{font-size:10.8876px;}
-	.st9{font-size:10.0513px;}
-	.st10{font-size:10.0517px;}
-	.st11{font-size:10.9391px;}
-	.st12{fill:none;stroke:#4D4D4D;stroke-width:2;stroke-miterlimit:10;}
-	.st13{font-size:17.2848px;}
-	.st14{font-size:13.6292px;}
-	.st15{font-size:15.8635px;}
-	.st16{font-size:13.6298px;}
-	.st17{font-size:13.6288px;}
-	.st18{font-size:12.897px;}
-	.st19{font-size:9.7772px;}
-	.st20{font-size:22.4289px;}
-	.st21{font-size:14.7799px;}
-	.st22{font-size:18.4776px;}
-	.st23{font-size:14.7001px;}
-	.st24{font-size:32.7997px;}
-	.st25{font-size:13.75px;}
-	.st26{font-size:10.0915px;}
-	.st27{font-size:17.9897px;}
-	.st28{font-size:11.2248px;}
-	.st29{font-size:11.5644px;}
-	.st30{font-size:10.1333px;}
-	.st31{font-size:16.7339px;}
-	.st32{font-size:17.9903px;}
-	.st33{font-size:22.4881px;}
-	.st34{font-size:21.5198px;}
-	.st35{font-size:8.8247px;}
-	.st36{font-size:14.8887px;}
-	.st37{fill:#57BE92;}
-	.st38{fill:#22B37F;}
-	.st39{fill:#FFFFFF;}
-	.st40{fill:#7A6D79;}
-	.st41{fill:#685E68;}
-	.st42{fill:#918291;}
-	.st43{fill:#F5F8F9;}
-	.st44{fill:#1F6524;}`}
-          </style>
-          <polygon
-            class="st0"
-            points="286.5,575.5 407.8,605.8 407.1,630.7 278.3,598.4 "
+          <defs>
+            <style>{`.cls-1{letter-spacing:-.03em;}.cls-2{font-size:12.9px;}.cls-2,.cls-3,.cls-4,.cls-5,.cls-6,.cls-7,.cls-8,.cls-9,.cls-10,.cls-11,.cls-12,.cls-13,.cls-14,.cls-15,.cls-16,.cls-17,.cls-18,.cls-19,.cls-20,.cls-21,.cls-22,.cls-23,.cls-24,.cls-25,.cls-26,.cls-27,.cls-28,.cls-29,.cls-30,.cls-31,.cls-32,.cls-33{fill:#4d4d4d;font-family:Raleway-Regular, Raleway;isolation:isolate;}.cls-34{letter-spacing:-.02em;}.cls-35{letter-spacing:0em;}.cls-3{font-size:17.99px;}.cls-36{letter-spacing:-.02em;}.cls-37{letter-spacing:-.03em;}.cls-38{fill:#1f6524;}.cls-39,.cls-40{fill:#fff;}.cls-41{letter-spacing:0em;}.cls-42{letter-spacing:-.01em;}.cls-43{letter-spacing:-.03em;}.cls-44{letter-spacing:0em;}.cls-4{font-size:11.56px;}.cls-5{font-size:9.78px;}.cls-45{letter-spacing:0em;}.cls-6{font-size:20.93px;}.cls-46{letter-spacing:-.02em;}.cls-47{letter-spacing:0em;}.cls-48{letter-spacing:-.02em;}.cls-49{letter-spacing:0em;}.cls-50{letter-spacing:-.05em;}.cls-51{letter-spacing:0em;}.cls-7{font-size:22.43px;}.cls-52{letter-spacing:0em;}.cls-8{font-size:16.73px;}.cls-53{letter-spacing:0em;}.cls-54{letter-spacing:-.01em;}.cls-55{letter-spacing:-.02em;}.cls-56{letter-spacing:0em;}.cls-9{font-size:10.05px;}.cls-57{letter-spacing:-.11em;}.cls-58{letter-spacing:0em;}.cls-10{font-size:20.93px;}.cls-59{letter-spacing:0em;}.cls-11{font-size:13.75px;}.cls-60{letter-spacing:-.01em;}.cls-61{letter-spacing:0em;}.cls-62{letter-spacing:0em;}.cls-63{letter-spacing:0em;}.cls-64{letter-spacing:-.03em;}.cls-65{fill:#f5f8f9;}.cls-12{font-size:10.05px;}.cls-66{letter-spacing:-.02em;}.cls-67{letter-spacing:-.01em;}.cls-68{letter-spacing:-.11em;}.cls-13{font-size:20.93px;}.cls-69{letter-spacing:0em;}.cls-70{fill:#22b37f;}.cls-71{letter-spacing:0em;}.cls-72{letter-spacing:-.03em;}.cls-73{letter-spacing:-.01em;}.cls-74{letter-spacing:0em;}.cls-75{letter-spacing:-.01em;}.cls-76{letter-spacing:0em;}.cls-14{font-size:14.7px;}.cls-77{letter-spacing:0em;}.cls-15{font-size:14.89px;}.cls-78{letter-spacing:0em;}.cls-79{letter-spacing:0em;}.cls-80{fill:#918291;}.cls-81{letter-spacing:-.01em;}.cls-82{fill:#7a6d79;}.cls-83{letter-spacing:-.03em;}.cls-84{letter-spacing:0em;}.cls-16{font-size:15.86px;}.cls-17{font-size:22.49px;}.cls-85{letter-spacing:0em;}.cls-18{font-size:10.13px;}.cls-19{font-size:11.22px;}.cls-86{letter-spacing:0em;}.cls-87{fill:none;}.cls-87,.cls-40{stroke:#4d4d4d;stroke-miterlimit:10;}.cls-20{font-size:32.8px;}.cls-21{font-size:10.94px;}.cls-22{font-size:10.89px;}.cls-88{letter-spacing:0em;}.cls-89{letter-spacing:0em;}.cls-23{font-size:11.66px;}.cls-24{font-size:13.63px;}.cls-25{font-size:14.78px;}.cls-90{letter-spacing:-.01em;}.cls-91{letter-spacing:-.03em;}.cls-92{letter-spacing:0em;}.cls-93{letter-spacing:0em;}.cls-94{letter-spacing:0em;}.cls-95{letter-spacing:-.09em;}.cls-96{letter-spacing:0em;}.cls-97{letter-spacing:0em;}.cls-98{letter-spacing:-.02em;}.cls-26{font-size:17.99px;}.cls-99{letter-spacing:-.03em;}.cls-100{letter-spacing:-.03em;}.cls-27{font-size:8.82px;}.cls-101{letter-spacing:0em;}.cls-102{letter-spacing:0em;}.cls-28{font-size:18.48px;}.cls-103{letter-spacing:-.01em;}.cls-104{fill:#57be92;}.cls-105{letter-spacing:0em;}.cls-106{letter-spacing:-.03em;}.cls-107{letter-spacing:-.01em;}.cls-29{font-size:21.52px;}.cls-108{fill:#685e68;}.cls-109{letter-spacing:0em;}.cls-110{letter-spacing:-.06em;}.cls-111{letter-spacing:-.03em;}.cls-30{font-size:10.09px;}.cls-112{letter-spacing:-.03em;}.cls-31{font-size:17.28px;}.cls-113{letter-spacing:-.03em;}.cls-114{letter-spacing:-.01em;}.cls-115{letter-spacing:-.03em;}.cls-116{letter-spacing:0em;}.cls-32{font-size:13.63px;}.cls-117{letter-spacing:-.02em;}.cls-118{letter-spacing:0em;}.cls-119{letter-spacing:0em;}.cls-120{letter-spacing:0em;}.cls-121{letter-spacing:-.02em;}.cls-33{font-size:13.63px;}`}</style>
+          </defs>
+
+          {svgPaths.map((item) => (
+            <path
+              key={item.uid}
+              {...item}
+              style={{
+                fill: selected?.uid === item?.uid ? "currentcolor" : "#fff",
+                zIndex: 10,
+              }}
+              onClick={(e) => handleClick(item, e)}
+            />
+          ))}
+          {svgPolygons.map((item) => (
+            <polygon
+              key={item.uid}
+              {...item}
+              style={{
+                fill: selected?.uid === item?.uid ? "currentcolor" : "#fff",
+                zIndex: 10,
+              }}
+              onClick={(e) => handleClick(item, e)}
+            />
+          ))}
+
+          {/* {svgTexts.map((item) => (
+            <text
+              key={item.uid}
+              {...item}
+              style={{
+                fill:
+                  selected?.uid === item?.uid && item?.uid !== 16
+                    ? "#FFF"
+                    : "#000",
+              }}
+              onClick={(e) => handleClick(item, e)}
+            >
+              {convertToText({ dynamicNames, item })}
+            </text>
+          ))} */}
+          {/* additionals*/}
+          <path
+            style={{ fill: "transparent" }}
+            className="cls-40"
+            d="M4.98,264.73C-.02,285.93,.08,303.73,.98,315.73c.6,7.9,1.8,21.9,7.9,39,7.1,19.7,17.3,34,25.1,43,7.8,9.1,18,18.9,31,28,3.7,2.6,7.4,4.9,11,7"
           />
           <path
-            class="st0"
-            d="M581.5,514.9l-1.3,69.8c-42.2-0.4-84.4-0.8-126.7-1.2c0.8-19.4,1.6-38.9,2.5-58.3l20.5-4.7l26-3L581.5,514.9z"
+            style={{ fill: "transparent" }}
+            className="cls-40"
+            d="M4.98,265.73c.3-18.3,.7-36.7,1-55h15"
           />
-          <polygon
-            class="st0"
-            points="578.9,644.1 580.2,584.7 453.5,583.5 449.5,630.5 510,637.9 556.3,644.1 "
-          />
-          <polygon
-            class="st0"
-            points="286.5,575.5 291,552 412.5,576.5 407.8,605.8 "
-          />
-          <path
-            class="st0"
-            d="M291,552l1,0.2l120.5,24.3l-7-31.5l-47-5.6l-2.9-10.7l-65.1,14.7C290.7,546.3,290.8,549.2,291,552z"
+          <line
+            className="cls-87"
+            x1="26.98"
+            y1="209.73"
+            x2="37.98"
+            y2="209.73"
           />
           <path
-            class="st0"
-            d="M482.5,445.5c-8.3,2.3-16.7,4.7-25,7l19,68l26-3C495.8,493.5,489.2,469.5,482.5,445.5z"
+            class="cls-87"
+            d="M400.98,413.73c45.8,6.9,91.6,13.8,137.4,20.7l14.4-77.2h22.6l4.1-168.8,58.7-14.4,45.3-5.1,1-51.5,62.3-.5,3.6,53,84.4-3.1-1-25.7h15.4v-23.7l72-1,4.1,122.5c46.3-1.4,92.6-2.7,138.9-4.1"
           />
           <polyline
-            class="st0"
-            points="530.5,516.5 502.5,517.5 482.5,445.5 516.5,437.5 530.4,516 "
+            className="cls-40"
+            points="436.48 362.43 432.38 362.43 433.38 342.83 506.48 351.13 496.18 411.83 429.28 401.53 430.28 383.03 435.48 383.03"
           />
-          <polygon
-            class="st0"
-            points="838.3,453.7 836.5,401.5 790.5,402.5 793.5,454.5 "
-          />
-          <path
-            class="st0"
-            d="M385.5,363.5c3,1,6,2,9,3c10-2,20-4,30-6c5.7,19.8,11.5,39.6,17.2,59.4l-37.2,9.6
-	C398.2,407.5,391.8,385.5,385.5,363.5z"
+          <line
+            className="cls-87"
+            x1="469.88"
+            y1="373.23"
+            x2="468.88"
+            y2="385.23"
           />
           <path
-            class="st0"
-            d="M581.5,514.9c-9.7,0.2-19.3,0.4-29,0.6c0.3-11.7,0.7-23.3,1-35c-5-16.3-10-32.7-15-49c8.5-2.4,17-4.8,25.5-7.2
-	c6.4,17,12.7,34,19,50.9C582.5,488.5,582,501.7,581.5,514.9z"
-          />
-          <path
-            class="st0"
-            d="M790.5,402.5c1,17.3,2,34.7,3,52c-13.3,0.7-26.7,1.3-40,2c-0.5-8.4-0.9-16.8-1.4-25.2
-	c-0.5-9.3-1.1-18.5-1.6-27.8C763.8,403.2,777.2,402.8,790.5,402.5z"
-          />
-          <path
-            class="st0"
-            d="M685.5,302.9c-0.7,22.3-1.3,44.6-2.1,66.9c22.7-0.1,45.4-0.2,68.1-0.3c0-11.1,0-22.2,0.1-33.4
-	c0.1-11.3,0.1-22.5,0.3-33.7C729.7,302.6,707.6,302.7,685.5,302.9z"
-          />
-          <path
-            class="st0"
-            d="M597,313.2c4.8,20.9,9.6,41.9,14.4,62.8l72-6.2l1.5-67.4c-7.1-3.1-24-9.5-45.8-6.7
-	C617.7,298.4,603,308.5,597,313.2z"
-          />
-          <polygon
-            class="st0"
-            points="334.5,612.7 322.7,660.5 397.8,679 407.1,630.7 "
-          />
-          <polygon
-            class="st0"
-            points="275.4,597.7 334.5,612.7 322.7,660.5 261,645.1 "
-          />
-          <path
-            class="st0"
-            d="M242.5,590.5c-4.7,15.3-9.3,30.7-14,46c-12.2-3-24.3-5.9-36.5-8.9c-20.9-5.1-41.9-10.3-62.8-15.4
-	c-2.7-2.6-6-6.5-8.8-11.8c-4.8-9.3-5.2-18-5.1-22.6c0,0,0.4-9.4,5.1-18.5c9.8-18.9,40-27.9,68-35.6c29-8,55.2-14.6,78-20
-	c3.7,14.3,7.3,28.7,11,43c-15.8,3.7-31.6,7.4-47.4,11.1c-0.4,7.2-0.5,14.8-0.2,22.6c0.1,2.1,0.1,4.1,0.2,6.2
-	c2.1,0.7,4.3,1.4,6.4,2.1C238.5,589.2,240.5,589.8,242.5,590.5z"
-          />
-          <polygon
-            class="st0"
-            points="303.6,493.3 266.6,502.5 276.9,546.8 313.9,538.6 "
-          />
-          <polygon
-            class="st0"
-            points="302.6,493.3 312.9,538.6 355.6,528.8 344.8,483 "
-          />
-          <path
-            class="st0"
-            d="M343.5,483.5c2.6,9,5.1,18.2,7.6,27.5c2.6,9.6,5,19,7.3,28.4l47,5.6l2.5-27.8c-4.4-15.2-8.6-30.4-13-45.6
-	c-8.3,1.7-16.9,3.5-25.6,5.6C360.5,479.2,351.9,481.3,343.5,483.5z"
-          />
-          <path
-            class="st0"
-            d="M538.5,431.5c4.7,16,9.3,32,14,48c0,12,0,24,0,36c-7.3,0.3-14.7,0.7-22,1c-4.7-26.3-9.3-52.7-14-79
-	C523.8,435.5,531.2,433.5,538.5,431.5z"
-          />
-          <path
-            class="st0"
-            d="M457.5,452.5c-6.3,1.9-12.7,3.9-19,5.8l17.5,66.9c6.8-1.6,13.7-3.1,20.5-4.7
-	C470.2,497.8,463.8,475.2,457.5,452.5z"
-          />
-          <path
-            class="st0"
-            d="M688,404.3l-1,51.5l-45.3,5.1c-3.6-17.3-7.2-34.7-10.8-52C650,407.4,669,405.8,688,404.3z"
-          />
-          <path
-            class="st0"
-            d="M564,424.3c10.6-2.8,21.3-5.5,31.9-8.2l17.5,51.5l-30.4,7.7C576.7,458.3,570.4,441.3,564,424.3z"
-          />
-          <path
-            class="st0"
-            d="M630.9,408.9l11.1,51.9c-9.6,2.3-19,4.5-28.6,6.8c-5.9-17.2-11.6-34.3-17.5-51.5
-	C607.6,413.7,619.3,411.3,630.9,408.9z"
-          />
-          <path
-            class="st0"
-            d="M1072.4,485c2,16.5-2,29.6-4.6,36.5c-46.3,1.3-92.6,2.8-138.9,4.1l-4.1-122.5l-72,1
-	c-0.7-11.6-1.5-23.2-2.2-34.8c-33,0-66,0-99,0c0-22.3,0-44.7,0-67c4.2-2.9,15.2-9.6,30.7-9.9c13-0.2,22.7,4.2,27.2,6.7l45.4-2
-	c5.8-3.3,17.9-9.3,34.5-9.8c16.9-0.5,29.5,4.7,35.5,7.7c14-3.9,33.7-7.8,57.1-7.7c26.1,0.1,47.5,5.1,62.3,9.8
-	c7,7.9,26.8,32.2,30.3,69.5c3.3,34.6-9.2,60.4-14.4,70c-3.9,0.5-7.9,1-11.8,1.5C1053.2,443,1069.2,459.1,1072.4,485z"
-          />
-          <path
-            class="st0"
-            d="M551.5,326.5c5,20,10,40,15,60c15-3.5,29.9-7,44.9-10.5c-4.8-20.9-9.6-41.9-14.4-62.8
-	C581.8,317.6,566.7,322.1,551.5,326.5z"
-          />
-          <path
-            class="st0"
-            d="M551.5,326.5c5,20,10,40,15,60c-14,3.7-28,7.3-42,11c-6-20-12-40-18-60C521.5,333.8,536.5,330.2,551.5,326.5z"
-          />
-          <path
-            class="st0"
-            d="M310.5,388.5c4.3,20.7,8.7,41.3,13,62c10.3-2.7,20.7-5.3,31-8c-6.3-24.3-12.7-48.7-19-73c-2.3,1.2-4.6,2.5-7,4
-	C320.9,378.3,315,383.6,310.5,388.5z"
-          />
-          <path
-            class="st0"
-            d="M463.5,349.5c5.7,20,11.3,40,17,60c14.7-4,29.3-8,44-12c-6-20-12-40-18-60C492.2,341.5,477.8,345.5,463.5,349.5
-	z"
-          />
-          <path
-            class="st0"
-            d="M310.5,388.5c4.3,20.7,8.7,41.3,13,62c-12.3,3-24.7,6-37,9c-4.5-20.6-9-41.3-13.5-61.9
-	C285.5,394.6,298,391.5,310.5,388.5z"
-          />
-          <path
-            class="st0"
-            d="M240.5,405.5c4.7,20.7,9.3,41.3,14,62c-11.7,3-23.3,6-35,9c-4.7-21-9.3-42-14-63
-	C217.2,410.8,228.8,408.2,240.5,405.5z"
-          />
-          <path
-            class="st0"
-            d="M165.5,490.5c-8,2-16,4-24,6c-6-21.3-12-42.7-18-64c9.3-2,18.7-4,28-6C156.2,447.8,160.8,469.2,165.5,490.5z"
-          />
-          <path
-            class="st0"
-            d="M41.5,496.5c13.7,8.3,27.3,16.7,41,25c12.7-6.3,25.3-12.7,38-19c-10.7-20-21.3-40-32-60
-	c-7.1,5.2-15.4,12-23.6,20.9C53.9,475.3,46.5,487.1,41.5,496.5z"
-          />
-          <path
-            class="st0"
-            d="M113.5,641.5c-11.3,26-22.7,52-34,78c10.7,3.7,21.3,7.3,32,11c11-27.7,22-55.3,33-83
-	C134.2,645.5,123.8,643.5,113.5,641.5z"
-          />
-          <path
-            class="st0"
-            d="M190.5,656.5c-15.3-3-30.7-6-46-9c-11.3,27.7-22.7,55.3-34,83c15,4,30,8,45,12
-	C167.2,713.8,178.8,685.2,190.5,656.5z"
-          />
-          <path
-            class="st0"
-            d="M190.5,656.5c-11.7,28.8-23.3,57.5-35,86.3c22.7,5.6,45.3,11.2,68,16.7c11.7-29.7,23.3-59.3,35-89
-	C235.8,665.8,213.2,661.2,190.5,656.5z"
-          />
-          <path
-            class="st0"
-            d="M327.5,685.5c-23-5-46-10-69-15c-11.7,29.7-23.3,59.3-35,89c23.7,5.7,47.3,11.3,71,17
-	C305.5,746.2,316.5,715.8,327.5,685.5z"
-          />
-          <path
-            class="st0"
-            d="M404.5,700.5c-11,30.3-22,60.7-33,91c-25.7-5-51.3-10-77-15c11-30.3,22-60.7,33-91
-	C353.2,690.5,378.8,695.5,404.5,700.5z"
-          />
-          <polyline
-            class="st0"
-            points="440,649.2 435.9,649.2 436.9,629.6 510,637.9 499.7,698.6 432.8,688.3 433.8,669.8 439,669.8 "
-          />
-          <line class="st1" x1="473.4" y1="660" x2="472.4" y2="672" />
-          <path class="st0" d="M505.3,667.9c-10.9-0.7-21.8-1.4-32.8-2.1" />
-          <text
-            transform="matrix(0.3179 -0.9481 0.9481 0.3179 336.5638 777.828)"
-            class="st2 st3 st4"
-          >
-            Şahmat{" "}
-          </text>
-          <text
-            transform="matrix(0.3179 -0.9481 0.9481 0.3179 368.5311 761.4413)"
-            class="st2 st3 st4"
-          >
-            evi
-          </text>
-          <text
-            transform="matrix(0.2902 -0.957 0.957 0.2902 269.3564 764.8726)"
-            class="st2 st3 st5"
-          >
-            Ramzotti
-          </text>
-          <text
-            transform="matrix(0.3718 -0.9283 0.9283 0.3718 145.4265 717.7567)"
-            class="st2 st3 st6"
-          >
-            Zera
-          </text>
-          <g>
-            <text
-              transform="matrix(-1.250000e-02 -0.9999 0.9999 -1.250000e-02 811.7796 442.6173)"
-              class="st2 st3 st7"
-            >
-              Esko
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-6.360000e-02 -0.998 0.998 -6.360000e-02 768.5586 444.8343)"
-              class="st2 st3 st7"
-            >
-              Aska{" "}
-            </text>
-            <text
-              transform="matrix(-6.360000e-02 -0.998 0.998 -6.360000e-02 782.5306 443.9437)"
-              class="st2 st3 st7"
-            >
-              Butik
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-6.360000e-02 -0.998 0.998 -6.360000e-02 657.4982 447.5785)"
-              class="st2 st3 st7"
-            >
-              AyNa
-            </text>
-            <text
-              transform="matrix(-6.360000e-02 -0.998 0.998 -6.360000e-02 672.0872 456.3695)"
-              class="st2 st3 st7"
-            >
-              Boutique
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.2569 -0.9664 0.9664 -0.2569 620.6545 449.8697)"
-              class="st2 st3 st8"
-            >
-              Pro-
-            </text>
-            <text
-              transform="matrix(-0.2569 -0.9664 0.9664 -0.2569 637.142 460.9026)"
-              class="st2 st3 st8"
-            >
-              cosmetics
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.3115 -0.9502 0.9502 -0.3115 600.8151 469.364)"
-              class="st2 st3 st9"
-            >
-              Shamplena
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.329 -0.9443 0.9443 -0.329 566.3005 480.615)"
-              class="st2 st3 st10"
-            >
-              Luxury{" "}
-            </text>
-            <text
-              transform="matrix(-0.329 -0.9443 0.9443 -0.329 579.3715 481.3553)"
-              class="st2 st3 st10"
-            >
-              Brandbiju
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.162 -0.8655 0.9835 -0.1808 544.283 500.709)"
-              class="st2 st3 st10"
-            >
-              Prada Parfum
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.2549 -0.967 0.967 -0.2549 508.8266 493.9593)"
-              class="st2 st3 st11"
-            >
-              İntime{" "}
-            </text>
-            <text
-              transform="matrix(-0.2549 -0.967 0.967 -0.2549 523.8647 499.6137)"
-              class="st2 st3 st11"
-            >
-              Azerbaijan
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.3115 -0.9502 0.9502 -0.3115 491.5704 509.6703)"
-              class="st2 st3 st9"
-            >
-              Elpidio Baku
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.3115 -0.9502 0.9502 -0.3115 468.2733 509.6617)"
-              class="st2 st3 st9"
-            >
-              AD Dress
-            </text>
-          </g>
-          <path class="st12" d="M800,366.4" />
-          <path class="st12" d="M682.9,365.2" />
-          <path class="st0" d="M315.5,779.9" />
-          <path class="st0" d="M538.3,513.9" />
-          <path class="st0" d="M266.6,501.5" />
-          <path
-            class="st1"
-            d="M8.5,551.5c-5,21.2-4.9,39-4,51c0.6,7.9,1.8,21.9,7.9,39c7.1,19.7,17.3,34,25.1,43c7.8,9.1,18,18.9,31,28
-	c3.7,2.6,7.4,4.9,11,7"
-          />
-          <path
-            class="st1"
-            d="M404.5,700.5c45.8,6.9,91.6,13.8,137.4,20.7l14.4-77.2h22.6l4.1-168.8l58.7-14.4l45.3-5.1l1-51.5l62.3-0.5
-	l3.6,53l84.4-3.1l-1-25.7h15.4v-23.7l72-1l4.1,122.5c46.3-1.4,92.6-2.7,138.9-4.1"
+            className="cls-40"
+            d="M501.78,381.13c-10.9-.7-21.8-1.4-32.8-2.1"
           />
           <g>
-            <text
-              transform="matrix(0.3671 -0.9302 0.9302 0.3671 103.7766 717.5684)"
-              class="st2 st3 st13"
-            >
-              Flame.az
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.6152 -0.7884 0.7884 -0.6152 98.9264 508.5007)"
-              class="st2 st3 st14"
-            >
-              Connect
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(0.3298 -0.9441 0.9441 0.3298 188.2576 724.413)"
-              class="st2 st3 st15"
-            >
-              Junior
-            </text>
-            <text
-              transform="matrix(0.3298 -0.9441 0.9441 0.3298 199.7645 749.0893)"
-              class="st2 st3 st15"
-            >
-              gentleman{" "}
-            </text>
-            <text
-              transform="matrix(0.3298 -0.9441 0.9441 0.3298 224.4595 736.3176)"
-              class="st2 st3 st15"
-            >
-              ladies
-            </text>
-          </g>
-          <path
-            class="st0"
-            d="M54.5,701.5c11.7-21,23.3-42,35-63c-6-3.7-12-7.3-18-11c-11.3,19-22.7,38-34,57c2.2,2.8,4.9,5.9,8,9
-	S51.7,699.3,54.5,701.5z"
-          />
-          <path
-            class="st0"
-            d="M49.5,599.5l-36.2,44.7c2.3,6.6,5.8,14.7,11.2,23.3c4.3,6.9,8.9,12.6,13,17c11.3-19,22.7-38,34-57
-	C64.2,618.2,56.8,608.8,49.5,599.5z"
-          />
-          <path
-            class="st1"
-            d="M8.5,552.5c0.3-18.3,0.7-36.7,1-55c5,0,10,0,15,0"
-          />
-          <line class="st1" x1="30.5" y1="496.5" x2="41.5" y2="496.5" />
-          <path
-            class="st0"
-            d="M88.5,442.5c10.3,20,20.7,40,31,60c7.3-2,14.7-4,22-6c-6-21.3-12-42.7-18-64
-	C111.8,435.8,100.2,439.2,88.5,442.5z"
-          />
-          <path class="st0" d="M189.5,416.5" />
-          <path
-            class="st0"
-            d="M179.5,419.5c-9.3,2.3-18.7,4.7-28,7c4.7,21.3,9.3,42.7,14,64c9.3-2.3,18.7-4.7,28-7
-	C188.8,462.2,184.2,440.8,179.5,419.5z"
-          />
-          <path
-            class="st0"
-            d="M179.5,419.5c8.7-2,17.3-4,26-6c4.7,21,9.3,42,14,63c-8.7,2.3-17.3,4.7-26,7
-	C188.8,462.2,184.2,440.8,179.5,419.5z"
-          />
-          <path
-            class="st0"
-            d="M240.5,405.5c4.7,20.7,9.3,41.3,14,62c10.7-2.7,21.3-5.3,32-8c-4.5-20.6-9-41.3-13.5-61.9L240.5,405.5z"
-          />
-          <path
-            class="st0"
-            d="M385.5,363.5c6.3,22,12.7,44,19,66c-16.7,4.3-33.3,8.7-50,13c-6.3-24.3-12.7-48.7-19-73c7.9-4.1,21.9-9.6,39-8
-	C378.5,361.9,382.2,362.6,385.5,363.5z"
-          />
-          <path
-            class="st0"
-            d="M463.5,349.5c-13,3.7-26,7.3-39,11c5.7,19.7,11.3,39.3,17,59c13-3.3,26-6.7,39-10
-	C474.8,389.5,469.2,369.5,463.5,349.5z"
-          />
-          <g>
-            <text
-              transform="matrix(-0.3465 -0.9381 0.9381 -0.3465 130.0527 491.078)"
-              class="st2 st3 st16"
-            >
-              Misstyle
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.2701 -0.9628 0.9628 -0.2701 156.1723 488.0327)"
-              class="st2 st3 st17"
-            >
-              Style Bag
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.2355 -0.9719 0.9719 -0.2355 202.2276 465.8561)"
-              class="st2 st3 st14"
-            >
-              Fiore{" "}
-            </text>
-            <text
-              transform="matrix(-0.2355 -0.9719 0.9719 -0.2355 212.683 462.2936)"
-              class="st2 st3 st14"
-            >
-              silver
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.1993 -0.9799 0.9799 -0.1993 261.7965 439.891)"
-              class="st2 st3 st18"
-            >
-              İris
-            </text>
-            <text
-              transform="matrix(-0.1993 -0.9799 0.9799 -0.1993 276.3325 459.1797)"
-              class="st2 st3 st18"
-            >
-              Collection
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.1993 -0.9799 0.9799 -0.1993 306.5992 449.5896)"
-              class="st2 st3 st18"
-            >
-              Dr.Brown
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.1993 -0.9799 0.9799 -0.1993 389.0845 537.9737)"
-              class="st2 st3 st18"
-            >
-              Mulen Ruj
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.2537 -0.9673 0.9673 -0.2537 332.7751 529.8262)"
-              class="st2 st3 st19"
-            >
-              Parfume
-            </text>
-            <text
-              transform="matrix(-0.2537 -0.9673 0.9673 -0.2537 338.9198 522.1152)"
-              class="st2 st3 st19"
-            >
-              {" "}
-              de as
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.2537 -0.9673 0.9673 -0.2537 295.5103 542.6309)"
-              class="st2 st3 st19"
-            >
-              {" "}
-              VM Store
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.2144 -0.9767 0.9767 -0.2144 385.1933 427.9202)"
-              class="st2 st3 st20"
-            >
-              Sonia
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.2796 -0.9601 0.9601 -0.2796 454.8915 402.4825)"
-              class="st2 st3 st21"
-            >
-              Roni
-            </text>
-            <text
-              transform="matrix(-0.2796 -0.9601 0.9601 -0.2796 471.2317 401.3692)"
-              class="st2 st3 st21"
-            >
-              Wear
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.2796 -0.9601 0.9601 -0.2796 419.1344 415.9043)"
-              class="st2 st3 st22"
-            >
-              Aska
-            </text>
-            <text
-              transform="matrix(-0.2796 -0.9601 0.9601 -0.2796 434.1389 414.1367)"
-              class="st2 st3 st22"
-            >
-              Sport
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.2448 -0.9696 0.9696 -0.2448 503.8149 402.2126)"
-              class="st2 st3 st23"
-            >
-              Catreen
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(1.0327 -1.050398e-02 1.017049e-02 0.9999 932.0803 355.9785)"
-              class="st2 st3 st24"
-            >
-              Aura{" "}
-            </text>
-            <text
-              transform="matrix(1.0327 -1.050398e-02 1.017049e-02 0.9999 923.0828 385.2703)"
-              class="st2 st3 st24"
-            >
-              Studio
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.2448 -0.9696 0.9696 -0.2448 546.8666 389.6461)"
-              class="st2 st3 st25"
-            >
-              Rose Girl
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.2912 -0.9567 0.9567 -0.2912 578.7098 361.1032)"
-              class="st2 st3 st26"
-            >
-              NB{" "}
-            </text>
-            <text
-              transform="matrix(-0.2912 -0.9567 0.9567 -0.2912 591.9629 376.8258)"
-              class="st2 st3 st26"
-            >
-              accessories
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-6.907000e-02 -0.9976 0.9976 -6.907000e-02 652.5358 369.5072)"
-              class="st2 st3 st27"
-            >
-              VN toys
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(0.9998 -2.113218e-02 2.113218e-02 0.9998 471.5554 558.6375)"
-              class="st2 st3 st27"
-            >
-              Bakustreet
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(0.985 0.1724 -0.1724 0.985 324.6331 550.1664)"
-              class="st2 st3 st28"
-            >
-              Unix ayaqqabı
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(0.9821 0.1881 -0.1881 0.9821 334.119 579.9924)"
-              class="st2 st3 st29"
-            >
-              Eloor
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(0.9821 0.1881 -0.1881 0.9821 315.3678 601.934)"
-              class="st2 st3 st29"
-            >
-              NS moda
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(0.2198 -0.9413 0.9738 0.2273 359.3367 655.8341)"
-              class="st2 st3 st30"
-            >
-              Hale
-            </text>
-            <text
-              transform="matrix(0.2198 -0.9413 0.9738 0.2273 364.4866 669.8411)"
-              class="st2 st3 st30"
-            >
-              accessory
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(0.2622 -0.9304 0.9625 0.2713 295.8366 649.9042)"
-              class="st2 st3 st31"
-            >
-              AzTel
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(0.9982 6.049808e-02 -6.049808e-02 0.9982 462.4774 607.7342)"
-              class="st2 st3 st32"
-            >
-              Dosso dossi
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(1.457000e-02 -0.9999 0.9999 1.457000e-02 725.3215 364.0697)"
-              class="st2 st3 st33"
-            >
-              Glent
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.2283 -0.9736 0.9736 -0.2283 171.8274 470.9661)"
-              class="st2 st3 st14"
-            >
-              Agat{" "}
-            </text>
-            <text
-              transform="matrix(-0.2283 -0.9736 0.9736 -0.2283 189.5524 474.7181)"
-              class="st2 st3 st14"
-            >
-              Ametist
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(-0.2283 -0.9736 0.9736 -0.2283 239.3945 453.7884)"
-              class="st2 st3 st34"
-            >
-              sis
-            </text>
-          </g>
-          <path
-            class="st0"
-            d="M275.4,597.7c-11-2.4-21.9-4.8-32.9-7.2c-4.7,15.3-9.3,30.7-14,46c10.8,2.9,21.6,5.7,32.5,8.6L275.4,597.7z"
-          />
-          <g>
-            <text
-              transform="matrix(0.2622 -0.9304 0.9625 0.2713 249.5341 626.1852)"
-              class="st2 st3 st35"
-            >
-              İzim{" "}
-            </text>
-            <text
-              transform="matrix(0.2622 -0.9304 0.9625 0.2713 252.5396 641.6946)"
-              class="st2 st3 st35"
-            >
-              accessories
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(0.5076 -0.8616 0.8616 0.5076 53.9864 691.5682)"
-              class="st2 st3 st36"
-            >
-              Turkuaz
-            </text>
-          </g>
-          <g>
-            <text
-              transform="matrix(0.6044 -0.7967 0.7967 0.6044 28.1308 663.283)"
-              class="st2 st3 st36"
-            >
-              Rizanna
-            </text>
-          </g>
-          <g>
+            <path
+              className="cls-104"
+              d="M79.98,401.73l-5.4,10.1c-.1,.2-.4,.3-.7,.2l-4.7-2.5c-.2-.1-.3-.4-.2-.7l5.4-10.1c.1-.2,.4-.3,.7-.2l4.7,2.5c.3,.1,.3,.4,.2,.7Z"
+            />
+            <path
+              className="cls-70"
+              d="M74.38,398.63l-.4,.8c.1-.2,.4-.3,.7-.2l4.7,2.5c.2,.1,.3,.4,.2,.7l.4-.8c.1-.2,0-.6-.2-.7l-4.7-2.5c-.2-.1-.5,0-.7,.2h0Z"
+            />
             <g>
               <path
-                class="st37"
-                d="M83.5,688.5l-5.4,10.1c-0.1,0.2-0.4,0.3-0.7,0.2l-4.7-2.5c-0.2-0.1-0.3-0.4-0.2-0.7l5.4-10.1
-			c0.1-0.2,0.4-0.3,0.7-0.2l4.7,2.5C83.6,687.9,83.6,688.2,83.5,688.5z"
-              />
-              <path
-                class="st38"
-                d="M77.9,685.4l-0.4,0.8c0.1-0.2,0.4-0.3,0.7-0.2l4.7,2.5c0.2,0.1,0.3,0.4,0.2,0.7l0.4-0.8
-			c0.1-0.2,0-0.6-0.2-0.7l-4.7-2.5C78.4,685.1,78.1,685.2,77.9,685.4L77.9,685.4z"
+                className="cls-39"
+                d="M79.38,401.63l-5.2,9.7c0,.1-.2,.1-.3,.1l-4.3-2.3c-.1,0-.1-.2-.1-.3l5.2-9.7c0-.1,.2-.1,.3-.1l4.3,2.3c.1,.1,.2,.2,.1,.3Zm-5.5,9.3l5-9.3-3.9-2.1-5,9.3,3.9,2.1Z"
               />
               <g>
                 <path
-                  class="st39"
-                  d="M82.9,688.4l-5.2,9.7c0,0.1-0.2,0.1-0.3,0.1l-4.3-2.3c-0.1,0-0.1-0.2-0.1-0.3l5.2-9.7
-				c0-0.1,0.2-0.1,0.3-0.1l4.3,2.3C82.9,688.2,83,688.3,82.9,688.4z M77.4,697.7l5-9.3l-3.9-2.1l-5,9.3L77.4,697.7z"
+                  className="cls-39"
+                  d="M73.38,405.03l1.9,1h.2c.1-.1,0-.2-.1-.3l-1.9-1c-.1,0-.2,0-.3,.1h0l.2,.2Z"
                 />
-                <g>
-                  <path
-                    class="st39"
-                    d="M76.9,691.8l1.9,1c0.1,0,0.2,0,0.2,0c0.1-0.1,0-0.2-0.1-0.3l-1.9-1c-0.1,0-0.2,0-0.3,0.1l0,0
-					C76.7,691.6,76.8,691.7,76.9,691.8z"
-                  />
-                  <path
-                    class="st39"
-                    d="M75.6,694.5c0-0.1,0-0.2-0.1-0.3s-0.2,0-0.3,0.1l-0.4,0.8c0,0.1,0,0.2,0.1,0.2l1.9,1c0.1,0,0.2,0,0.3-0.1
-					l0.4-0.8c0-0.1,0-0.2-0.1-0.3s-0.2,0-0.3,0.1l-0.3,0.6l-0.6-0.3l0.3-0.6c0-0.1,0-0.2-0.1-0.3s-0.2,0-0.3,0.1l-0.3,0.6l-0.6-0.3
-					L75.6,694.5z"
-                  />
-                  <path
-                    class="st39"
-                    d="M77.2,693.2l-0.5-1c0-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.1,0.2-0.1,0.3l0.4,0.9l-1,0.1c-0.1,0-0.2,0.1-0.2,0.2
-					c0,0.1,0.1,0.2,0.2,0.2l1.1-0.1l0.6,1.2c0,0.1,0.2,0.1,0.3,0.1c0.1-0.1,0.1-0.1,0.1-0.3l-0.5-1l1.2-0.1c0.1,0,0.2-0.1,0.2-0.2
-					c0-0.1-0.1-0.2-0.2-0.2L77.2,693.2z"
-                  />
-                  <path
-                    class="st39"
-                    d="M77.7,689.8l-0.6,1.1c-0.1,0.1,0,0.2,0.1,0.3c0.1,0,0.2,0,0.2-0.1l0.2-0.4l1.8,1c0.1,0.1,0.2,0,0.2-0.1
-					s0-0.2-0.1-0.3l-1.8-1L78,690c0.1-0.1,0-0.2-0.1-0.3C77.9,689.7,77.8,689.7,77.7,689.8L77.7,689.8z"
-                  />
-                  <path
-                    class="st39"
-                    d="M80.2,688.2L80.2,688.2c0-0.1-0.1-0.2-0.2-0.1l-1,0.3c-0.1,0-0.2,0.1-0.1,0.2c0,0.1,0.1,0.2,0.2,0.1
-					l0.6-0.2l-0.7,1.3c0,0.1,0,0.2,0.1,0.3s0.2,0,0.3-0.1l0.7-1.3l0.2,0.6c0,0.1,0.1,0.2,0.2,0.1c0.1,0,0.1-0.1,0.1-0.2L80.2,688.2z
-					"
-                  />
-                </g>
+                <path
+                  className="cls-39"
+                  d="M72.08,407.73c0-.1,0-.2-.1-.3s-.2,0-.3,.1l-.4,.8c0,.1,0,.2,.1,.2l1.9,1c.1,0,.2,0,.3-.1l.4-.8c0-.1,0-.2-.1-.3s-.2,0-.3,.1l-.3,.6-.6-.3,.3-.6c0-.1,0-.2-.1-.3s-.2,0-.3,.1l-.3,.6-.6-.3,.4-.5Z"
+                />
+                <path
+                  className="cls-39"
+                  d="M73.68,406.43l-.5-1c0-.1-.2-.1-.3-.1s-.1,.2-.1,.3l.4,.9-1,.1c-.1,0-.2,.1-.2,.2s.1,.2,.2,.2l1.1-.1,.6,1.2c0,.1,.2,.1,.3,.1q.1-.1,.1-.3l-.5-1,1.2-.1c.1,0,.2-.1,.2-.2s-.1-.2-.2-.2h-1.3Z"
+                />
+                <path
+                  className="cls-39"
+                  d="M74.18,403.03l-.6,1.1c-.1,.1,0,.2,.1,.3,.1,0,.2,0,.2-.1l.2-.4,1.8,1c.1,.1,.2,0,.2-.1s0-.2-.1-.3l-1.8-1,.3-.3c.1-.1,0-.2-.1-.3,0,0-.1,0-.2,.1h0Z"
+                />
+                <path
+                  className="cls-39"
+                  d="M76.68,401.43h0c0-.1-.1-.2-.2-.1l-1,.3c-.1,0-.2,.1-.1,.2,0,.1,.1,.2,.2,.1l.6-.2-.7,1.3c0,.1,0,.2,.1,.3s.2,0,.3-.1l.7-1.3,.2,.6c0,.1,.1,.2,.2,.1,.1,0,.1-.1,.1-.2l-.4-1Z"
+                />
               </g>
             </g>
           </g>
           <g>
+            <path
+              className="cls-104"
+              d="M31.58,226.13l-18.1,.2c-.4,0-.8-.4-.8-.8l-.1-8.4c0-.4,.4-.8,.8-.8l18.1-.1c.4,0,.8,.4,.8,.8l.1,8.4c0,.4-.4,.7-.8,.7Z"
+            />
+            <path
+              className="cls-70"
+              d="M31.48,216.13h-1.5c.4,0,.8,.4,.8,.8l.1,8.4c0,.4-.4,.8-.8,.8h1.5c.4,0,.8-.4,.8-.8l-.1-8.4c0-.4-.4-.8-.8-.8h0Z"
+            />
             <g>
               <path
-                class="st37"
-                d="M35.1,512.9L17,513.1c-0.4,0-0.8-0.4-0.8-0.8l-0.1-8.4c0-0.4,0.4-0.8,0.8-0.8L35,503c0.4,0,0.8,0.4,0.8,0.8
-			l0.1,8.4C35.9,512.6,35.5,512.9,35.1,512.9z"
-              />
-              <path
-                class="st38"
-                d="M35,502.9h-1.5c0.4,0,0.8,0.4,0.8,0.8l0.1,8.4c0,0.4-0.4,0.8-0.8,0.8h1.5c0.4,0,0.8-0.4,0.8-0.8l-0.1-8.4
-			C35.8,503.3,35.4,502.9,35,502.9L35,502.9z"
+                className="cls-39"
+                d="M31.18,225.23l-17.3,.1c-.2,0-.3-.1-.3-.3l-.1-7.6c0-.2,.1-.3,.3-.3l17.3-.1c.2,0,.3,.1,.3,.3l.1,7.6c0,.2-.2,.3-.3,.3Zm-17-.4l16.7-.1v-7l-16.7,.1v7Z"
               />
               <g>
                 <path
-                  class="st39"
-                  d="M34.7,512l-17.3,0.1c-0.2,0-0.3-0.1-0.3-0.3l-0.1-7.6c0-0.2,0.1-0.3,0.3-0.3l17.3-0.1
-				c0.2,0,0.3,0.1,0.3,0.3l0.1,7.6C35,511.9,34.8,512,34.7,512z M17.7,511.6l16.7-0.1v-7l-16.7,0.1V511.6z"
-                />
-                <g>
-                  <path
-                    class="st39"
-                    d="M25.5,506.3v3.5c0,0.1,0.1,0.3,0.2,0.3c0.2,0,0.4-0.1,0.4-0.3v-3.5c0-0.2-0.1-0.3-0.3-0.3l0,0
-					C25.6,506,25.5,506.1,25.5,506.3z"
-                  />
-                  <path
-                    class="st39"
-                    d="M20.8,506.6c0.2,0,0.3-0.1,0.3-0.3c0-0.2-0.1-0.3-0.3-0.3h-1.4c-0.2,0-0.3,0.1-0.3,0.3v3.4
-					c0,0.2,0.1,0.3,0.3,0.3h1.4c0.2,0,0.3-0.1,0.3-0.3c0-0.2-0.1-0.3-0.3-0.3h-1.1v-1.2h1c0.2,0,0.3-0.1,0.3-0.3
-					c0-0.2-0.1-0.3-0.3-0.3h-1v-1.1L20.8,506.6z"
-                  />
-                  <path
-                    class="st39"
-                    d="M23.7,507.9l1-1.4c0.1-0.1,0.1-0.3-0.1-0.4c-0.1-0.1-0.3-0.1-0.4,0.1l-0.9,1.3l-0.9-1.3
-					c-0.1-0.1-0.3-0.2-0.4-0.1s-0.2,0.3-0.1,0.4l1,1.4l-1.2,1.7c-0.1,0.1-0.1,0.3,0.1,0.4c0.1,0.1,0.3,0.1,0.4-0.1l1.1-1.5l1.1,1.5
-					c0.1,0.1,0.3,0.2,0.4,0.1s0.2-0.3,0.1-0.4L23.7,507.9z"
-                  />
-                  <path
-                    class="st39"
-                    d="M28.8,505.9h-1.9c-0.2,0-0.3,0.1-0.3,0.3s0.1,0.3,0.3,0.3h0.7v3.2c0,0.2,0.1,0.3,0.3,0.3
-					c0.2,0,0.3-0.1,0.3-0.3v-3.2h0.7c0.2,0,0.3-0.1,0.3-0.3C29.1,506.1,29,505.9,28.8,505.9L28.8,505.9z"
-                  />
-                  <path
-                    class="st39"
-                    d="M33,508.1L33,508.1c0.1-0.1,0.1-0.3,0-0.4l-1.2-1.2c-0.1-0.1-0.3-0.1-0.4,0s-0.1,0.3,0,0.4l0.7,0.7h-2.2
-					c-0.2,0-0.3,0.1-0.3,0.3c0,0.2,0.1,0.3,0.3,0.3h2.3l-0.7,0.7c-0.1,0.1-0.1,0.3,0,0.4s0.3,0.1,0.4,0L33,508.1z"
-                  />
-                </g>
-              </g>
-            </g>
-          </g>
-          <g>
-            <g>
-              <g>
-                <path
-                  class="st40"
-                  d="M11.2,593.2v2.2c0,0.6,0.3,1.1,1,1.1h0.7l11-0.1c0.6,0,1.1-0.5,1.1-1.1v-0.2l-0.3-0.8v-1.2L11.2,593.2z"
+                  className="cls-39"
+                  d="M21.98,219.53v3.5c0,.1,.1,.3,.2,.3,.2,0,.4-.1,.4-.3v-3.5c0-.2-.1-.3-.3-.3h0c-.2,0-.3,.1-.3,.3Z"
                 />
                 <path
-                  class="st41"
-                  d="M24.8,593.1l0.3,0.4v1.6c-0.3,0.2-0.7,0.4-1.1,0.4l-11.7,0.1l0,0c-0.2,0-0.3,0.2-0.2,0.3
-				c0.2,0.4,0.6,0.7,1.1,0.7h-0.9c-0.6,0-1.1-0.5-1.1-1.1v-2.2L24.8,593.1z"
+                  className="cls-39"
+                  d="M17.28,219.83c.2,0,.3-.1,.3-.3s-.1-.3-.3-.3h-1.4c-.2,0-.3,.1-.3,.3v3.4c0,.2,.1,.3,.3,.3h1.4c.2,0,.3-.1,.3-.3s-.1-.3-.3-.3h-1.1v-1.2h1c.2,0,.3-.1,.3-.3s-.1-.3-.3-.3h-1v-1.1l1.1,.1Z"
                 />
                 <path
-                  class="st42"
-                  d="M23.9,594.6l-11,0.1h-0.7c-0.6,0-1.1-0.5-1.1-1.2v-7.8c0-0.6,0.5-1.2,1.2-1.2h0.6l11-0.1
-				c0.6,0,1.1,0.5,1.1,1.1l0.1,7.9C25,594.1,24.5,594.6,23.9,594.6L23.9,594.6z"
+                  className="cls-39"
+                  d="M20.18,221.13l1-1.4c.1-.1,.1-.3-.1-.4-.1-.1-.3-.1-.4,.1l-.9,1.3-.9-1.3c-.1-.1-.3-.2-.4-.1s-.2,.3-.1,.4l1,1.4-1.2,1.7c-.1,.1-.1,.3,.1,.4,.1,.1,.3,.1,.4-.1l1.1-1.5,1.1,1.5c.1,.1,.3,.2,.4,.1s.2-.3,.1-.4l-1.2-1.7Z"
                 />
                 <path
-                  class="st40"
-                  d="M13,594.7h-0.9c-0.6,0-1.1-0.5-1.1-1.1l-0.1-7.9c0-0.6,0.5-1.1,1.1-1.1h0.9c-0.6,0-1.1,0.5-1.1,1.1l0.1,7.9
-				C11.9,594.2,12.4,594.7,13,594.7z"
-                />
-              </g>
-              <g>
-                <path
-                  class="st43"
-                  d="M16.6,587.9L16.6,587.9c-0.1,0-0.2,0.1-0.2,0.2v2.4l-1.7-2.5c-0.1-0.1-0.2-0.1-0.3-0.1s-0.1,0.1-0.1,0.2v3
-				c0,0.1,0.1,0.2,0.2,0.2c0.1,0,0.2-0.1,0.2-0.2v-2.3l1.7,2.4c0.1,0.1,0.2,0.1,0.3,0.1c0.1,0,0.2-0.1,0.2-0.3v-2.9
-				C16.8,588,16.7,587.9,16.6,587.9L16.6,587.9z"
+                  className="cls-39"
+                  d="M25.28,219.13h-1.9c-.2,0-.3,.1-.3,.3s.1,.3,.3,.3h.7v3.2c0,.2,.1,.3,.3,.3s.3-.1,.3-.3v-3.2h.7c.2,0,.3-.1,.3-.3-.1-.1-.2-.3-.4-.3h0Z"
                 />
                 <path
-                  class="st43"
-                  d="M13.7,588.3c0.1,0,0.2-0.1,0.2-0.2c0-0.1-0.1-0.2-0.2-0.2h-1.2c-0.1,0-0.2,0.1-0.2,0.2v3
-				c0,0.1,0.1,0.2,0.2,0.2h1.2c0.1,0,0.2-0.1,0.2-0.2c0-0.1-0.1-0.2-0.2-0.2h-1v-1.1h0.9c0.1,0,0.2-0.1,0.2-0.2
-				c0-0.1-0.1-0.2-0.2-0.2h-0.9v-1.1H13.7L13.7,588.3z"
-                />
-                <path
-                  class="st43"
-                  d="M21.2,588.2c0.1,0,0.2-0.1,0.2-0.3c0-0.1-0.1-0.2-0.2-0.2h-1.3c-0.1,0-0.2,0.1-0.2,0.2v3
-				c0,0.1,0.1,0.2,0.2,0.2h1.2c0.1,0,0.2-0.1,0.2-0.2c0-0.1-0.1-0.2-0.2-0.2h-1v-1.1H21c0.1,0,0.2-0.1,0.2-0.2
-				c0-0.1-0.1-0.2-0.2-0.2h-0.9v-1.1L21.2,588.2L21.2,588.2z"
-                />
-                <path
-                  class="st43"
-                  d="M19.1,587.9h-1.7c-0.1,0-0.2,0.1-0.2,0.2c0,0.1,0.1,0.2,0.2,0.2H18v2.8c0,0.1,0.1,0.2,0.2,0.2
-				s0.2-0.1,0.2-0.2v-2.8H19c0.1,0,0.2-0.1,0.2-0.2C19.3,587.9,19.2,587.8,19.1,587.9L19.1,587.9z"
-                />
-                <path
-                  class="st43"
-                  d="M23,589.8c0.5,0,1-0.5,1-1s-0.5-1-1-1h-0.8l0,0l0,0c-0.1,0-0.2,0.1-0.2,0.2v3c0,0.1,0.1,0.2,0.2,0.2
-				s0.3-0.1,0.2-0.2v-1.2l0,0l1.2,1.4c0,0,0.1,0.1,0.2,0.1c0,0,0.1,0,0.1-0.1c0.1-0.1,0.1-0.2,0-0.3L23,589.8z M22.9,588.2
-				c0.3,0,0.6,0.3,0.6,0.6s-0.3,0.6-0.6,0.6c-0.1,0-0.4,0-0.6,0c0-0.2,0-0.4,0-0.6c0-0.1,0-0.4,0-0.6H22.9L22.9,588.2z"
+                  className="cls-39"
+                  d="M29.48,221.33h0c.1-.1,.1-.3,0-.4l-1.2-1.2c-.1-.1-.3-.1-.4,0s-.1,.3,0,.4l.7,.7h-2.2c-.2,0-.3,.1-.3,.3s.1,.3,.3,.3h2.3l-.7,.7c-.1,.1-.1,.3,0,.4s.3,.1,.4,0l1.1-1.2Z"
                 />
               </g>
             </g>
@@ -1277,23 +1238,54 @@ const FloorTwo = () => {
           <g>
             <g>
               <path
-                class="st44"
-                d="M457.3,659.3c-0.1-0.1-0.3-0.2-0.4-0.2h-0.1c-0.2,0-0.4,0.1-0.5,0.4l-1.1,3.4l-1.1-3.4
-			c-0.1-0.2-0.3-0.4-0.5-0.4l0,0l0,0l0,0l0,0c-0.2,0-0.4,0.1-0.5,0.4l-1.1,3.4l-1.1-3.4c-0.1-0.2-0.3-0.4-0.5-0.4h-0.1
-			c-0.2,0-0.3,0.1-0.4,0.2c-0.1,0.1-0.1,0.3-0.1,0.5l1.6,4.8c0.1,0.2,0.3,0.4,0.5,0.4l0,0l0,0l0,0l0,0c0.2,0,0.4-0.1,0.5-0.4
-			l1.1-3.4l1.1,3.4c0.1,0.2,0.3,0.4,0.5,0.4l0,0l0,0l0,0l0,0c0.2,0,0.4-0.1,0.5-0.4l1.6-4.8C457.4,659.6,457.4,659.4,457.3,659.3
-			L457.3,659.3z M462.1,663.4c-0.2-0.2-0.5-0.2-0.7,0c-0.3,0.3-0.8,0.5-1.3,0.5c-1.1,0-1.9-0.8-1.9-1.9c0-1,0.9-1.8,1.9-1.8
-			c0.5,0,0.9,0.2,1.3,0.4c0.2,0.2,0.5,0.2,0.7,0l0,0c0.2-0.2,0.2-0.5,0-0.7l0,0c-0.5-0.5-1.2-0.7-1.9-0.7c-1.6,0-3,1.3-3,2.9
-			c0,1.6,1.3,2.9,3,2.9c0.7,0,1.4-0.3,1.9-0.7c0.1-0.1,0.2-0.2,0.2-0.4C462.3,663.7,462.2,663.5,462.1,663.4L462.1,663.4
-			L462.1,663.4z"
+                className="cls-82"
+                d="M7.68,306.43v2.2c0,.6,.3,1.1,1,1.1h.7l11-.1c.6,0,1.1-.5,1.1-1.1v-.2l-.3-.8v-1.2l-13.5,.1Z"
               />
               <path
-                class="st44"
-                d="M460.7,654h-9.4c-1.8,0-3.3,1.5-3.3,3.3v9.4c0,1.8,1.5,3.3,3.3,3.3h9.4c1.8,0,3.3-1.5,3.3-3.3v-9.4
-			C464,655.5,462.5,654,460.7,654z M460.7,669.4h-9.4c-1.5,0-2.7-1.2-2.7-2.7v-9.4c0-1.5,1.2-2.7,2.7-2.7h9.4c1.5,0,2.7,1.2,2.7,2.7
-			v9.4C463.4,668.2,462.2,669.4,460.7,669.4z"
+                className="cls-108"
+                d="M21.28,306.33l.3,.4v1.6c-.3,.2-.7,.4-1.1,.4l-11.7,.1h0c-.2,0-.3,.2-.2,.3,.2,.4,.6,.7,1.1,.7h-.9c-.6,0-1.1-.5-1.1-1.1v-2.2l13.6-.2Z"
+              />
+              <path
+                className="cls-80"
+                d="M20.38,307.83l-11,.1h-.7c-.6,0-1.1-.5-1.1-1.2v-7.8c0-.6,.5-1.2,1.2-1.2h.6l11-.1c.6,0,1.1,.5,1.1,1.1l.1,7.9c-.1,.7-.6,1.2-1.2,1.2h0Z"
+              />
+              <path
+                className="cls-82"
+                d="M9.48,307.93h-.9c-.6,0-1.1-.5-1.1-1.1l-.1-7.9c0-.6,.5-1.1,1.1-1.1h.9c-.6,0-1.1,.5-1.1,1.1l.1,7.9c0,.6,.5,1.1,1.1,1.1Z"
               />
             </g>
+            <g>
+              <path
+                className="cls-65"
+                d="M13.08,301.13h0c-.1,0-.2,.1-.2,.2v2.4l-1.7-2.5c-.1-.1-.2-.1-.3-.1s-.1,.1-.1,.2v3c0,.1,.1,.2,.2,.2s.2-.1,.2-.2v-2.3l1.7,2.4c.1,.1,.2,.1,.3,.1s.2-.1,.2-.3v-2.9c-.1-.1-.2-.2-.3-.2h0Z"
+              />
+              <path
+                className="cls-65"
+                d="M10.18,301.53c.1,0,.2-.1,.2-.2s-.1-.2-.2-.2h-1.2c-.1,0-.2,.1-.2,.2v3c0,.1,.1,.2,.2,.2h1.2c.1,0,.2-.1,.2-.2s-.1-.2-.2-.2h-1v-1.1h.9c.1,0,.2-.1,.2-.2s-.1-.2-.2-.2h-.9v-1.1h1Z"
+              />
+              <path
+                className="cls-65"
+                d="M17.68,301.43c.1,0,.2-.1,.2-.3,0-.1-.1-.2-.2-.2h-1.3c-.1,0-.2,.1-.2,.2v3c0,.1,.1,.2,.2,.2h1.2c.1,0,.2-.1,.2-.2s-.1-.2-.2-.2h-1v-1.1h.9c.1,0,.2-.1,.2-.2s-.1-.2-.2-.2h-.9v-1.1l1.1,.1h0Z"
+              />
+              <path
+                className="cls-65"
+                d="M15.58,301.13h-1.7c-.1,0-.2,.1-.2,.2s.1,.2,.2,.2h.6v2.8c0,.1,.1,.2,.2,.2s.2-.1,.2-.2v-2.8h.6c.1,0,.2-.1,.2-.2,.1-.2,0-.3-.1-.2h0Z"
+              />
+              <path
+                className="cls-65"
+                d="M19.48,303.03c.5,0,1-.5,1-1s-.5-1-1-1h-.8c-.1,0-.2,.1-.2,.2v3c0,.1,.1,.2,.2,.2s.3-.1,.2-.2v-1.2h0l1.2,1.4s.1,.1,.2,.1c0,0,.1,0,.1-.1,.1-.1,.1-.2,0-.3l-.9-1.1Zm-.1-1.6c.3,0,.6,.3,.6,.6s-.3,.6-.6,.6h-.6v-1.2h.6Z"
+              />
+            </g>
+          </g>
+          <g>
+            <path
+              className="cls-38"
+              d="M453.78,372.53c-.1-.1-.3-.2-.4-.2h-.1c-.2,0-.4,.1-.5,.4l-1.1,3.4-1.1-3.4c-.1-.2-.3-.4-.5-.4h0c-.2,0-.4,.1-.5,.4l-1.1,3.4-1.1-3.4c-.1-.2-.3-.4-.5-.4h-.1c-.2,0-.3,.1-.4,.2-.1,.1-.1,.3-.1,.5l1.6,4.8c.1,.2,.3,.4,.5,.4h0c.2,0,.4-.1,.5-.4l1.1-3.4,1.1,3.4c.1,.2,.3,.4,.5,.4h0c.2,0,.4-.1,.5-.4l1.6-4.8c.2-.2,.2-.4,.1-.5h0Zm4.8,4.1c-.2-.2-.5-.2-.7,0-.3,.3-.8,.5-1.3,.5-1.1,0-1.9-.8-1.9-1.9,0-1,.9-1.8,1.9-1.8,.5,0,.9,.2,1.3,.4,.2,.2,.5,.2,.7,0h0c.2-.2,.2-.5,0-.7h0c-.5-.5-1.2-.7-1.9-.7-1.6,0-3,1.3-3,2.9s1.3,2.9,3,2.9c.7,0,1.4-.3,1.9-.7,.1-.1,.2-.2,.2-.4,0-.2-.1-.4-.2-.5h0Z"
+            />
+            <path
+              className="cls-38"
+              d="M457.18,367.23h-9.4c-1.8,0-3.3,1.5-3.3,3.3v9.4c0,1.8,1.5,3.3,3.3,3.3h9.4c1.8,0,3.3-1.5,3.3-3.3v-9.4c0-1.8-1.5-3.3-3.3-3.3Zm0,15.4h-9.4c-1.5,0-2.7-1.2-2.7-2.7v-9.4c0-1.5,1.2-2.7,2.7-2.7h9.4c1.5,0,2.7,1.2,2.7,2.7v9.4c0,1.5-1.2,2.7-2.7,2.7Z"
+            />
           </g>
         </svg>
       </div>

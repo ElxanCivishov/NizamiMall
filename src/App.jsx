@@ -36,25 +36,19 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="map" element={<Map />} />
           <Route
             path="magaza-ve-restoranlar"
             element={<ShopsAndRestaurants />}
           />
+          <Route path="magaza-ve-restoranlar/:id" element={<SingleService />} />
           <Route path="xeberler-ve-yenilikler" element={<Blogs />} />
-          <Route path="icare" element={<Contact />} />
-          <Route path="store/:id" element={<SingleProduct />} />
           <Route path="xeber/:id" element={<SingleBlog />} />
+          <Route path="icare" element={<Contact />} />
+          <Route path="map" element={<Map />} />
+
+          <Route path="store/:id" element={<SingleProduct />} />
           <Route path="services/:id" element={<SingleService />} />
 
-          <Route
-            path="yardım"
-            element={
-              <Suspense fallback={<TextSkeleton />}>
-                <Help />
-              </Suspense>
-            }
-          />
           {/* not found */}
           <Route path="*" element={<NotFound />} />
         </Route>

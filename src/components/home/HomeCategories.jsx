@@ -6,7 +6,7 @@ import { MdRestaurant } from "react-icons/md";
 const categories = [
   {
     id: 1,
-    path: "/",
+    path: "/magaza-ve-restoranlar",
     title: "Mağazalar",
     icon: (
       <FaShoppingCart className="group-hover:text-white text-xl md:text-2xl" />
@@ -14,7 +14,7 @@ const categories = [
   },
   {
     id: 2,
-    path: "/",
+    path: "/magaza-ve-restoranlar",
     title: "Restoranlar",
     icon: (
       <MdRestaurant className="group-hover:text-white text-xl md:text-2xl" />
@@ -22,13 +22,13 @@ const categories = [
   },
   {
     id: 3,
-    path: "/",
+    path: "/xeberler-ve-yenilikler",
     title: "Xəbər və yeniliklər",
     icon: <FaBlog className="group-hover:text-white text-xl md:text-2xl" />,
   },
   {
     id: 4,
-    path: "/",
+    path: "/map",
     title: "Mall xəritəsi",
     icon: (
       <FaLocationDot className="group-hover:text-white text-xl md:text-2xl" />

@@ -28,7 +28,7 @@ const Map = () => {
     <div>
       <Meta title="Mall xəritəsi" />
       <BreadCrumb title="Mall xəritəsi" />
-      <section className="container p-4">
+      <section className=" p-4">
         {/* <div className="w-full flex items-center justify-end mb-2">
           <span
             className="block lg:hidden max-w-max cursor-pointer bg-colorBlack text-white border rounded-md  text-sm py-1 px-3 select-none"
@@ -82,7 +82,7 @@ const Map = () => {
               </div>
             </div>
           </div> */}
-          <div className="flex flex-col gap-2 w-full overflow-auto">
+          <div className="flex flex-col gap-2 w-full h-full">
             <div className="flex items-center justify-center bg-white rounded-lg p-2 gap-2 w-full select-none">
               <div
                 className={`border flex items-center justify-center p-3 w-12 h-12 font-semibold  rounded-full cursor-pointer hover:bg-colorPrimary hover:text-white ${

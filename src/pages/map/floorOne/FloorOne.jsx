@@ -347,7 +347,6 @@ const FloorOne = () => {
 
       <div className="relative w-full max-w-4xl mx-auto group h-[400px]  text-colorPrimary  mb-5">
         <svg
-          id="Layer_1"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 951.1 757.69"
           className="w-full h-full"

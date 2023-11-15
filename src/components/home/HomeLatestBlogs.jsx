@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import BlogCard from "../cards/BlogCard";
-import { MdArrowRightAlt } from "react-icons/md";
 import { FaArrowRight } from "react-icons/fa";
 
 const HomeLatestBlogs = () => {
@@ -15,7 +13,7 @@ const HomeLatestBlogs = () => {
             Yeniliklər, endirimlər və xəbərlərdən məlumatınız olsun
           </p>
           <Link
-            to="/blogs"
+            to="/xeberler-ve-yenilikler"
             className="text-gray-600   hover:text-colorPrimary hover:underline flex items-center text-base md:text-xl animate-pulse"
           >
             Yeniliklər və xəbərlər
