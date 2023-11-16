@@ -1,5 +1,5 @@
 {
-  "name": "motoaz",
+  "name": "Nizami mall",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,11 +17,9 @@
     "chartjs-adapter-moment": "^1.0.1",
     "date-fns": "^2.30.0",
     "lightbox.js-react": "^0.8.7",
-    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
-    "react-fast-marquee": "^1.6.1",
     "react-flatpickr": "^3.10.13",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.46.1",

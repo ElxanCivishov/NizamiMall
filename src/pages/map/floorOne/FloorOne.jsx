@@ -1,267 +1,8 @@
 import { useState } from "react";
-import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
-
-const svgPaths = [
-  {
-    uid: 1,
-    className: "cls-4",
-    d: "M903.28,.6c-29.3,7.2-58.6,14.3-87.7,21.5,15.1,55.8,30.3,111.5,45.4,167.3,29.8-7,59.7-14.2,89.5-21.2-15.7-55.8-31.4-111.8-47.2-167.6Z",
-  },
-  {
-    uid: 2,
-    className: "cls-4",
-    d: "M758.48,213.7c-14.6-55.8-29.3-111.8-43.9-167.6l100.9-24.4,.2,.3c15.1,55.8,30.3,111.5,45.4,167.3-34.2,8.2-68.4,16.3-102.6,24.4Z",
-  },
-  {
-    uid: 3,
-    className: "cls-4",
-    d: "M436.38,112.9c8.1,29.8,16.3,59.7,24.4,89.5-48.8,13-97.6,26-146.4,39.1-11.9-29.3-23.9-58.6-35.8-87.9,52.5-13.6,105.2-27.2,157.8-40.7Z",
-  },
-  {
-    uid: 6,
-    className: "cls-4",
-    d: "M145.08,197.5c12.5,27.7,24.9,55.3,37.4,83,43.9-13,87.9-26,131.8-39.1-11.9-29.3-23.9-58.6-35.8-87.9-44.4,14.7-89,29.3-133.4,44Z",
-  },
-  {
-    uid: 7,
-    className: "cls-4",
-    d: "M398.88,438.3c-7,22.3-14.2,44.4-21.2,66.7-47.2-8.1-94.4-16.3-141.6-24.4-4.6-.8-27.2-5.5-40.2-26.2-9.3-14.8-8.3-30.1-8.3-36.8,0,0,.7-15.3,8.3-30.1,15.8-30.4,63.5-44.6,110.6-57.9,55.3-15.8,98.3-27.7,123-34.3,2.8,25.5,5.4,50.9,8.1,76.5-21.2,4.4-42.3,8.9-63.6,13.3-.7,11.7-.8,24.1-.3,36.8,.2,3.4,.2,6.7,.3,10.1,8.7,2.1,16.8,4.2,24.9,6.3Z",
-  },
-  {
-    uid: 8,
-    className: "cls-4",
-    d: "M429.88,295.1c2.8,25.5,5.4,50.9,8.1,76.5,29.3-6,58.6-11.9,87.9-17.9-3.3-26.5-6.5-53.2-9.8-79.7-28.8,6.9-57.4,14.1-86.2,21.1Z",
-  },
-
-  {
-    uid: 9,
-    className: "cls-4",
-    d: "M476.98,456.2c-26-6-52.1-11.9-78.1-17.9-7,22.3-14.2,44.4-21.2,66.7,26,6,52.1,11.9,78.1,17.9,7.1-22.3,14.2-44.4,21.2-66.7Z",
-  },
-  {
-    uid: 10,
-    className: "cls-4",
-    d: "M546.38,740c10.6-30.6,21.2-61.2,31.6-91.8-39.1-8.6-78.1-17.4-117.2-26-12.2,30.3-24.4,60.5-36.6,90.8l122.2,27Z",
-  },
-  {
-    uid: 11,
-    className: "cls-4",
-    d: "M286.68,682.4c13-30.4,26-60.7,39.1-91.1,45.1,10.3,90,20.7,135.1,30.9l-36.6,90.8c-45.9-10.3-91.8-20.4-137.6-30.6Z",
-  },
-  {
-    uid: 12,
-    className: "cls-4",
-    d: "M556.78,475.7c-6.5,22.3-13,44.4-19.5,66.7-27.2-6.5-54.2-13-81.4-19.5,7-22.3,14.2-44.4,21.2-66.7,26.5,6.5,53.1,13,79.7,19.5Z",
-  },
-  {
-    uid: 13,
-    className: "cls-4",
-    d: "M630.48,493.8c-8.3,23.3-16.6,46.5-24.9,69.8,25.5,6,50.9,11.9,76.5,17.9,7.6-23.3,15.1-46.7,22.8-70-24.8-5.8-49.5-11.9-74.4-17.7Z",
-  },
-  {
-    uid: 14,
-    className: "cls-4",
-    d: "M436.38,112.9c8.1,29.8,16.3,59.7,24.4,89.5,40.7-9.3,81.4-18.4,122-27.7-6-32.5-11.9-65.1-17.9-97.6-13.2-2.4-38.4-5-68.3,3.3-30,8.2-50.2,23.5-60.2,32.5Z",
-  },
-  {
-    uid: 15,
-    className: "cls-4",
-    d: "M208.58,369.9c-3.3,3.1-20.5,19.9-21.2,47.2-.7,29.3,18.1,47.7,21.2,50.4-16.3,5.4-32.5,10.9-48.8,16.3-5-3.9-26.4-21.5-30.9-52.1-6.2-42.1,25.1-70.9,27.7-73.2,17.3,3.8,34.5,7.7,52,11.4Z",
-  },
-  {
-    uid: 16,
-    className: "cls-4",
-    d: "",
-  },
-];
-
-const dynamicNames = [
-  {
-    uid: 10,
-    text: "Donviand",
-    x1: 0,
-    x2: 0,
-    y1: 0,
-    y2: 0,
-  },
-  {
-    uid: 9,
-    text: "Lluvia",
-    x1: 0,
-    x2: 0,
-    y1: 0,
-    y2: 0,
-  },
-  {
-    uid: 8,
-    text: "Chumak fasion",
-    x1: 3,
-    x2: 3,
-    y1: 20,
-    y2: -10,
-  },
-  {
-    uid: 2,
-    text: "Exclusive travel",
-    x1: 0,
-    x2: 10,
-    y1: 20,
-    y2: -10,
-  },
-  {
-    uid: 1,
-    text: "Life teiecom",
-    x1: 0,
-    x2: 0,
-    y1: 20,
-    y2: -20,
-  },
-  {
-    uid: 6,
-    text: "Express telecom",
-    x1: 5,
-    x2: 5,
-    y1: 20,
-    y2: -10,
-  },
-  {
-    uid: 3,
-    text: "Trend 37 outlet",
-    x1: 15,
-    x2: 10,
-    y1: 20,
-    y2: -10,
-  },
-  {
-    uid: 12,
-    text: "Shtonak",
-    x1: 0,
-    x2: 0,
-    y1: 20,
-    y2: -10,
-  },
-  {
-    uid: 11,
-    text: "By Amina Collection",
-    x1: 10,
-    x2: 10,
-    y1: 20,
-    y2: -30,
-  },
-  {
-    uid: 14,
-    text: "Brawo men style",
-    x1: -10,
-    x2: -10,
-    y1: 20,
-    y2: -10,
-  },
-  {
-    uid: 16,
-    text: "Amara parfume",
-    x1: 10,
-    x2: 20,
-    y1: 15,
-    y2: -6,
-  },
-  {
-    uid: 15,
-    text: "SHR lux saat",
-    x1: 10,
-    x2: 20,
-    y1: 15,
-    y2: -8,
-  },
-  {
-    uid: 13,
-    text: "Boş zona",
-    x1: 10,
-    x2: 10,
-    y1: 20,
-    y2: -20,
-  },
-  {
-    uid: 7,
-    text: "Boş zona",
-    x1: 0,
-    x2: 0,
-    y1: 20,
-    y2: -10,
-  },
-];
-
-const svgTexts = [
-  {
-    uid: 10,
-    className: "cls-13",
-    transform: "translate(492.71 726.78) rotate(-73.96)",
-  },
-  {
-    uid: 9,
-    className: "cls-14",
-    transform: "translate(429.05 511.62) rotate(-73.96)",
-  },
-  {
-    uid: 8,
-    className: "cls-9",
-    transform: "translate(478.61 361.23) rotate(-98.27)",
-  },
-  {
-    uid: 2,
-    className: "cls-12",
-    transform: "translate(796.15 177.62) rotate(-104.32)",
-  },
-  {
-    uid: 1,
-    className: "cls-12",
-    transform: "translate(909.73 138.47) rotate(-104.32)",
-  },
-  {
-    uid: 6,
-    className: "cls-10",
-    transform: "translate(242.27 260.66) rotate(-107.8) scale(1.1 1)",
-  },
-  {
-    uid: 3,
-    className: "cls-16",
-    transform: "translate(372.1 226.29) rotate(-104.43) scale(1.1 1)",
-  },
-  {
-    uid: 12,
-    className: "cls-8",
-    transform: "translate(501.57 533.39) rotate(-73.96)",
-  },
-  {
-    uid: 11,
-    className: "cls-11",
-    transform: "translate(367.63 698.81) rotate(-73.96)",
-  },
-  {
-    uid: 14,
-    className: "cls-6",
-    transform: "translate(505.11 167.78) rotate(-103.34) scale(1.1 1)",
-  },
-  {
-    uid: 16,
-    className: "cls-15",
-    transform: "translate(601.27 169.88) rotate(-101.69) scale(1.1 1)",
-  },
-  {
-    uid: 15,
-    className: "cls-7",
-    transform: "translate(158.81 459.14) rotate(-87.88)",
-  },
-  {
-    uid: 13,
-    className: "cls-7",
-    transform: "translate(655.81 570.14) rotate(-75.88)",
-  },
-  {
-    uid: 7,
-    className: "cls-7",
-    transform: "translate(265.81 438.14) rotate(-47.88)",
-  },
-];
+import { AiFillCheckCircle } from "react-icons/ai";
+import { convertToText } from "../mapHooks";
+import { dynamicNames, svgPaths, svgTexts } from "./svgData";
+import { FaArrowAltCircleLeft } from "react-icons/fa";
 
 const FloorOne = () => {
   const [selected, setSelected] = useState(null);
@@ -274,82 +15,26 @@ const FloorOne = () => {
     (item) => item?.uid === selected?.uid
   )?.text;
 
-  const convertToText = ({ dynamicFields, item }) => {
-    const field = dynamicNames.find((i) => i?.uid === item?.uid);
-    const { text, x1, x2, y1, y2 } = field;
-    if (text.trim() !== "") {
-      const words = text
-        .trim()
-        .split(" ")
-        .map((word, index) => {
-          if (word.length > 8) {
-            const firstPart = word.slice(0, 7);
-            const secondPart = word.slice(7);
-
-            return (
-              <tspan key={index}>
-                <tspan x={x1} dy={index > 0 ? y1 : y2}>
-                  {firstPart + "-"}
-                </tspan>
-                <tspan x={x1} dy={y1}>
-                  {secondPart}
-                </tspan>
-              </tspan>
-            );
-          } else {
-            return (
-              <tspan
-                key={index}
-                x={index > 0 || word.length < 5 ? x1 : x2}
-                dy={index > 0 ? y1 : y2}
-              >
-                {word}
-              </tspan>
-            );
-          }
-        });
-
-      return words;
-    } else {
-      return (
-        <tspan x={x2} dy={y2}>
-          {"Boş zona"
-            .trim()
-            .split(" ")
-            .map((word, index) => {
-              return (
-                <tspan key={index} x={x1} dy={index > 0 ? y1 : y2}>
-                  {word}
-                </tspan>
-              );
-            })}
-        </tspan>
-      );
-    }
-  };
-
   return (
     <div className="bg-white rounded-lg w-full select-none">
       <div className="flex gap-2 items-center justify-between  px-2 py-1 mb-2">
         <div className="flex gap-1 items-center justify-between  p-2 rounded-lg text-black text-xs  md:text-base shadow-lg">
-          <AiFillCheckCircle className="text-emerald-500 " />
+          <AiFillCheckCircle className="text-emerald-500 animate-bounce" />
           <span className=" hover:underline hover:text-colorPrimary cursor-pointer min-w-[200px]">
             {activeName ? activeName : "Seçin..."}
           </span>
         </div>
-        {/* <div className="flex gap-1 items-center justify-between  px-2 py-1 rounded-lg text-black text-xs  md:text-base shadow-lg cursor-pointer group">
-          <span className="text-black text-xs  md:text-base group-hover:text-colorPrimary ">
-            Bağla
-          </span>
-          <AiFillCloseCircle className="text-red-500 group-hover:opacity-80" />
-        </div> */}
+        <div className="flex gap-1 items-center justify-between  px-2 py-1 rounded-lg text-black text-xs  md:text-base shadow-lg cursor-pointer group">
+          <FaArrowAltCircleLeft className="animate-bounce md:text-base" />
+          <span className="md:text-base font-semibold">Geri</span>
+        </div>
       </div>
 
       <div className="relative w-full max-w-4xl mx-auto group h-[400px]  text-colorPrimary  mb-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 951.1 757.69"
-          className="w-full h-full"
+          className="w-full h-full p-2"
         >
           <defs>
             <style>{`.cls-1{letter-spacing:-.01em;font-weight:600 ;cursor:pointer;}
@@ -364,7 +49,6 @@ const FloorOne = () => {
               {...item}
               style={{
                 fill: selected?.uid === item?.uid ? "currentcolor" : "#fff",
-                zIndex: 10,
               }}
               onClick={(e) => handleClick(item, e)}
             />
@@ -385,6 +69,8 @@ const FloorOne = () => {
               {convertToText({ dynamicNames, item })}
             </text>
           ))}
+
+          {/* additional */}
           <path
             className="cls-4"
             d="M472.98,364.3c-2.8,29.9-5.5,59.7-8.3,89.7"
