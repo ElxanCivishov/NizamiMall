@@ -20,17 +20,11 @@ const FloorTwo = () => {
 
   return (
     <div className="bg-white rounded-lg w-full select-none h-auto">
-      <div className="flex gap-2 items-center justify-between  px-2 py-1 mb-2">
-        <div className="flex gap-1 items-center justify-between  p-2 rounded-lg text-black text-xs  md:text-base shadow-lg">
-          <AiFillCheckCircle className="text-emerald-500 animate-bounce" />
-          <span className=" hover:underline hover:text-colorPrimary cursor-pointer min-w-[200px]">
-            {activeName ? activeName : "Seçin..."}
-          </span>
-        </div>
-        <div className="flex gap-1 items-center justify-between  px-2 py-1 rounded-lg text-black text-xs  md:text-base shadow-lg cursor-pointer group">
-          <FaArrowAltCircleLeft className="animate-bounce md:text-base" />
-          <span className="md:text-base font-semibold">Geri</span>
-        </div>
+      <div className="flex gap-1 items-center max-w-max  p-2 rounded-lg text-black text-xs  md:text-base shadow-lg">
+        <AiFillCheckCircle className="text-emerald-500 animate-bounce" />
+        <span className=" hover:underline hover:text-colorPrimary cursor-pointer min-w-[200px]">
+          {activeName ? activeName : "Seçin..."}
+        </span>
       </div>
 
       <div className="relative w-full max-full mx-auto group    text-colorPrimary  mb-5 h-auto">

@@ -28,6 +28,7 @@ const FormInput = ({
       <input
         onPaste={onPaste}
         type={type}
+        autoComplete="on"
         placeholder={placeholder}
         {...register}
         className={` text-gray-900 text-xs md:text-sm rounded-lg focus:ring-gray-300 focus:border-gray-300 block w-full p-2.5 transition duration-200 no-spin shadow-md placeholder:text-gray-400 ${classInput} ${

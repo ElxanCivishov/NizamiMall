@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BreadCrumb, Meta } from "../../components/layout";
 import FloorOne from "./floorOne/FloorOne";
 import FloorTwo from "./floorTwo/FloorTwo";
 import FloorThree from "./floorThree/FloorThree";
+import { useSearchParams } from "react-router-dom";
 
-const floor = [
+const floorTabs = [
   {
     num: 1,
     component: <FloorOne />,
@@ -20,17 +21,48 @@ const floor = [
 ];
 
 const Map = () => {
-  const [floorNumber, setFloorNumber] = useState(1);
+  let [searchParams, setSearchParams] = useSearchParams();
+
+  const parseAndValidateFloor = (floor) => {
+    const parsedFloor = parseInt(floor);
+    return floorTabs.some((item) => item.num === parsedFloor) ? parsedFloor : 1;
+  };
+
+  const [floorNumber, setFloorNumber] = useState(
+    parseAndValidateFloor(searchParams.get("floor"))
+  );
+
+  useEffect(() => {
+    const newFloor = parseAndValidateFloor(searchParams.get("floor"));
+
+    if (newFloor !== floorNumber) {
+      setFloorNumber(newFloor);
+    }
+
+    if (newFloor !== parseInt(searchParams.get("floor"))) {
+      searchParams.delete("floor");
+      setSearchParams(searchParams, {
+        replace: true,
+      });
+    }
+  }, [searchParams.get("floor"), floorNumber]);
+
+  const handleChangeFloor = (num) => {
+    searchParams.set("floor", num);
+    setSearchParams(searchParams, {
+      replace: true,
+    });
+  };
 
   return (
     <div>
       <Meta title="Mall xəritəsi" />
       <BreadCrumb title="Mall xəritəsi" />
-      <section className=" p-4">
+      <section className="container p-4">
         <div className="flex flex-col lg:flex-row gap-4 w-full">
           <div className="flex flex-col gap-2 w-full h-full">
             <div className="flex items-center justify-center bg-white rounded-lg p-2 gap-2 w-full select-none">
-              {floor.map((item) => (
+              {floorTabs.map((item) => (
                 <>
                   <div
                     className={`border flex items-center justify-center p-3 w-12 h-12 font-semibold  rounded-full cursor-pointer hover:bg-colorPrimary hover:text-white ${
@@ -38,7 +70,9 @@ const Map = () => {
                         ? "bg-colorPrimary text-white"
                         : "bg-white text-black"
                     }`}
-                    onClick={() => setFloorNumber(item.num)}
+                    onClick={() => {
+                      handleChangeFloor(item.num);
+                    }}
                   >
                     <span>{item.num}</span>
                   </div>
@@ -46,7 +80,9 @@ const Map = () => {
               ))}
             </div>
             <div className="flex items-center justify-between bg-white rounded-lg p-2 gap-2 w-full">
-              {floor.map((item) => item.num === floorNumber && item.component)}
+              {floorTabs.map(
+                (item) => item.num === floorNumber && item.component
+              )}
             </div>
           </div>
         </div>

@@ -48,9 +48,12 @@ const HomeSlider = () => {
                   <img
                     src={item.url}
                     alt="marka"
-                    className="w-full h-[300px]  md:h-[500px] rounded-lg"
+                    className="w-full h-[300px] md:h-[500px] rounded-lg"
                   />
-                  <div className="flex flex-col gap-1 absolute bottom-20 left-20 text-white text-2xl ">
+                  {/* Overlay for improved text readability */}
+                  <div className="absolute inset-0 rounded-lg bg-black bg-opacity-30"></div>
+
+                  <div className="flex flex-col gap-1 absolute bottom-20 left-20 text-white text-2xl z-10">
                     <h6 className="text-xs md:text-4xl shadow-inner">
                       {item.title}
                     </h6>

@@ -1,12 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { FaCircleCheck } from "react-icons/fa6";
 import { IoSend } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
+
+import {
+  RESET,
+  createNewsletter,
+} from "../../features/newsletter/newsletterSlice";
+import { MdError } from "react-icons/md";
+
 const Newsletter = () => {
-  const [showMessage, setShowMessage] = useState(false);
+  const dispatch = useDispatch();
+  const [showMessage, setShowMessage] = useState(true);
   const [email, setEmail] = useState("");
 
-  const isSuccess = false;
+  const { isLoading, isSuccess, isError } = useSelector(
+    (state) => state.newsletters
+  );
+
+  useEffect(() => {
+    if (isError || isSuccess) {
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false);
+        dispatch(RESET());
+      }, 3000);
+    }
+    if (isSuccess) {
+      setEmail("");
+    }
+  }, [isSuccess, isError, dispatch]);
 
   const isEmailValid = (email) => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -14,11 +38,9 @@ const Newsletter = () => {
   };
 
   const handleClick = () => {
-    setEmail("");
-    setShowMessage(true);
-    setTimeout(() => {
-      setShowMessage(false);
-    }, 3000);
+    if (email !== "" && isEmailValid(email)) {
+      dispatch(createNewsletter({ email }));
+    }
   };
 
   return (
@@ -32,7 +54,7 @@ const Newsletter = () => {
         </div>
       </div>
       <div className="w-full mt-3 md:mt-0 flex justify-end">
-        <div className="flex w-full rounded-lg border md:max-w-[400px]">
+        <div className="flex w-full rounded-lg bg-white border md:max-w-[400px]">
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -43,11 +65,26 @@ const Newsletter = () => {
           <button
             onClick={() => handleClick()}
             className={` rounded-r-lg p-2 m-[1px]  hover:bg-colorPrimaryHover  text-white ${
-              showMessage ? "bg-emerald-600" : "bg-colorPrimary"
-            } `}
-            disabled={!email || !isEmailValid(email)}
+              showMessage && isSuccess
+                ? "bg-emerald-600"
+                : showMessage && isError
+                ? "bg-red-500"
+                : "bg-colorPrimary"
+            } ${
+              isLoading || !email || !isEmailValid(email)
+                ? "cursor-not-allowed opacity-80"
+                : "cursor-pointer opacity-100"
+            }`}
+            disabled={isLoading || !email || !isEmailValid(email)}
           >
-            {showMessage ? (
+            {showMessage && isError ? (
+              <span className="flex items-center gap-1">
+                Göndərilmədi
+                <span className="flex items-center pl-3 text-white">
+                  <MdError className="w-5 h-5 " aria-hidden="true" />
+                </span>
+              </span>
+            ) : showMessage && isSuccess ? (
               <span className="flex items-center gap-1">
                 Göndərildi
                 <span className="flex items-center pl-3 text-white">

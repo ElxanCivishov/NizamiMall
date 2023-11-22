@@ -27,21 +27,21 @@ const Header = () => {
   return (
     <header className="bg-white sticky  border-b top-0 z-50">
       <div className="container py-1  select-none">
-        <nav class="w-full z-20 top-0 start-0 ">
-          <div class="flex flex-wrap items-center justify-between mx-auto p-4">
-            <Link
-              to="/"
-              class="flex items-center space-x-3 rtl:space-x-reverse"
-            >
-              <img src="/images/logo.jpg" class="h-8" alt="Flowbite Logo" />
-              <span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-500">
+        <nav className="w-full z-20 top-0 start-0 ">
+          <div className="flex  items-center justify-between mx-auto p-4">
+            <Link to="/" className="flex items-center gap-2 group">
+              <img src="/images/logo.jpg" className="h-8" alt="Logo" />
+              <span className="text-base md:text-xl font-semibold whitespace-nowrap text-colorPrimary group-hover:opacity-80 transition-all duration-150">
                 Nizami Mall
               </span>
             </Link>
-            <div class="items-center justify-between hidden w-full md:flex md:w-auto ">
-              <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg  md:space-x-8  md:flex-row md:mt-0 md:border-0 ">
-                {navs.map((nav) => (
-                  <li class="block py-2 px-3 text-gray-500 rounded  md:p-0 ">
+            <div className="items-center justify-between hidden w-full md:flex md:w-auto ">
+              <ul className="flex gap-1 font-medium">
+                {navs.map((nav, index) => (
+                  <li
+                    key={index}
+                    className="block py-2 px-3 text-gray-600 rounded "
+                  >
                     <NavLink
                       to={nav.path}
                       className="text-sm uppercase hover:text-colorPrimary"
@@ -57,7 +57,7 @@ const Header = () => {
                 label={
                   <span className="flex items-center gap-2">
                     <FaLocationDot />
-                    <span className="hidden md:inline-block">
+                    <span className="hidden lg:inline-block">
                       Mall xəritəsi
                     </span>
                   </span>

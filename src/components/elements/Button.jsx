@@ -12,7 +12,7 @@ const Button = ({
     <button
       onClick={onClick}
       type={type}
-      className={`w-[full] p-2 text-xs md:text-base font-medium text-center rounded-lg bg-colorBlack  text-white select-none  ${
+      className={`w-[full] p-2 text-xs md:text-base font-medium text-center rounded-lg bg-gray-600  text-white select-none  ${
         isLoading || disabled
           ? "text-gray-600  bg-gray-600 cursor-not-allowed"
           : "hover:text-zinc-800 hover:bg-colorPrimary"

@@ -6,8 +6,6 @@ import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import "react-quill/dist/quill.snow.css";
-
 import ThemeProvider from "./utils/ThemeContext";
 import App from "./App";
 

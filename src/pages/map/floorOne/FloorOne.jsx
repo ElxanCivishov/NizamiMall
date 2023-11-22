@@ -3,11 +3,13 @@ import { AiFillCheckCircle } from "react-icons/ai";
 import { convertToText } from "../mapHooks";
 import { dynamicNames, svgPaths, svgTexts } from "./svgData";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const FloorOne = () => {
   const [selected, setSelected] = useState(null);
+  const navigate = useNavigate();
 
-  const handleClick = (item, e) => {
+  const handleClick = (item) => {
     setSelected(item);
   };
 
@@ -17,24 +19,18 @@ const FloorOne = () => {
 
   return (
     <div className="bg-white rounded-lg w-full select-none">
-      <div className="flex gap-2 items-center justify-between  px-2 py-1 mb-2">
-        <div className="flex gap-1 items-center justify-between  p-2 rounded-lg text-black text-xs  md:text-base shadow-lg">
-          <AiFillCheckCircle className="text-emerald-500 animate-bounce" />
-          <span className=" hover:underline hover:text-colorPrimary cursor-pointer min-w-[200px]">
-            {activeName ? activeName : "Seçin..."}
-          </span>
-        </div>
-        <div className="flex gap-1 items-center justify-between  px-2 py-1 rounded-lg text-black text-xs  md:text-base shadow-lg cursor-pointer group">
-          <FaArrowAltCircleLeft className="animate-bounce md:text-base" />
-          <span className="md:text-base font-semibold">Geri</span>
-        </div>
+      <div className="flex gap-1 items-center  p-2 rounded-lg text-black text-xs  md:text-base shadow-lg max-w-max">
+        <AiFillCheckCircle className="text-emerald-500 animate-bounce" />
+        <span className=" hover:underline hover:text-colorPrimary cursor-pointer min-w-[200px]">
+          {activeName ? activeName : "Seçin..."}
+        </span>
       </div>
 
-      <div className="relative w-full max-w-4xl mx-auto group h-[400px]  text-colorPrimary  mb-5">
+      <div className="relative w-full max-w-4xl mx-auto group h-[500px]  text-colorPrimary  mb-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 951.1 757.69"
-          className="w-full h-full p-2"
+          className="w-full h-full p-4"
         >
           <defs>
             <style>{`.cls-1{letter-spacing:-.01em;font-weight:600 ;cursor:pointer;}

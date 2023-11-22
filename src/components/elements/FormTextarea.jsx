@@ -29,7 +29,7 @@ const FormTextarea = ({
         {...register}
         autoComplete="off"
         value={defaultValue}
-        className={` text-gray-900 text-sm md:text-base rounded-lg focus:ring-gray-300 focus:border-gray-300 block w-full p-1 mdIp-2.5 transition duration-200 no-spin shadow-md ${classInput} ${
+        className={` text-gray-900 text-sm md:text-base rounded-lg focus:ring-gray-300 focus:border-gray-300 block w-full p-1 mdIp-2.5 transition duration-200 no-spin shadow-md min-h-[40px] ${classInput} ${
           errors && selectValid
             ? "border-red-300 border-3"
             : "border-slate-100 border"
