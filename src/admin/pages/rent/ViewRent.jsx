@@ -4,6 +4,7 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
 import { convertDateTime } from "../../../helper/date-fns";
 import { getRent } from "../../../features/rent/rentSlice";
+import { Meta } from "../../../components/layout";
 
 const ViewRent = () => {
   const dispatch = useDispatch();
@@ -22,17 +23,18 @@ const ViewRent = () => {
 
   return (
     <>
+      <Meta title="İcarə" />
       <div className="p-6 bg-white   rounded-lg shadow dark:bg-slate-700 dark:bg-opacity-50  ">
         <div className="flex items-center gap-2 justify-between mb-3">
-          <h3 className="text-gray-700  dark:text-slate-100 text-xl">
+          <h3 className="text-gray-700  dark:text-slate-100 text-xl font-semibold">
             Icarə müraciəti
           </h3>
-          <p>
+          <p className="font-semibold">
             Tarix:
             <span className="ms-2">{convertDateTime(rent?.created_at)}</span>
           </p>
         </div>
-        <div className="flex  flex-col gap-3">
+        <div className="flex  flex-col gap-3 mt-5">
           <div className="flex gap-2 items-center">
             <h5 className="text-base  dark:text-gray-200">Ad:</h5>
             <p className="font-normal text-gray-700  dark:text-gray-400">
@@ -69,7 +71,7 @@ const ViewRent = () => {
 
         <Link
           to="/admin/rents"
-          className="text-white bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 shadow-lg shadow-yellow-500/50 dark:shadow-lg dark:shadow-yellow-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 flex max-w-max items-center mt-4 "
+          className="text-white bg-emerald-500  shadow-lg shadow-gray-500/50  font-medium rounded-lg text-sm px-3 py-2 text-center  flex max-w-max items-center my-4"
         >
           <BiArrowBack className="me-2" /> geri
         </Link>

@@ -293,7 +293,7 @@ export const dynamicNames = [
   },
   {
     uid: 21,
-    text: "Lacosm etic",
+    text: "Lacosmetic",
     x1: 5,
     x2: 5,
     y1: 15,

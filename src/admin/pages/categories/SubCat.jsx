@@ -13,6 +13,7 @@ import {
   updateASubCat,
 } from "../../../features/subCategory/subCategorySlice";
 import { convertDateTime } from "../../../helper/date-fns";
+import { Meta } from "../../../components/layout";
 
 const SubCat = () => {
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ const SubCat = () => {
 
   return (
     <>
+      <Meta title="Alt kateqoriyalar" />
       <div className="col-span-full xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-lg">
         <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center gap-2">
           <h2 className="font-semibold text-slate-800 dark:text-slate-100">
@@ -60,7 +62,7 @@ const SubCat = () => {
           </h2>
           <button
             type="button"
-            className="text-white bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 shadow-lg shadow-yellow-500/50 dark:shadow-lg dark:shadow-yellow-800/80 font-medium rounded-full text-sm px-3 py-2 text-center mr-2 mb-2 flex max-w-max items-center"
+            className="text-white bg-emerald-500  shadow-lg shadow-gray-500/50 dark:shadow-lg dark:shadow-gray-800/80 font-medium rounded-full text-sm px-3 py-2 text-center mr-2 mb-2 flex max-w-max items-center"
             onClick={() => setOpenGeneralModal(true)}
           >
             <MdAddCircle className="me-2 text-xl" /> Yeni
@@ -120,7 +122,7 @@ const SubCat = () => {
                       <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center justify-center gap-3 text-[18px]">
                           <button
-                            className="text-yellow-500 bg-transparent border-0"
+                            className="text-emerald-500 bg-transparent border-0"
                             onClick={() => {
                               setSubCat(subcat);
                               setOpenGeneralModal(true);

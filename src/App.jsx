@@ -36,6 +36,7 @@ import { EditLayout } from "./admin/pages/editLayout";
 import { ParentCat, SubCat } from "./admin/pages/categories";
 import Login from "./admin/pages/auth/login/Login";
 import { BlogInfo, ServisInfo, Slider, Sliders } from "./admin/pages/home";
+import { Floor, FloorOne, FloorThree, FloorTwo } from "./admin/pages/map";
 
 function App() {
   const location = useLocation();
@@ -91,26 +92,27 @@ function App() {
           <Route path="home/slider/:id" element={<Slider />} />
           <Route path="home/servis" element={<ServisInfo />} />
           <Route path="home/blog" element={<BlogInfo />} />
-
           <Route path="services" element={<Services />} />
           <Route path="service" element={<Service />} />
           <Route path="service/:id" element={<Service />} />
-
           <Route path="blogs" element={<Bloglist />} />
           <Route path="blog" element={<Blog />} />
           <Route path="blog/:id" element={<Blog />} />
-
           <Route path="rents" element={<Rents />} />
           <Route path="rents/:id" element={<ViewRent />} />
+
+          <Route path="map/floorOne" element={<FloorOne />} />
+          <Route path="map/floorTwo" element={<FloorTwo />} />
+          <Route path="map/floorThree" element={<FloorThree />} />
+          <Route path="map" element={<Floor />} />
+          <Route path="map/:id" element={<Floor />} />
 
           <Route path="categories/parent" element={<ParentCat />} />
           <Route path="categories/sub" element={<SubCat />} />
           <Route path="layout" element={<EditLayout />} />
-
           <Route path="profile" element={<Profile />} />
           <Route path="edit-password" element={<ChangePassword />} />
           <Route path="subscribe" element={<Newsletter />} />
-
           {/* <Route path="profile" element={<Contact />} /> */}
           <Route path="*" element={<NotFoundAdmin />} />
         </Route>

@@ -75,7 +75,7 @@ const BlogInfo = () => {
 
   return (
     <>
-      <Meta title="Profil" />
+      <Meta title="Xəbər info" />
       <div className="w-full rounded-lg bg-white p-2">
         <h3 className="text-sm md:text-base text-center text-zinc-600 font-semibold px-4 my-3">
           Ana səhifə - xəbərlər haqqında qısa məlumat

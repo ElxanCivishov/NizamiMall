@@ -15,15 +15,15 @@ export default function SelectWithSearch({
   trigger,
   required,
   errors,
-  searchKeys = ["title"],
-  mainKey = "title",
+  searchKeys = ["name"],
+  mainKey = "name",
   classSelect,
   disabled = false,
   onChange,
 }) {
   const validData = useSelector((state) => state.data.validation);
   const [selected, setSelected] = useState(
-    options.find((option) => option._id === value)
+    options.find((option) => option.id === value)
   );
 
   const [q, setQ] = useState("");
@@ -39,7 +39,7 @@ export default function SelectWithSearch({
     if (value === undefined) {
       setSelected(null);
     } else {
-      setSelected(options.find((option) => option._id === value));
+      setSelected(options.find((option) => option.id === value));
     }
   }, [value]);
 
@@ -67,7 +67,7 @@ export default function SelectWithSearch({
               {
                 target: {
                   name: register.name,
-                  value: value?._id,
+                  value: value?.id,
                 },
               },
               onChange

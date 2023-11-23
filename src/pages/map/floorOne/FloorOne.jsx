@@ -2,7 +2,6 @@ import { useState } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { convertToText } from "../mapHooks";
 import { dynamicNames, svgPaths, svgTexts } from "./svgData";
-import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const FloorOne = () => {

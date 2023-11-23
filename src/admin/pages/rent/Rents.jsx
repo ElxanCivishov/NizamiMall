@@ -7,6 +7,7 @@ import { DeleteModal, NotResult } from "../../components";
 import { convertDateTime } from "../../../helper/date-fns";
 
 import { Loader } from "../../../components";
+import { Meta } from "../../../components/layout";
 
 const Rents = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const Rents = () => {
 
   return (
     <>
+      <Meta title="Icarə müraciətləri" />
       <div className="col-span-full xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-lg ">
         <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
           <h2 className="font-semibold md:text-2xl text-gray-600 dark:text-slate-100">

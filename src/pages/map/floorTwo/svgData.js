@@ -346,7 +346,7 @@ export const dynamicNames = [
   },
   {
     uid: 39,
-    text: "Bakust reet",
+    text: "Baku street",
     x1: 20,
     x2: 10,
     y1: 15,

@@ -327,7 +327,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                             </svg>
 
                             <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                              Servislər
+                              Servis
                             </span>
                           </div>
                           {/* Icon */}
@@ -357,7 +357,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               }
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                List
+                                Servislər
                               </span>
                             </NavLink>
                           </li>
@@ -426,7 +426,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               />
                             </svg>
                             <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                              Xəbərlər
+                              Xəbər
                             </span>
                           </div>
                           {/* Icon */}
@@ -456,7 +456,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               }
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                List
+                                Xəbərlər
                               </span>
                             </NavLink>
                           </li>
@@ -522,6 +522,122 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   </div>
                 </NavLink>
               </li>
+
+              {/* map */}
+              <SidebarLinkGroup
+                activecondition={pathname.includes("admin/map")}
+              >
+                {(handleClick, open) => {
+                  return (
+                    <>
+                      <div
+                        className={`block text-slate-200 truncate transition duration-150 ${
+                          pathname.includes("admin/map")
+                            ? "hover:text-slate-200"
+                            : "hover:text-white"
+                        }`}
+                        onClick={() => {
+                          sidebarExpanded
+                            ? handleClick()
+                            : setSidebarExpanded(true);
+                        }}
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center">
+                            <svg
+                              className="shrink-0 h-6 w-6"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                className={`fill-current ${
+                                  pathname.includes("admin/map")
+                                    ? "text-yellow-500"
+                                    : "text-slate-600"
+                                }`}
+                                d="M19 5h1v14h-2V7.414L5.707 19.707 5 19H4V5h2v11.586L18.293 4.293 19 5Z"
+                              />
+                              <path
+                                className={`fill-current ${
+                                  pathname.includes("admin/map")
+                                    ? "text-yellow-300"
+                                    : "text-slate-400"
+                                }`}
+                                d="M5 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm14 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8ZM5 23a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm14 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"
+                              />
+                            </svg>
+                            <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                              Xəritə
+                            </span>
+                          </div>
+                          {/* Icon */}
+                          <div className="flex shrink-0 ml-2">
+                            <svg
+                              className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 ${
+                                open && "rotate-180"
+                              }`}
+                              viewBox="0 0 12 12"
+                            >
+                              <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
+                        <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
+                          <li className="mb-1 last:mb-0">
+                            <NavLink
+                              end
+                              to="/admin/map/floorOne"
+                              className={({ isActive }) =>
+                                "block transition duration-150 truncate " +
+                                (isActive
+                                  ? "text-yellow-500"
+                                  : "text-slate-400 hover:text-slate-200")
+                              }
+                            >
+                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                                Mərtəbə bir
+                              </span>
+                            </NavLink>
+                          </li>
+                          <li className="mb-1 last:mb-0">
+                            <NavLink
+                              end
+                              to="/admin/map/floorTwo"
+                              className={({ isActive }) =>
+                                "block transition duration-150 truncate " +
+                                (isActive
+                                  ? "text-yellow-500"
+                                  : "text-slate-400 hover:text-slate-200")
+                              }
+                            >
+                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                                Mərtəbə iki
+                              </span>
+                            </NavLink>
+                          </li>
+                          <li className="mb-1 last:mb-0">
+                            <NavLink
+                              end
+                              to="/admin/map/floorThree"
+                              className={({ isActive }) =>
+                                "block transition duration-150 truncate " +
+                                (isActive
+                                  ? "text-yellow-500"
+                                  : "text-slate-400 hover:text-slate-200")
+                              }
+                            >
+                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                                Mərtəbə üç
+                              </span>
+                            </NavLink>
+                          </li>
+                        </ul>
+                      </div>
+                    </>
+                  );
+                }}
+              </SidebarLinkGroup>
             </ul>
           </div>
         </div>

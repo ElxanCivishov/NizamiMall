@@ -16,6 +16,9 @@ import TruncatedHtml from "../../../components/TruncatedHtml";
 import { FaEdit } from "react-icons/fa";
 import { FaCirclePlus } from "react-icons/fa6";
 
+import notImage from "/images/noImage.png";
+import { Meta } from "../../../components/layout";
+
 const Services = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
@@ -50,6 +53,7 @@ const Services = () => {
 
   return (
     <>
+      <Meta title="Servislər" />
       <div className="col-span-full xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-lg ">
         <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center gap-2">
           <h2 className="font-semibold text-slate-800 dark:text-slate-100">
@@ -75,10 +79,21 @@ const Services = () => {
                       <div className="font-semibold">#</div>
                     </th>
                     <th className="p-2 whitespace-nowrap">
-                      <div className="font-semibold text-left">Şəkil</div>
+                      <div className="font-semibold text-left">Logo</div>
+                    </th>
+                    <th className="p-2 whitespace-nowrap">
+                      <div className="font-semibold text-left">Banner</div>
                     </th>
                     <th className="p-2 whitespace-nowrap">
                       <div className="font-semibold text-left">Başlıq</div>
+                    </th>
+                    <th className="p-2 whitespace-nowrap">
+                      <div className="font-semibold text-left">Kateqoriya</div>
+                    </th>
+                    <th className="p-2 whitespace-nowrap">
+                      <div className="font-semibold text-left">
+                        Alt kateqoriya
+                      </div>
                     </th>
                     <th className="p-2 whitespace-nowrap">
                       <div className="font-semibold text-left">Content</div>
@@ -96,44 +111,62 @@ const Services = () => {
                   {services.map((service, index) => (
                     <tr key={service.id} className="text-xs">
                       <th className="p-2 whitespace-nowrap">{index + 1}</th>
-
                       <td className="p-2 whitespace-nowrap  min-w-[60px]">
                         <div className="w-10 shrink-0 relative">
                           <img
                             className="w-full h-full"
-                            src={service.image}
+                            src={service.logo || notImage}
                             alt=""
                           />
                         </div>
                       </td>
-
+                      <td className="p-2 whitespace-nowrap  min-w-[60px]">
+                        <div className="w-10 shrink-0 relative">
+                          <img
+                            className="w-full h-full"
+                            src={service.image || notImage}
+                            alt=""
+                          />
+                        </div>
+                      </td>
                       <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="font-medium text-slate-800 dark:text-slate-100">
-                            {service.title}
+                            {service.name}
                           </div>
                         </div>
                       </td>
-
+                      <td className="p-2 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="font-medium text-slate-800 dark:text-slate-100">
+                            {service?.category_name}
+                          </div>
+                        </div>
+                      </td>
+                      <td className="p-2 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="font-medium text-slate-800 dark:text-slate-100">
+                            {service?.subcategory_name}
+                          </div>
+                        </div>
+                      </td>
                       <td className="p-2 whitespace-nowrap">
                         <div className="text-left font-medium">
                           <div className="text-left ">
                             <TruncatedHtml
-                              html={service.content}
+                              html={service.description || ""}
                               maxLength={60}
                             />
                           </div>
                         </div>
                       </td>
-
                       <td className="p-2 whitespace-nowrap">
                         <div className="text text-center">
                           {convertDateTime(service.created_at)}
                         </div>
                       </td>
-
                       <td className="p-2 whitespace-nowrap ">
-                        <div className="flex align-center justify-center gap-2 text-base">
+                        <div className="flex align-center justify-center gap-2 text-sm">
                           <Link
                             className=" text-emerald-500"
                             to={`/admin/service/${service.id}`}
