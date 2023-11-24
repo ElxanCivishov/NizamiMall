@@ -14,7 +14,14 @@ import { Layout } from "./components/layout";
 
 import { SingleBlog, SingleProduct, SingleService } from "./pages/single";
 
-import { Home, Blogs, ShopsAndRestaurants, NotFound, Rent } from "./pages";
+import {
+  Home,
+  Blogs,
+  ShopsAndRestaurants,
+  NotFound,
+  Rent,
+  ErrorPage,
+} from "./pages";
 
 import Map from "./pages/map/Map";
 
@@ -30,6 +37,7 @@ import {
   Rents,
   Service,
   Services,
+  ServisBanner,
   ViewRent,
 } from "./admin/pages";
 import { EditLayout } from "./admin/pages/editLayout";
@@ -79,6 +87,7 @@ function App() {
 
           {/* not found */}
           <Route path="*" element={<NotFound />} />
+          <Route path="error" element={<ErrorPage />} />
         </Route>
 
         {/* auth */}
@@ -92,6 +101,7 @@ function App() {
           <Route path="home/slider/:id" element={<Slider />} />
           <Route path="home/servis" element={<ServisInfo />} />
           <Route path="home/blog" element={<BlogInfo />} />
+          <Route path="service-info" element={<ServisBanner />} />
           <Route path="services" element={<Services />} />
           <Route path="service" element={<Service />} />
           <Route path="service/:id" element={<Service />} />

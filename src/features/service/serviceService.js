@@ -1,8 +1,8 @@
 import axios from "axios";
 import { base_url } from "../../utils/baseUrl";
 
-const getServices = async () => {
-  const response = await axios.get(`${base_url}companies`);
+const getServices = async (search) => {
+  const response = await axios.get(`${base_url}companies?${search}`);
   return response.data;
 };
 const createService = async (service) => {

@@ -9,6 +9,7 @@ import { addValidation } from "../../../features/dataSlice";
 import {
   Button,
   FormInput,
+  FormTextarea,
   ReactQuillInput,
 } from "../../../components/elements";
 import { Meta } from "../../../components/layout";
@@ -95,13 +96,13 @@ const ServisInfo = () => {
             placeholder="Başlıq..."
           />
 
-          <ReactQuillInput
+          <FormTextarea
             register={register("content")}
             errors={errors.content}
             label="Content"
-            value={watch("content")}
+            rows={5}
+            classInput="max-h-[300px] p-2"
             placeholder="content daxil edin..."
-            name="content"
           />
 
           <div className="flex items-center justify-center">

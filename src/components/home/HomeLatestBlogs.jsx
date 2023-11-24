@@ -1,58 +1,65 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 
-const HomeLatestBlogs = () => {
-  return (
-    <section className="container p-4">
-      <div className="flex flex-col md:flex-row gap-10">
-        <div className="rounded-lg shadow-lg w-full md:max-w-max bg-white p-3 flex flex-col gap-4 px-5 md:px-10 justify-center min-h-[350px]">
-          <h5 className="text-sm md:text-base text-gray-600 font-semibold  ">
-            Ən son məlumatlardan xəbərdar olun!
-          </h5>
-          <p className="text-gray-600  flex items-center text-base ">
-            Yeniliklər, endirimlər və xəbərlərdən məlumatınız olsun
-          </p>
-          <Link
-            to="/xeberler-ve-yenilikler"
-            className="text-gray-600   hover:text-colorPrimary hover:underline flex items-center text-base md:text-xl animate-pulse"
-          >
-            Yeniliklər və xəbərlər
-            <FaArrowRight className="ms-1 text-sm md:text-base" />
-          </Link>
-        </div>
+import { RESET, getBlogs } from "../../features/blogs/blogSlice";
+import Loader from "../Loader";
+import TruncatedHtml from "../TruncatedHtml";
+import { convertDateTime } from "../../helper/date-fns";
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 ">
-          {Array.from({ length: 2 }).map((item, index) => (
-            <Link to="/blog/id" className=" rounded-md w-full">
+const HomeLatestBlogs = () => {
+  const dispatch = useDispatch();
+
+  const { blogs, isLoading, isSuccess } = useSelector((state) => state.blogs);
+
+  useEffect(() => {
+    dispatch(getBlogs());
+  }, []);
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(RESET());
+    }
+  }, [dispatch, isSuccess]);
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full h-full">
+      {isLoading ? (
+        <Loader />
+      ) : (
+        blogs?.length > 0 &&
+        blogs.slice(0, 2).map((blog) => (
+          <div key={blog.id} className="w-full h-full ">
+            <Link
+              to={`xeber/${blog.id}`}
+              className=" rounded-md w-full h-full flex flex-col items-center justify-between"
+            >
               <div className="w-full relative rounded-lg ">
                 <img
-                  src="/images/photo/p3.jpeg"
+                  src={blog.image}
                   alt="yenilik"
-                  className="w-full max-h-[300px] rounded-lg"
+                  className="w-full md:max-h-[400px] rounded-lg"
                 />
               </div>
-              <div className="p-4 bg-white rounded-lg mt-2 flex flex-col gap-2 md:gap-3 shadow-lg">
-                <h5 className="text-sm md:text-base text-colorBlack font-semibold">
-                  Lorem ipsum dolor sit.
+              <div className="p-4 bg-white rounded-lg mt-2 flex flex-col gap-2 md:gap-3 shadow-lg w-full h-full ">
+                <h5 className="text-sm md:text-base text-gray-600 font-semibold">
+                  {blog.title}
                 </h5>
-                <p className="text-[13px]  font-normal text-colorLight">
-                  You’re only as good as your last collection, which is an
-                  enormous people need…
-                </p>
-                <Link to="" className="  font-medium px-3  ">
-                  <span className="flex items-center border-b  max-w-max text-xs md:text-sm  text-colorBlack hover:text-colorPrimary hover:border-colorPrimary">
+                <div className="text-sm  font-normal text-colorLight">
+                  <TruncatedHtml html={blog.content || ""} maxLength={198} />
+                </div>
+                <div className="font-medium">
+                  <span className="flex items-center justify-end border-b  max-w-max text-xs md:text-sm  text-colorBlack hover:text-colorPrimary hover:border-colorPrimary">
                     Ətraflı <FaArrowRight className="ms-1" />
                   </span>
-                </Link>
+                </div>
               </div>
             </Link>
-          ))}
-          {/* <BlogCard /> */}
-          {/* <BlogCard /> */}
-          {/* <BlogCard /> */}
-        </div>
-      </div>
-    </section>
+          </div>
+        ))
+      )}
+    </div>
   );
 };
 

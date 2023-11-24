@@ -76,13 +76,13 @@ function DropdownHelp({ align }) {
           onBlur={() => setDropdownOpen(false)}
         >
           <div className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase pt-1.5 pb-2 px-3">
-            Shortcuts
+            Qısa yol
           </div>
           <ul>
             <li>
               <Link
                 className="font-medium text-sm text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center py-1 px-3"
-                to="https://motoaz.netlify.app"
+                to="/"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
                 target="_blank"
               >
@@ -92,7 +92,7 @@ function DropdownHelp({ align }) {
                 >
                   <path d="M10.5 0h-9A1.5 1.5 0 000 1.5v9A1.5 1.5 0 001.5 12h9a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0010.5 0zM10 7L8.207 5.207l-3 3-1.414-1.414 3-3L5 2h5v5z" />
                 </svg>
-                <span>Go site</span>
+                <span>Sayta keç</span>
               </Link>
             </li>
           </ul>

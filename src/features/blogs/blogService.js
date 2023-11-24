@@ -1,8 +1,8 @@
 import axios from "axios";
 import { base_url } from "../../utils/baseUrl";
 
-const getBlogs = async () => {
-  const response = await axios.get(`${base_url}blogs`);
+const getBlogs = async (search) => {
+  const response = await axios.get(`${base_url}blogs?${search}`);
   return response.data;
 };
 const createBlog = async (blog) => {

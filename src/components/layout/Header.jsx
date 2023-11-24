@@ -1,8 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 import MobileNavigation from "../MobileNavigation";
-import { FaSearch } from "react-icons/fa";
 import LinkBtn from "../elements/LinkBtn";
 import { FaLocationDot } from "react-icons/fa6";
+
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import defLogo from "/images/logo.png";
+
+import { RESET, getLayout } from "../../features/layout/layoutSlice";
 
 const navs = [
   {
@@ -24,15 +30,33 @@ const navs = [
 ];
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const { isSuccess, layout } = useSelector((state) => state.layout);
+
+  useEffect(() => {
+    dispatch(getLayout());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(RESET());
+    }
+  }, [isSuccess, dispatch]);
+
   return (
     <header className="bg-white sticky  border-b top-0 z-50">
       <div className="container py-1  select-none">
         <nav className="w-full z-20 top-0 start-0 ">
           <div className="flex  items-center justify-between mx-auto p-4">
             <Link to="/" className="flex items-center gap-2 group">
-              <img src="/images/logo.jpg" className="h-8" alt="Logo" />
+              <img
+                src={layout ? layout.logo : defLogo}
+                className="h-8"
+                alt="Logo"
+              />
               <span className="text-base md:text-xl font-semibold whitespace-nowrap text-colorPrimary group-hover:opacity-80 transition-all duration-150">
-                Nizami Mall
+                {layout ? layout.title : "Nizami Mall"}
               </span>
             </Link>
             <div className="items-center justify-between hidden w-full md:flex md:w-auto ">

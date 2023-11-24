@@ -6,11 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
 import { addValidation } from "../../../features/dataSlice";
 
-import {
-  Button,
-  FormInput,
-  ReactQuillInput,
-} from "../../../components/elements";
+import { Button, FormInput, FormTextarea } from "../../../components/elements";
 import { Meta } from "../../../components/layout";
 import {
   RESET,
@@ -95,13 +91,13 @@ const BlogInfo = () => {
             placeholder="Başlıq..."
           />
 
-          <ReactQuillInput
+          <FormTextarea
             register={register("content")}
             errors={errors.content}
             label="Content"
-            value={watch("content")}
+            rows={5}
+            classInput="max-h-[300px] p-2"
             placeholder="content daxil edin..."
-            name="content"
           />
 
           <div className="flex items-center justify-center">

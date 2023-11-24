@@ -7,6 +7,7 @@ import { MdAddCircle } from "react-icons/md";
 import GeneralModal from "./GeneralModal";
 import { DeleteModal } from "../../components";
 import {
+  RESET,
   createSubCat,
   deleteSubCat,
   getSubCats,
@@ -17,7 +18,7 @@ import { Meta } from "../../../components/layout";
 
 const SubCat = () => {
   const dispatch = useDispatch();
-  const { subcats } = useSelector((state) => state.subCats);
+  const { subcats, isSuccess } = useSelector((state) => state.subCats);
 
   const [openGeneralModal, setOpenGeneralModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -25,7 +26,13 @@ const SubCat = () => {
 
   useEffect(() => {
     dispatch(getSubCats());
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(RESET());
+    }
+  }, [dispatch, isSuccess]);
 
   const handleCloseDeleteModal = () => {
     setOpenDeleteModal(false);

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 import SidebarLinkGroup from "./SidebarLinkGroup";
-import logo from "/images/logo.jpg";
+import logo from "/images/logo.png";
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const location = useLocation();
@@ -345,6 +345,22 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       </div>
                       <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
+                          <li className="mb-1 last:mb-0">
+                            <NavLink
+                              end
+                              to="/admin/service-info"
+                              className={({ isActive }) =>
+                                "block transition duration-150 truncate " +
+                                (isActive
+                                  ? "text-yellow-500"
+                                  : "text-slate-400 hover:text-slate-200")
+                              }
+                            >
+                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                                Başlıq
+                              </span>
+                            </NavLink>
+                          </li>
                           <li className="mb-1 last:mb-0">
                             <NavLink
                               end

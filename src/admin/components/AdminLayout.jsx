@@ -4,6 +4,8 @@ import { Outlet, Navigate } from "react-router-dom";
 import Sidebar from "../partials/Sidebar";
 import Header from "../partials/Header";
 import { useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -20,6 +22,17 @@ const AdminLayout = () => {
             </div>
           </main>
         </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          theme="light"
+        />
       </div>
     );
   }

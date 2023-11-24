@@ -137,7 +137,7 @@ export const sliderSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.message = action.payload;
-        toast.error("Xəta baş verdi yenidən cəhd edin.");
+        // toast.error("Xəta baş verdi yenidən cəhd edin.");
       })
       .addCase(createSlider.pending, (state) => {
         state.isLoading = true;

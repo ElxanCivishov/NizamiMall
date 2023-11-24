@@ -3,7 +3,7 @@ import {
   HomeCategories,
   HomeInformation,
   HomeSlider,
-  HomeLatestBlogs,
+  HomeBlogInfo,
 } from "../components/home";
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
       <HomeSlider />
       <HomeCategories />
       <HomeInformation />
-      <HomeLatestBlogs />
+      <HomeBlogInfo />
     </main>
   );
 };

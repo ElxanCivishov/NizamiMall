@@ -4,9 +4,9 @@ import { toast } from "react-toastify";
 
 export const getServices = createAsyncThunk(
   "service/get-services",
-  async (thunkAPI) => {
+  async (search, thunkAPI) => {
     try {
-      return await serviceService.getServices();
+      return await serviceService.getServices(search);
     } catch (error) {
       const message =
         (error.response &&
