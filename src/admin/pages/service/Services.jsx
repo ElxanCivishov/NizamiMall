@@ -43,7 +43,6 @@ const Services = () => {
 
   const handleDelete = ({ id }) => {
     dispatch(deleteService(id));
-    console.log(id);
     setOpen(false);
   };
 

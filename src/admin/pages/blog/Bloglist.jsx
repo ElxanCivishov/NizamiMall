@@ -37,7 +37,6 @@ const Blogs = () => {
 
   const handleDelete = ({ id }) => {
     dispatch(deleteBlog(id));
-    console.log(id);
     setOpen(false);
   };
 

@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Transition from "../../utils/Transition";
 
-import UserAvatar from "/images/noImage.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/auth/authSlice";
 
@@ -11,8 +10,6 @@ function DropdownProfile({ align }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const { user } = useSelector((state) => state.auth);
-
-  console.log("dropd", user);
 
   const trigger = useRef(null);
   const dropdown = useRef(null);

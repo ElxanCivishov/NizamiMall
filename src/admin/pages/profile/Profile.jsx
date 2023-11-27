@@ -66,9 +66,6 @@ const Profile = () => {
     }
   };
 
-  // console.log(user);
-  // console.log(message);
-
   return (
     <>
       <Meta title="Profil" />

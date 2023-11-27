@@ -5,7 +5,6 @@ const DeleteModal = ({ handleDelete, handleClose, data, text }) => {
   useEffect(() => {
     closeModal(handleClose);
   }, [handleClose]);
-  console.log(data);
   return (
     <div
       id="popup-modal"

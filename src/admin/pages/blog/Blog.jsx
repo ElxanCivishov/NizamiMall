@@ -122,9 +122,6 @@ const Blog = () => {
     [setValue, setPreviewImage]
   );
 
-  console.log(watch());
-  console.log(blog);
-
   return (
     <>
       <Meta title="Xəbər" />

@@ -43,7 +43,6 @@ const initialValue = {
   category_id: 24,
   subcategory_id: 11,
   logo: "",
-  image: "",
 };
 
 const Service = () => {
@@ -51,7 +50,6 @@ const Service = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [previewImage, setPreviewImage] = useState();
-  const [previewBanner, setPreviewBanner] = useState();
   const { isSuccess, isLoading, service } = useSelector(
     (state) => state.services
   );
@@ -126,9 +124,6 @@ const Service = () => {
     if (previewImage) {
       formData.append("logo", values.logo);
     }
-    if (previewBanner) {
-      formData.append("image", values.image);
-    }
     formData.append("name", values.name);
     formData.append("description", values.description);
     formData.append("category_id", values.category_id);
@@ -165,9 +160,6 @@ const Service = () => {
     },
     [setValue, setPreviewImage]
   );
-
-  console.log(errors);
-  console.log(watch());
 
   return (
     <>
@@ -251,30 +243,6 @@ const Service = () => {
               name="description"
             />
 
-            <div className=" p-2 rounded-md flex items-center gap-3">
-              <input
-                className="hidden"
-                id="banner"
-                type="file"
-                accept="image/*"
-                onChange={(e) => handleImageChange(e, "image")}
-              />
-              <label
-                htmlFor="banner"
-                className="flex items-center  mb-2 text-base  cursor-pointer font-medium text-gray-900 dark:text-white"
-              >
-                <MdCloudUpload className="me-2 text-xl" /> Banner
-              </label>
-              {(previewBanner || service?.image) && (
-                <div className="w-40 border rounded-lg  overflow-hidden dark:bg-gray-800 dark:border-gray-700 relative h-full">
-                  <img
-                    className="w-full max-h-40 object-contain rounded-lg"
-                    src={previewBanner ? previewBanner : service?.image}
-                    alt=""
-                  />
-                </div>
-              )}
-            </div>
             <div className="flex items-center justify-center mb-5">
               <Button
                 onClick={() => handleClick()}

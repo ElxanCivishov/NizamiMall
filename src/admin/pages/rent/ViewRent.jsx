@@ -1,6 +1,6 @@
 import { memo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
 import { convertDateTime } from "../../../helper/date-fns";
 import { getRent } from "../../../features/rent/rentSlice";
@@ -11,15 +11,11 @@ const ViewRent = () => {
 
   const { id } = useParams();
 
-  const { isError, rent } = useSelector((state) => state.rents);
+  const { rent } = useSelector((state) => state.rents);
 
   useEffect(() => {
     dispatch(getRent(id));
   }, [id, dispatch]);
-
-  // if (isError) {
-  //   return "Something went wrong! Please try again!";
-  // }
 
   return (
     <>
