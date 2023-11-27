@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { addValidation } from "../../../../features/dataSlice";
 import { RESET, login } from "../../../../features/auth/authSlice";
 import { Meta } from "../../../../components/layout";
@@ -24,9 +24,10 @@ const initialValue = {
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLoading, isLoggedIn, user, isSuccess } = useSelector(
-    (state) => state.auth
-  );
+  const { isLoading, isLoggedIn, isError, message, user, isSuccess } =
+    useSelector((state) => state.auth);
+
+  const [showError, setShowError] = useState(false);
 
   const {
     handleSubmit,
@@ -55,8 +56,14 @@ const Login = () => {
       navigate("/admin");
     }
 
-    dispatch(RESET());
-  }, [isLoggedIn, isSuccess, user, dispatch]);
+    if (isError) {
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+        dispatch(RESET());
+      }, 5000);
+    }
+  }, [isLoggedIn, isSuccess, isError, user, dispatch]);
 
   const onSubmit = handleSubmit((values) => {
     dispatch(login(values));
@@ -78,7 +85,11 @@ const Login = () => {
           <h3 className="text-base md:text-xl text-center text-zinc-600 font-semibold px-4 mb-3">
             Daxil ol
           </h3>
-
+          {isError && message && showError && (
+            <p className="w-full text-center px-3 py-2 rounded-lg font-semibold my-3 text-sm border border-red-500 text-red-500">
+              {message}
+            </p>
+          )}
           <form
             action=""
             className="flex flex-col space-y-3 gap-2 px-4"

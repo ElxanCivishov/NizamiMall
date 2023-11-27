@@ -39,9 +39,9 @@ let schema = yup.object().shape({
 
 const initialValue = {
   name: "",
-  description: "Cumque vitae in cons.",
-  category_id: 24,
-  subcategory_id: 11,
+  description: "",
+  category_id: null,
+  subcategory_id: null,
   logo: "",
 };
 
@@ -95,7 +95,7 @@ const Service = () => {
     if (isSuccess) {
       resetForm(initialValue);
       dispatch(addValidation(false));
-      // navigate(-1);
+      navigate(-1);
     }
     dispatch(RESET());
   }, [dispatch, isSuccess, navigate]);
@@ -154,8 +154,6 @@ const Service = () => {
       const preview = URL.createObjectURL(selectedImage);
       if (field === "logo") {
         setPreviewImage(preview);
-      } else {
-        setPreviewBanner(preview);
       }
     },
     [setValue, setPreviewImage]
