@@ -12,6 +12,7 @@ import serviceReducer from "../features/service/serviceSlice";
 import mapReducer from "../features/map/mapSlice";
 
 import homeServiceInfoReducer from "../features/home/service/serviceInfoSlice";
+import serviceInfoReducer from "../features/service/serviceInfoSlice";
 import homeBlogInfoReducer from "../features/home/blog/blogInfoSlice";
 import homeSliderReducer from "../features/home/slider/sliderSlice";
 
@@ -30,6 +31,7 @@ export const store = configureStore({
     newsletters: newsletterReducer,
 
     serviceInfo: homeServiceInfoReducer,
+    serviceText: serviceInfoReducer,
     blogInfo: homeBlogInfoReducer,
     homeSlider: homeSliderReducer,
   },

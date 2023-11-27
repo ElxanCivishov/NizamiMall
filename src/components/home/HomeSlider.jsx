@@ -27,7 +27,7 @@ const HomeSlider = () => {
     }
   }, [dispatch, isSuccess]);
 
-  if (isError) return <Navigate to="/error" state={{ error: message }} />;
+  if (isError) return <Navigate to="/errorü" state={{ error: message }} />;
 
   return (
     <div className="container  flex flex-wrap my-4">

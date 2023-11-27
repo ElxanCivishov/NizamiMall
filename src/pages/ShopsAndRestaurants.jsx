@@ -7,37 +7,42 @@ import { Loader, ProgressBarLoader, SearchBar } from "../components";
 import { NotResult } from "../admin/components";
 
 import { useSearchParams } from "react-router-dom";
-
-const tabs = [
-  {
-    id: 1,
-    title: "Hamısı",
-    component: <ServiceCard />,
-  },
-  {
-    id: 2,
-    title: "Mağaza",
-    component: <ServiceCard />,
-  },
-  {
-    id: 3,
-    title: "Restoran",
-    component: <ServiceCard />,
-  },
-];
+import {
+  getMainCats,
+  RESET as CATSRESET,
+} from "../features/mainCategory/mainCategorySlice";
 
 const ShopsAndRestaurants = () => {
   const dispatch = useDispatch();
-  const [search] = useSearchParams();
+  const [search, setSearch] = useSearchParams();
   const [loading, setLoading] = useState(true);
+
+  const { maincats, isSuccess: catsSuccess } = useSelector(
+    (state) => state.mainCats
+  );
 
   const { services, isSuccess, isLoading } = useSelector(
     (state) => state.services
   );
 
+  const parseAndValidateCategory = (category) => {
+    const parsedCategory = parseInt(category);
+    return maincats.some((item) => item.id === parsedCategory)
+      ? parsedCategory
+      : 0;
+  };
+
+  const [categoryNumber, setCategoryNumber] = useState(
+    parseAndValidateCategory(search.get("category"))
+  );
+
   useEffect(() => {
     dispatch(getServices(search));
   }, [dispatch, search]);
+
+  useEffect(() => {
+    dispatch(getMainCats());
+  }, []);
 
   useEffect(() => {
     setLoading(false);
@@ -48,6 +53,36 @@ const ShopsAndRestaurants = () => {
       dispatch(RESET());
     }
   }, [dispatch, isSuccess]);
+
+  useEffect(() => {
+    if (catsSuccess) {
+      dispatch(CATSRESET());
+    }
+  }, [catsSuccess]);
+
+  useEffect(() => {
+    const newCategory = parseAndValidateCategory(search.get("category"));
+
+    if (newCategory !== categoryNumber) {
+      setCategoryNumber(newCategory);
+    }
+
+    if (newCategory !== parseInt(search.get("category"))) {
+      search.delete("category");
+      setSearch(search, {
+        replace: true,
+      });
+    }
+  }, [search.get("category"), categoryNumber]);
+
+  const handleChangeCategory = (num) => {
+    search.set("category", num);
+    setSearch(search, {
+      replace: true,
+    });
+  };
+
+  console.log(maincats);
 
   return (
     <main className="flex flex-col gap-14 pb-10">
@@ -67,22 +102,42 @@ const ShopsAndRestaurants = () => {
         </div>
 
         <div className="my-5 flex flex-col  sm:flex-row items-center justify-between  gap-2">
-          <ul className="flex flex-wrap md:justify-start gap-2 w-full md:w-auto font-medium text-center text-gray-500">
-            {tabs?.map((tab, index) => (
+          <ul className="flex flex-wrap md:justify-start gap-2 w-full md:w-auto font-medium text-center text-gray-500 select-none">
+            <li
+              className=" mb-2 cursor-pointer"
+              onClick={() => {
+                search.delete("category");
+                setSearch(search, {
+                  replace: true,
+                });
+              }}
+            >
+              <p
+                className={`${
+                  !search.get("category")
+                    ? "text-colorPrimary border-colorPrimary"
+                    : " text-gray-500 border-transparent"
+                } inline-flex items-center justify-center  border-b-2  rounded-t-lg hover:text-colorPrimary hover:border-colorPrimary group gap-1 md:gap-2  text-sm md:text-base transition-all duration-200`}
+              >
+                <span>Hamısı</span>
+              </p>
+            </li>
+            {maincats?.map((cat, index) => (
               <li
                 className=" mb-2 cursor-pointer"
-                key={tab.id}
-                // onClick={() => setActiveTab(index)}
+                key={index}
+                onClick={() => {
+                  handleChangeCategory(cat.id);
+                }}
               >
                 <p
-                // className={`${
-                //   activeTab === index
-                //     ? "text-colorPrimary border-colorPrimary"
-                //     : " text-gray-500 border-transparent"
-                // } inline-flex items-center justify-center  border-b-2  rounded-t-lg hover:text-colorPrimary hover:border-colorPrimary group gap-1 md:gap-2  text-sm md:text-base transition-all duration-200`}
+                  className={`${
+                    Number(search.get("category")) === cat.id
+                      ? "text-colorPrimary border-colorPrimary"
+                      : " text-gray-500 border-transparent"
+                  } inline-flex items-center justify-center  border-b-2  rounded-t-lg hover:text-colorPrimary hover:border-colorPrimary group gap-1 md:gap-2  text-sm md:text-base transition-all duration-200`}
                 >
-                  <span>{tab.icon}</span>
-                  <span>{tab.title}</span>
+                  <span>{cat.name}</span>
                 </p>
               </li>
             ))}

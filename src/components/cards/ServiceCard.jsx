@@ -4,9 +4,12 @@ const ServiceCard = ({ service }) => {
   return (
     <>
       {service && (
-        <Link to={`/magaza-ve-restoranlar/${service.id}`}>
+        <Link
+          to={`/magaza-ve-restoranlar/${service.id}`}
+          className="h-full mb-8"
+        >
           <div className="w-full h-full border border-slate-100 p-4 flex flex-col  transition-all duration-200 rounded-lg shadow-lg group hover:-translate-y-3">
-            <div className="w-full flex overflow-hidden items-center justify-center rounded-lg">
+            <div className="w-full h-full flex overflow-hidden items-center justify-center rounded-lg  max-h-[200px]">
               <img
                 src={service.logo}
                 alt=""

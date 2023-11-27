@@ -53,7 +53,7 @@ function App() {
     : null;
 
   useEffect(() => {
-    document.querySelector("html").style.scrollBehavior = "auto";
+    document.querySelector("html").style.scrollBehavior = "smooth";
     window.scroll({ top: 0 });
     document.querySelector("html").style.scrollBehavior = "";
   }, [location.pathname]);
