@@ -2,17 +2,22 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import mapService from "./mapService";
 import { toast } from "react-toastify";
 
-export const getMaps = createAsyncThunk("map/get-maps", async (thunkAPI) => {
-  try {
-    return await mapService.getMaps();
-  } catch (error) {
-    const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
-    return thunkAPI.rejectWithValue(message);
+export const getMaps = createAsyncThunk(
+  "map/get-maps",
+  async (search, thunkAPI) => {
+    try {
+      return await mapService.getMaps(search);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
   }
-});
+);
 
 export const createMap = createAsyncThunk(
   "map/create-map",

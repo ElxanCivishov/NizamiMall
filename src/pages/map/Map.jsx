@@ -79,11 +79,18 @@ const Map = () => {
                 </>
               ))}
             </div>
-            <div className="flex items-center justify-between bg-white rounded-lg p-2 gap-2 w-full">
-              {floorTabs.map(
-                (item) => item.num === floorNumber && item.component
-              )}
-            </div>
+
+            {floorTabs.map(
+              (item, index) =>
+                item.num === floorNumber && (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between bg-white rounded-lg p-2 gap-2 w-full"
+                  >
+                    {item.component}
+                  </div>
+                )
+            )}
           </div>
         </div>
       </section>

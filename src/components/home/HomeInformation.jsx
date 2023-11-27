@@ -8,7 +8,6 @@ import {
   getServiceInfo,
 } from "../../features/home/service/serviceInfoSlice";
 import Loader from "../Loader";
-import TruncatedHtml from "../TruncatedHtml";
 
 const HomeInformation = () => {
   const dispatch = useDispatch();

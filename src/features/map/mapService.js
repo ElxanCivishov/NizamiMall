@@ -1,8 +1,8 @@
 import axios from "axios";
 import { base_url } from "../../utils/baseUrl";
 
-const getMaps = async () => {
-  const response = await axios.get(`${base_url}maps`);
+const getMaps = async (search) => {
+  const response = await axios.get(`${base_url}maps?${search}`);
   return response.data;
 };
 

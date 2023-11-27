@@ -12,7 +12,7 @@ import "react-quill/dist/quill.snow.css";
 
 import { Layout } from "./components/layout";
 
-import { SingleBlog, SingleProduct, SingleService } from "./pages/single";
+import { SingleBlog, SingleService } from "./pages/single";
 
 import {
   Home,
@@ -29,6 +29,7 @@ import Map from "./pages/map/Map";
 import { AdminLayout, NotFoundAdmin } from "./admin/components";
 import {
   Blog,
+  BlogBanner,
   Bloglist,
   ChangePassword,
   Dashboard,
@@ -82,9 +83,6 @@ function App() {
           <Route path="icare" element={<Rent />} />
           <Route path="map" element={<Map />} />
 
-          <Route path="store/:id" element={<SingleProduct />} />
-          <Route path="services/:id" element={<SingleService />} />
-
           {/* not found */}
           <Route path="*" element={<NotFound />} />
           <Route path="error" element={<ErrorPage />} />
@@ -106,6 +104,7 @@ function App() {
           <Route path="service" element={<Service />} />
           <Route path="service/:id" element={<Service />} />
           <Route path="blogs" element={<Bloglist />} />
+          <Route path="blog-info" element={<BlogBanner />} />
           <Route path="blog" element={<Blog />} />
           <Route path="blog/:id" element={<Blog />} />
           <Route path="rents" element={<Rents />} />

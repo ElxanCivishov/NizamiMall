@@ -1,9 +1,10 @@
 export const convertToText = ({ dynamicNames, item }) => {
   const field = dynamicNames.find((i) => i?.uid === item?.uid);
-  const { text, x1, x2, y1, y2 } = field;
-  if (text.trim() !== "") {
-    const words = text
-      .trim()
+  console.log(field, item);
+  const { x1, x2, y1, y2 } = field;
+  if (field?.company_name?.trim() != null) {
+    const words = field?.company_name
+      ?.trim()
       .split(" ")
       .map((word, index) => {
         if (word.length > 9) {
@@ -42,7 +43,12 @@ export const convertToText = ({ dynamicNames, item }) => {
           .split(" ")
           .map((word, index) => {
             return (
-              <tspan key={index} x={x1} dy={index > 0 ? y1 : y2}>
+              <tspan
+                style={{ fill: "red" }}
+                key={index}
+                x={x1}
+                dy={index > 0 ? y1 : y2}
+              >
                 {word}
               </tspan>
             );

@@ -41,6 +41,7 @@ export default function SelectWithSearch({
     } else {
       setSelected(options.find((option) => option.id === value));
     }
+    handleTrigger();
   }, [value]);
 
   const handleTrigger = () => {

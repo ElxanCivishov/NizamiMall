@@ -8,11 +8,12 @@ import layoutReducer from "../features/layout/layoutSlice";
 import authReducer from "../features/auth/authSlice";
 import newsletterReducer from "../features/newsletter/newsletterSlice";
 import blogReducer from "../features/blogs/blogSlice";
+import blogTextReducer from "../features/blogs/blogInfoSlice";
 import serviceReducer from "../features/service/serviceSlice";
+import serviceTextReducer from "../features/service/serviceInfoSlice";
 import mapReducer from "../features/map/mapSlice";
 
 import homeServiceInfoReducer from "../features/home/service/serviceInfoSlice";
-import serviceInfoReducer from "../features/service/serviceInfoSlice";
 import homeBlogInfoReducer from "../features/home/blog/blogInfoSlice";
 import homeSliderReducer from "../features/home/slider/sliderSlice";
 
@@ -31,8 +32,9 @@ export const store = configureStore({
     newsletters: newsletterReducer,
 
     serviceInfo: homeServiceInfoReducer,
-    serviceText: serviceInfoReducer,
+    serviceText: serviceTextReducer,
     blogInfo: homeBlogInfoReducer,
+    blogText: blogTextReducer,
     homeSlider: homeSliderReducer,
   },
 });

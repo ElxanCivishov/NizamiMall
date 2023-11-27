@@ -6,11 +6,15 @@ import { RESET, getServices } from "../features/service/serviceSlice";
 import { Loader, ProgressBarLoader, SearchBar } from "../components";
 import { NotResult } from "../admin/components";
 
-import { useSearchParams } from "react-router-dom";
+import { Navigate, useSearchParams } from "react-router-dom";
 import {
   getMainCats,
   RESET as CATSRESET,
 } from "../features/mainCategory/mainCategorySlice";
+import {
+  getServiceInfo,
+  RESET as SERVICEBANNERRESET,
+} from "../features/service/serviceInfoSlice";
 
 const ShopsAndRestaurants = () => {
   const dispatch = useDispatch();
@@ -21,9 +25,15 @@ const ShopsAndRestaurants = () => {
     (state) => state.mainCats
   );
 
-  const { services, isSuccess, isLoading } = useSelector(
+  const { services, isSuccess, isLoading, isError, message } = useSelector(
     (state) => state.services
   );
+
+  const {
+    isLoading: bannerLoading,
+    isSuccess: bannerSuccess,
+    serviceText,
+  } = useSelector((state) => state.serviceText);
 
   const parseAndValidateCategory = (category) => {
     const parsedCategory = parseInt(category);
@@ -42,6 +52,7 @@ const ShopsAndRestaurants = () => {
 
   useEffect(() => {
     dispatch(getMainCats());
+    dispatch(getServiceInfo());
   }, []);
 
   useEffect(() => {
@@ -59,6 +70,12 @@ const ShopsAndRestaurants = () => {
       dispatch(CATSRESET());
     }
   }, [catsSuccess]);
+
+  useEffect(() => {
+    if (serviceText) {
+      dispatch(SERVICEBANNERRESET());
+    }
+  }, [bannerSuccess]);
 
   useEffect(() => {
     const newCategory = parseAndValidateCategory(search.get("category"));
@@ -82,24 +99,27 @@ const ShopsAndRestaurants = () => {
     });
   };
 
-  console.log(maincats);
+  if (isError) return <Navigate to="/error" state={{ error: message }} />;
 
   return (
     <main className="flex flex-col gap-14 pb-10">
       <Meta title="Mağaza və Restoranlar" />
       {isLoading && <ProgressBarLoader isLoading={isLoading} />}
       <section class="container px-4">
-        <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-20 z-10 relative">
-          <h1 class="mb-4 text-2xl  font-extrabold tracking-tight leading-none text-gray-600 md:text-5xl lg:text-6xl dark:text-white">
-            Mağazalar və Restoranlar
-          </h1>
-          <p class="md:mb-8 text-sm font-normal text-gray-600 md:text-base  lg:text-xl sm:px-10 lg:px-40 dark:text-gray-200">
-            3 mərtəbədən ibarət olan Nizami Mall 100-dən çox mağazaya ev
-            sahibliyi edir. Hazırda mall-da təhsil, turizm, gözəllik sahəsində
-            xidmət göstərilir. Mall-da yerləşən restorantları ziyarət edərək,
-            ləziz təamlardan dada biilərsiniz.
-          </p>
-        </div>
+        {bannerLoading ? (
+          <Loader />
+        ) : (
+          serviceText && (
+            <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-20 z-10 relative">
+              <h1 class="mb-4 text-2xl  font-extrabold tracking-tight leading-none text-gray-600 md:text-5xl lg:text-6xl dark:text-white">
+                {serviceText.title}
+              </h1>
+              <p class="md:mb-8 text-sm font-normal text-gray-600 md:text-base  lg:text-xl sm:px-10 lg:px-40 dark:text-gray-200">
+                {serviceText.content}
+              </p>
+            </div>
+          )
+        )}
 
         <div className="my-5 flex flex-col  sm:flex-row items-center justify-between  gap-2">
           <ul className="flex flex-wrap md:justify-start gap-2 w-full md:w-auto font-medium text-center text-gray-500 select-none">

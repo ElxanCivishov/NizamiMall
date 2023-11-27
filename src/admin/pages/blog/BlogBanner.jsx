@@ -10,20 +10,20 @@ import { Button, FormInput, FormTextarea } from "../../../components/elements";
 import { Meta } from "../../../components/layout";
 import {
   RESET,
-  getServiceInfo,
-  updateServiceInfo,
-} from "../../../features/service/serviceInfoSlice";
+  getBlogInfo,
+  updateBlogInfo,
+} from "../../../features/blogs/blogInfoSlice";
 
 let schema = yup.object().shape({
   title: yup.string().required(" "),
   content: yup.string().required(" "),
 });
 
-const ServisBanner = () => {
+const BlogBanner = () => {
   const dispatch = useDispatch();
 
-  const { isLoading, serviceText, isSuccess } = useSelector(
-    (state) => state.serviceText
+  const { isLoading, blogText, isSuccess } = useSelector(
+    (state) => state.blogText
   );
 
   const {
@@ -35,7 +35,7 @@ const ServisBanner = () => {
     formState: { errors, isDirty },
   } = useForm({
     resolver: yupResolver(schema),
-    defaultValues: serviceText,
+    defaultValues: blogText,
   });
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const ServisBanner = () => {
   }, [watch("title"), watch("content")]);
 
   useEffect(() => {
-    dispatch(getServiceInfo());
+    dispatch(getBlogInfo());
   }, [dispatch]);
 
   useEffect(() => {
@@ -52,13 +52,13 @@ const ServisBanner = () => {
   }, [isSuccess, dispatch]);
 
   useEffect(() => {
-    if (serviceText) {
-      reset(serviceText);
+    if (blogText) {
+      reset(blogText);
     }
-  }, [serviceText]);
+  }, [blogText]);
 
   const onSubmit = handleSubmit((values) => {
-    dispatch(updateServiceInfo(values));
+    dispatch(updateBlogInfo(values));
   });
 
   const handleClick = () => {
@@ -71,10 +71,10 @@ const ServisBanner = () => {
 
   return (
     <>
-      <Meta title="Servis info" />
+      <Meta title="Blog info" />
       <div className="w-full rounded-lg bg-white p-2">
         <h3 className="text-sm md:text-base text-center text-zinc-600 font-semibold px-4 my-3">
-          Mağaza və Restoran başlığı
+          Xəbərlər və Yeniliklər başlığı
         </h3>
         <hr className="my-2" />
 
@@ -116,4 +116,4 @@ const ServisBanner = () => {
   );
 };
 
-export default ServisBanner;
+export default BlogBanner;

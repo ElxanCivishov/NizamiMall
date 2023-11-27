@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import serviceinfoService from "./serviceInfoService";
+import bloginfoService from "./blogInfoService";
 import { toast } from "react-toastify";
 
-export const getServiceInfo = createAsyncThunk(
-  "servicetext/get-servicetext",
+export const getBlogInfo = createAsyncThunk(
+  "blogtext/get-blogtext",
   async (thunkAPI) => {
     try {
-      return await serviceinfoService.getServiceInfo();
+      return await bloginfoService.getBlogInfo();
     } catch (error) {
       const message =
         (error.response &&
@@ -19,11 +19,11 @@ export const getServiceInfo = createAsyncThunk(
   }
 );
 
-export const updateServiceInfo = createAsyncThunk(
-  "servicetext/update-servicetext",
+export const updateBlogInfo = createAsyncThunk(
+  "blogtext/update-blogtext",
   async (data, thunkAPI) => {
     try {
-      return await serviceinfoService.updateServiceInfo(data);
+      return await bloginfoService.updateBlogInfo(data);
     } catch (error) {
       const message =
         (error.response &&
@@ -37,15 +37,15 @@ export const updateServiceInfo = createAsyncThunk(
 );
 
 const initialState = {
-  serviceText: null,
+  blogText: null,
   isError: false,
   isLoading: false,
   isSuccess: false,
   message: "",
 };
 
-export const serviceinfoSlice = createSlice({
-  name: "serviceText",
+export const bloginfoSlice = createSlice({
+  name: "blogText",
   initialState,
   reducers: {
     RESET: (state) => {
@@ -57,34 +57,32 @@ export const serviceinfoSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-
-      .addCase(getServiceInfo.pending, (state) => {
+      .addCase(getBlogInfo.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getServiceInfo.fulfilled, (state, action) => {
+      .addCase(getBlogInfo.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
-        state.serviceText = action.payload;
+        state.blogText = action.payload;
       })
-      .addCase(getServiceInfo.rejected, (state, action) => {
+      .addCase(getBlogInfo.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.isSuccess = false;
         state.message = action.payload;
-        toast.error("Xəta baş verdi yenidən cəhd edin.");
       })
 
-      .addCase(updateServiceInfo.pending, (state) => {
+      .addCase(updateBlogInfo.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(updateServiceInfo.fulfilled, (state, action) => {
+      .addCase(updateBlogInfo.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.serviceText = action.payload;
+        state.blogText = action.payload;
         toast.success("Yeniləndi");
       })
-      .addCase(updateServiceInfo.rejected, (state, action) => {
+      .addCase(updateBlogInfo.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.isSuccess = false;
@@ -94,5 +92,5 @@ export const serviceinfoSlice = createSlice({
   },
 });
 
-export const { RESET } = serviceinfoSlice.actions;
-export default serviceinfoSlice.reducer;
+export const { RESET } = bloginfoSlice.actions;
+export default bloginfoSlice.reducer;

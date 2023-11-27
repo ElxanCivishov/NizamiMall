@@ -1,13 +1,13 @@
 import axios from "axios";
-import { base_url } from "../../utils/baseUrl";
+import { base_url } from "../../../utils/baseUrl";
 
 const getServiceInfo = async () => {
-  const response = await axios.get(`${base_url}company-text`);
+  const response = await axios.get(`${base_url}home-service`);
   return response.data;
 };
 
 const updateServiceInfo = async (serviceinfo) => {
-  const response = await axios.post(`${base_url}company-text`, {
+  const response = await axios.post(`${base_url}home-service`, {
     title: serviceinfo.title,
     content: serviceinfo.content,
   });

@@ -1,9 +1,10 @@
 import { useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { AiFillCloseCircle } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
 import {
   RESET,
@@ -31,13 +32,7 @@ let schema = yup.object().shape({
 });
 
 const initialValue = {
-  uid: null,
   floor: 3,
-  company_id: null,
-  x1: null,
-  x2: null,
-  y1: null,
-  y2: null,
 };
 
 const Floor = () => {
@@ -51,6 +46,7 @@ const Floor = () => {
     handleSubmit,
     trigger,
     watch,
+    setValue,
     register,
     reset: resetForm,
     formState: { errors, isDirty },
@@ -131,54 +127,46 @@ const Floor = () => {
           <div className="px-3 mb-3 my-5">
             <form
               action=""
-              className="flex flex-col gap-4 mb-5"
+              className="flex flex-col gap-6 mb-5"
               onSubmit={handleSubmit(onSubmit)}
               noValidate
             >
-              <div className="flex flex-wrap md:flex-nowrap gap-4 w-full">
+              <div className="flex items-center gap-4 w-full md:w-72">
                 <SelectWithSearch
                   label="Servis"
-                  errors={errors.company_id}
                   trigger={trigger}
                   options={services}
                   register={register("company_id")}
                   value={watch("company_id")}
                   required={true}
                 />
-                <FormInput
-                  register={register("uid")}
-                  errors={errors.uid}
-                  value={watch("uid")}
-                  label="Uid"
-                  type="number"
+                <AiFillCloseCircle
+                  onClick={() => setValue("company_id", null)}
+                  className=" text-2xl text-red-500 mt-6 cursor-pointer"
                 />
               </div>
 
               <div className="flex flex-wrap md:flex-nowrap gap-4 w-full">
                 <FormInput
                   register={register("x1")}
-                  errors={errors.x1}
                   value={watch("x1")}
                   label="x1"
                   type="number"
                 />
                 <FormInput
                   register={register("x2")}
-                  errors={errors.x2}
                   value={watch("x2")}
                   label="x2"
                   type="number"
                 />
                 <FormInput
                   register={register("y1")}
-                  errors={errors.y1}
                   value={watch("y1")}
                   label="y1"
                   type="number"
                 />
                 <FormInput
                   register={register("y2")}
-                  errors={errors.y2}
                   value={watch("y2")}
                   label="y2"
                   type="number"
@@ -189,7 +177,7 @@ const Floor = () => {
                   onClick={() => handleClick()}
                   classBtn="border-0 w-24 !rounded-full "
                   type="submit"
-                  disabled={!isDirty || isLoading}
+                  disabled={isLoading}
                   isLoading={isLoading}
                   label="Yenilə"
                 />

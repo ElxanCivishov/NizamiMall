@@ -16,8 +16,8 @@ const FloorTable = ({ floor, text }) => {
   const { maps } = useSelector((state) => state.maps);
 
   useEffect(() => {
-    dispatch(getMaps());
-  }, []);
+    dispatch(getMaps(`floor=${floor}`));
+  }, [floor]);
 
   useEffect(() => {
     setLoading(false);
@@ -31,19 +31,13 @@ const FloorTable = ({ floor, text }) => {
           <h2 className="font-semibold md:text-2xl text-gray-600 dark:text-slate-100">
             Mərtəbə {text}
           </h2>
-          <Link
-            to="/admin/map"
-            className="text-white bg-emerald-500  shadow-lg shadow-gray-500/50  font-medium rounded-full text-sm px-3 py-2 text-center mr-2 mb-2 flex max-w-max items-center"
-          >
-            <FaCirclePlus className="me-2" /> Yeni
-          </Link>
         </header>
 
         <div className="p-3">
           <div className="overflow-x-auto">
             {loading ? (
               <Loader />
-            ) : maps?.filter((item) => item.floor === floor)?.length > 0 ? (
+            ) : maps?.length > 0 ? (
               <table className="table-auto w-full">
                 <thead className="text-xs font-semibold uppercase text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-700 dark:bg-opacity-50">
                   <tr>
@@ -81,68 +75,66 @@ const FloorTable = ({ floor, text }) => {
                   </tr>
                 </thead>
                 <tbody className="text-sm divide-y divide-slate-100 dark:divide-slate-700">
-                  {maps
-                    .filter((item) => item.floor === floor)
-                    .map((map, index) => (
-                      <tr key={map.id} className="text-xs">
-                        <th className="p-2 whitespace-nowrap">{index + 1}</th>
-                        <td className="p-2 whitespace-nowrap  min-w-[60px]">
-                          <div className="w-10 shrink-0 relative">
-                            <img
-                              className="w-full h-full"
-                              src={map.company_logo || notImage}
-                              alt=""
-                            />
-                          </div>
-                        </td>
+                  {maps.map((map, index) => (
+                    <tr key={map.id} className="text-xs">
+                      <th className="p-2 whitespace-nowrap">{index + 1}</th>
+                      <td className="p-2 whitespace-nowrap  min-w-[60px]">
+                        <div className="w-10 shrink-0 relative">
+                          <img
+                            className="w-full h-full"
+                            src={map.company_logo || notImage}
+                            alt=""
+                          />
+                        </div>
+                      </td>
 
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="flex items-center">
-                            <div className="font-medium text-slate-800 dark:text-slate-100">
-                              {map.company_name || (
-                                <span className="text-red-400">Boş zona</span>
-                              )}
-                            </div>
+                      <td className="p-2 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="font-medium text-slate-800 dark:text-slate-100">
+                            {map.company_name || (
+                              <span className="text-red-400">Boş zona</span>
+                            )}
                           </div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="flex items-center">
-                            <div className="font-medium text-slate-800 dark:text-slate-100">
-                              {map.x1}
-                            </div>
+                        </div>
+                      </td>
+                      <td className="p-2 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="font-medium text-slate-800 dark:text-slate-100">
+                            {map.x1}
                           </div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-left font-medium">{map.x2}</div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-left font-medium">{map.y1}</div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-left font-medium">{map.y2}</div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text text-center">
-                            {convertDateTime(map.created_at)}
-                          </div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text text-center">
-                            {convertDateTime(map.updated_at)}
-                          </div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap ">
-                          <div className="flex align-center justify-center gap-2 text-xs">
-                            <Link
-                              className=" text-emerald-500"
-                              to={`/admin/map/${map.id}`}
-                            >
-                              <FaEdit />
-                            </Link>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
+                        </div>
+                      </td>
+                      <td className="p-2 whitespace-nowrap">
+                        <div className="text-left font-medium">{map.x2}</div>
+                      </td>
+                      <td className="p-2 whitespace-nowrap">
+                        <div className="text-left font-medium">{map.y1}</div>
+                      </td>
+                      <td className="p-2 whitespace-nowrap">
+                        <div className="text-left font-medium">{map.y2}</div>
+                      </td>
+                      <td className="p-2 whitespace-nowrap">
+                        <div className="text text-center">
+                          {convertDateTime(map.created_at)}
+                        </div>
+                      </td>
+                      <td className="p-2 whitespace-nowrap">
+                        <div className="text text-center">
+                          {convertDateTime(map.updated_at)}
+                        </div>
+                      </td>
+                      <td className="p-2 whitespace-nowrap ">
+                        <div className="flex align-center justify-center gap-2 text-xs">
+                          <Link
+                            className=" text-emerald-500"
+                            to={`/admin/map/${map.id}`}
+                          >
+                            <FaEdit />
+                          </Link>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             ) : (

@@ -1,22 +1,19 @@
 import { Meta } from "../../components/layout";
 import { MdCategory } from "react-icons/md";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// import required modules
-import { Pagination, Navigation, Autoplay } from "swiper/modules";
-import { ServiceCard } from "../../components/cards";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RESET, getService } from "../../features/service/serviceSlice";
 import { Loader } from "../../components";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import TruncatedHtml from "../../components/TruncatedHtml";
 import SimilarServices from "../../components/SimilarServices";
+import { NotResult } from "../../admin/components";
 
 const SingleService = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const { service, isSuccess, isLoading } = useSelector(
@@ -33,18 +30,21 @@ const SingleService = () => {
     }
   }, [dispatch, service, isSuccess]);
 
-  console.log(service);
-
   return (
     <div>
-      <Meta title="Restaurant" />
+      <Meta title={isLoading ? "Yüklənir" : service?.name} />
 
       <section className="container p-4 ">
-        <p className=" bg-white rounded-lg p-3 max-w-max my-3 flex items-center gap-2">
+        <p
+          className="cursor-pointer bg-white rounded-lg p-3 max-w-max my-3 flex items-center gap-2"
+          onClick={() => navigate(-1)}
+        >
           <FaArrowAltCircleLeft className="animate-bounce md:text-base" />
           <span className="md:text-base font-semibold">Geri</span>
         </p>
-        {service && (
+        {isLoading ? (
+          <Loader />
+        ) : service ? (
           <div className="grid md:grid-cols-2 gap-2 bg-white rounded-lg py-10">
             <div className="w-full p-4 group">
               <div className=" mt-4 w-full rounded-lg flex items-center justify-center  overflow-hidden shadow-lg p-6 ">
@@ -77,9 +77,11 @@ const SingleService = () => {
               </div>
             </div>
           </div>
+        ) : (
+          <NotResult title="Tapılmadı." />
         )}
 
-        <SimilarServices item={service} />
+        {service && <SimilarServices item={service} />}
       </section>
     </div>
   );

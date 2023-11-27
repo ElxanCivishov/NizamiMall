@@ -82,7 +82,7 @@ const Services = () => {
                       <div className="font-semibold text-left">Logo</div>
                     </th>
                     <th className="p-2 whitespace-nowrap">
-                      <div className="font-semibold text-left">Banner</div>
+                      <div className="font-semibold text-left">Mərtəbə</div>
                     </th>
                     <th className="p-2 whitespace-nowrap">
                       <div className="font-semibold text-left">Başlıq</div>
@@ -120,13 +120,11 @@ const Services = () => {
                           />
                         </div>
                       </td>
-                      <td className="p-2 whitespace-nowrap  min-w-[60px]">
-                        <div className="w-10 shrink-0 relative">
-                          <img
-                            className="w-full h-full"
-                            src={service.image || notImage}
-                            alt=""
-                          />
+                      <td className="p-2 whitespace-nowrap te">
+                        <div className="flex items-center justify-center">
+                          <div className="font-medium text-slate-800 dark:text-slate-100 ">
+                            {service.floor}
+                          </div>
                         </div>
                       </td>
                       <td className="p-2 whitespace-nowrap">

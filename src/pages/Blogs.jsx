@@ -5,16 +5,36 @@ import { Meta } from "../components/layout";
 import { Loader, ProgressBarLoader, SearchBar } from "../components";
 import { RESET, getBlogs } from "../features/blogs/blogSlice";
 import { NotResult } from "../admin/components";
-import { useSearchParams } from "react-router-dom";
+import { Navigate, useSearchParams } from "react-router-dom";
+import {
+  getBlogInfo,
+  RESET as BLOGBANNERRESET,
+} from "../features/blogs/blogInfoSlice";
 
 const Blogs = () => {
   const dispatch = useDispatch();
 
   const [search] = useSearchParams();
   const [loading, setLoading] = useState(true);
-  const { blogs, isSuccess, isError, isLoading } = useSelector(
+  const { blogs, isSuccess, isError, isLoading, message } = useSelector(
     (state) => state.blogs
   );
+
+  const {
+    isLoading: bannerLoading,
+    isSuccess: bannerSuccess,
+    blogText,
+  } = useSelector((state) => state.blogText);
+
+  useEffect(() => {
+    dispatch(getBlogInfo());
+  }, []);
+
+  useEffect(() => {
+    if (blogText) {
+      dispatch(BLOGBANNERRESET());
+    }
+  }, [bannerSuccess]);
 
   useEffect(() => {
     dispatch(getBlogs(search));
@@ -30,6 +50,8 @@ const Blogs = () => {
     setLoading(false);
   }, [blogs]);
 
+  if (isError) return <Navigate to="/error" state={{ error: message }} />;
+
   return (
     <div>
       <Meta title="Xəbərlər və Yeniliklər" />
@@ -37,14 +59,21 @@ const Blogs = () => {
         {isLoading && <ProgressBarLoader isLoading={isLoading} />}
       </div>
       <section className="container p-4 my-5">
-        <div className="py-8 px-4 mx-auto max-w-screen-xl text-center  z-10 relative">
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-600 md:text-5xl lg:text-4xl ">
-            Yeniliklər və Xəbərlər
-          </h1>
-          <p className="mb-8 text-lg font-normal text-gray-600 lg:text-xl sm:px-16 lg:px-48 ">
-            Yeniliklər, endirimlər və xəbərlərdən məlumatınız olun.
-          </p>
-        </div>
+        {bannerLoading ? (
+          <Loader />
+        ) : (
+          blogText && (
+            <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-20 z-10 relative">
+              <h1 class="mb-4 text-2xl  font-extrabold tracking-tight leading-none text-gray-600 md:text-5xl lg:text-6xl dark:text-white">
+                {blogText.title}
+              </h1>
+              <p class="md:mb-8 text-sm font-normal text-gray-600 md:text-base  lg:text-xl sm:px-10 lg:px-40 dark:text-gray-200">
+                {blogText.content}
+              </p>
+            </div>
+          )
+        )}
+
         <div className="w-full flex flex-col gap-5">
           <div className="flex w-full items-center justify-end">
             <SearchBar />

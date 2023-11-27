@@ -6,24 +6,20 @@ import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { useEffect, useState } from "react";
 import { ServiceCard } from "./cards";
 import serviceService from "../features/service/serviceService";
-import Loader from "./Loader";
 
 const SimilarServices = ({ item }) => {
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const search = `category=${item.category_id}`;
-        const response = await serviceService.getServices({ search });
+        const response = await serviceService.getServices({
+          search: `category=${item.category_id}`,
+        });
         setData(response);
-
-        setIsLoading(false);
       } catch (error) {
         setIsError(true);
-        setIsLoading(false);
       }
     };
 
@@ -31,8 +27,6 @@ const SimilarServices = ({ item }) => {
   }, [item]);
 
   console.log("data", data);
-
-  if (isLoading) return <Loader />;
 
   if (isError || data?.length === 0) return null;
 

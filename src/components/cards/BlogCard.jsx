@@ -6,7 +6,7 @@ import TruncatedHtml from "../TruncatedHtml";
 const BlogCard = ({ blog }) => {
   return (
     <Link
-      to={`xeber/${blog.id}`}
+      to={`/xeber/${blog.id}`}
       className=" rounded-md w-full  hover:-translate-y-2 transition-all duration-200 h-full overflow-hidden"
     >
       <div className="w-full relative rounded-lg p-2 bg-white ">
