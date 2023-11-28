@@ -17,6 +17,7 @@ import { addValidation } from "../../../features/dataSlice";
 import {
   Button,
   FormInput,
+  FormTextarea,
   ReactQuillInput,
   SelectWithSearch,
 } from "../../../components/elements";
@@ -34,7 +35,6 @@ let schema = yup.object().shape({
   name: yup.string().required(" "),
   category_id: yup.number().typeError(" ").required(" "),
   subcategory_id: yup.number().typeError(" ").required(" "),
-  description: yup.string().required(" "),
   floor: yup.number().typeError(" ").required(" "),
 });
 
@@ -260,12 +260,14 @@ const Service = () => {
               />
             </div>
 
-            <ReactQuillInput
+            <FormTextarea
               register={register("description")}
               errors={errors.description}
               label="Açıqlama"
               value={watch("description")}
               name="description"
+              rows={4}
+              classInput="max-h-[300px]"
             />
 
             <div className="flex items-center justify-center mb-5">

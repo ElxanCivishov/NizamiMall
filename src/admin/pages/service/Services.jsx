@@ -12,7 +12,6 @@ import {
   deleteService,
   getServices,
 } from "../../../features/service/serviceSlice";
-import TruncatedHtml from "../../../components/TruncatedHtml";
 import { FaEdit } from "react-icons/fa";
 import { FaCirclePlus } from "react-icons/fa6";
 
@@ -150,10 +149,9 @@ const Services = () => {
                       <td className="p-2 whitespace-nowrap">
                         <div className="text-left font-medium">
                           <div className="text-left ">
-                            <TruncatedHtml
-                              html={service.description || ""}
-                              maxLength={60}
-                            />
+                            {service.description?.length > 20
+                              ? service.description.substring(0, 15) + "..."
+                              : service.description}
                           </div>
                         </div>
                       </td>

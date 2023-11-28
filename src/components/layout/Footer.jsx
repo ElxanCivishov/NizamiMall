@@ -2,10 +2,15 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Newsletter from "./Newsletter";
-import { FaLocationDot } from "react-icons/fa6";
-import { FaFacebookSquare, FaInstagramSquare } from "react-icons/fa";
+import {
+  FaFacebookSquare,
+  FaInstagramSquare,
+  FaMobile,
+  FaEnvelope,
+} from "react-icons/fa";
 
 import { RESET, getLayout } from "../../features/layout/layoutSlice";
+import { FaLocationDot } from "react-icons/fa6";
 
 const Footer = () => {
   const dispatch = useDispatch();
@@ -22,39 +27,45 @@ const Footer = () => {
     }
   }, [isSuccess, dispatch]);
   return (
-    <footer className="bg-white text-gray-500">
+    <footer className="bg-white text-zinc-700">
       <div className="container p-4 md:p-0">
         <Newsletter />
         <div className="p-4 border-t border-t-slate-200">
-          <div className="grid md:grid-cols-3">
-            <div className="flex mt-4 flex-col gap-1 md:gap-2 text-gray-500">
+          <div className="grid md:grid-cols-5">
+            <div className="flex mt-4 flex-col  col-span-2 gap-1 md:gap-2 text-zinc-700">
               {layout && (
                 <>
                   <h4 className="  font-semibold">Bizimlə əlaqə</h4>
-                  {layout.number_1 && (
-                    <Link
-                      to={`tel:${layout.number_1}`}
-                      className=" block hover:underline text-sm md:text-base"
-                    >
-                      <span className="font-medium me-1">Tel:</span>
-                      {layout.number_1}
-                    </Link>
-                  )}
-                  {layout.number_2 && (
-                    <Link
-                      to={`tel:${layout.number_2}`}
-                      className=" block hover:underline text-sm md:text-base"
-                    >
-                      <span className="font-medium me-1">Tel:</span>
-                      {layout.number_2}
-                    </Link>
-                  )}
+                  <div className="flex items-center gap-2">
+                    {(layout.number_1 || layout.number_2) && (
+                      <>
+                        <FaMobile />
+                        <Link
+                          to={`tel:${layout.number_1}`}
+                          className=" hover:underline text-sm md:text-base flex items-center gap-1"
+                        >
+                          {layout.number_1}
+                        </Link>
+                        {layout.number_2 && (
+                          <>
+                            ,{" "}
+                            <Link
+                              to={`tel:${layout.number_2}`}
+                              className=" hover:underline text-sm md:text-base flex items-center gap-1"
+                            >
+                              {layout.number_2}
+                            </Link>
+                          </>
+                        )}
+                      </>
+                    )}
+                  </div>
                   {layout.email && (
                     <Link
                       to={`mailto:${layout.email}`}
-                      className=" block hover:underline text-sm md:text-base"
+                      className=" hover:underline text-sm md:text-base flex items-center gap-2"
                     >
-                      <span className="font-medium me-1">Email:</span>
+                      <FaEnvelope />
                       {layout.email}
                     </Link>
                   )}
@@ -63,53 +74,49 @@ const Footer = () => {
                     <Link
                       to={layout.address_url}
                       target="_blank"
-                      className=" block hover:underline text-sm md:text-base"
+                      className=" hover:underline text-sm md:text-base flex items-center gap-2"
                     >
-                      <span className="font-medium me-1">Ünvan:</span>
+                      <FaLocationDot />
                       {layout.address}
                     </Link>
                   )}
                 </>
               )}
             </div>
-
-            <div className="mt-4">
-              <h4 className="text-gray-500 mb-2 font-semibold">
+            <div className="mt-4 ">
+              <h4 className="text-zinc-700 mb-2 font-semibold">
                 Kateqoriyalar
               </h4>
               <div className="flex flex-col gap-1 md:gap-2">
                 <Link
-                  className="text-gray-500 hover:underline text-sm md:text-base"
+                  className="text-zinc-700 hover:underline text-sm md:text-base"
                   to="/magaza-ve-restoranlar"
                 >
                   Mağaza və Restoran
                 </Link>
 
                 <Link
-                  className="text-gray-500 hover:underline text-sm md:text-base"
+                  className="text-zinc-700 hover:underline text-sm md:text-base"
                   to="/xeberler-ve-yenilikler"
                 >
                   Xəbər və Yenilik
                 </Link>
                 <Link
-                  className="text-gray-500 hover:underline text-sm md:text-base"
+                  className="text-zinc-700 hover:underline text-sm md:text-base"
                   to="/icare"
                 >
                   Icarə
                 </Link>
               </div>
             </div>
-
-            <div className="mt-10 mb-10 md:mb-0  md:mt-4 flex w-full flex-col items-center justify-center order-first md:order-last">
-              <Link
-                to="/map"
-                className="flex w-full flex-col items-center justify-center group hover:text-colorPrimary"
-              >
-                <h4 className="text-gray-500 mb-2 text-2xl font-semibold group-hover:text-colorPrimary">
-                  Mall xəritəsi
-                </h4>
-                <FaLocationDot className="text-4xl" />
-              </Link>
+            <div className="mt-4 w-full order-first md:order-last col-span-2 rounded-lg overflow-hidden border">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.3542436385214!2d49.830518999999995!3d40.378840800000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307de69fc9e033%3A0x414a5a4c82342759!2sNizami%20Mall!5e0!3m2!1saz!2saz!4v1701168885057!5m2!1saz!2saz"
+                className="w-full h-full border-0 order-first rounded-lg"
+                allowFullscreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
         </div>
@@ -120,7 +127,7 @@ const Footer = () => {
               : "justify-center"
           }`}
         >
-          <p className="mb-0 text-gray-500 text-xs sm:text-sm">
+          <p className="mb-0 text-zinc-700 text-xs sm:text-sm font-medium">
             &copy; {new Date().getFullYear()} Bütün hüquqlar qorunur!
           </p>
           {(layout?.instagram || layout?.facebook) && (

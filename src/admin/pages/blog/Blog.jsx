@@ -16,6 +16,7 @@ import { addValidation } from "../../../features/dataSlice";
 import {
   Button,
   FormInput,
+  FormTextarea,
   ReactQuillInput,
 } from "../../../components/elements";
 import { MdCloudUpload } from "react-icons/md";
@@ -178,12 +179,14 @@ const Blog = () => {
               type="text"
             />
 
-            <ReactQuillInput
+            <FormTextarea
               register={register("content")}
               errors={errors.content}
               label="Content"
               value={watch("content")}
               name="content"
+              rows={5}
+              classInput="max-h-[300px]"
             />
 
             <div className="flex items-center justify-center mb-5">

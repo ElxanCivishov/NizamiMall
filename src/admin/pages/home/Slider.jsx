@@ -164,6 +164,7 @@ const Slider = () => {
               value={watch("title")}
               name="title"
               rows={4}
+              classInput="max-h-[200px]"
             />
 
             <div className="flex items-center justify-center mb-5">

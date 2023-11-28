@@ -32,16 +32,16 @@ const HomeInformation = () => {
         ) : (
           serviceInfo && (
             <div className="p-6 bg-white rounded-lg   md:p-20 flex flex-col gap-4 md:gap-6 shadow-lg transition-all duration-200 group hover:-translate-y-0.5">
-              <h5 className="text-2xl md:text-4xl text-gray-600 tracking-wide  font-bold  text-center h-auto">
+              <h5 className="text-2xl md:text-4xl text-zinc-700 tracking-wide  font-bold  text-center h-auto">
                 {serviceInfo.title}
               </h5>
 
-              <div className="text-xl md:text-2xl  text-center tracking-wide font-normal !text-colorLight">
+              <div className="text-xl md:text-2xl  text-center tracking-wide font-normal text-zinc-700">
                 {serviceInfo.content}
               </div>
               <p className="flex items-center justify-center gap-3 group">
                 <Link to="/magaza-ve-restoranlar">
-                  <span className="flex items-center border-b  max-w-max my-5 text-xl text-gray-600 hover:text-colorPrimary hover:border-colorPrimary">
+                  <span className="flex items-center border-b  max-w-max my-5 text-xl text-zinc-700 hover:text-colorPrimary hover:border-colorPrimary">
                     Mağazalar və Restoranlar
                     <MdArrowRightAlt className="ms-1 animate-pulse text-xl md:text-3xl" />
                   </span>

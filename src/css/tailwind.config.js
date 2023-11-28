@@ -15,6 +15,9 @@ module.exports = {
         colorSecondary: "#3b4149",
         colorLight: "#777777",
         colorBorder: "#3b4149",
+
+        textBlack: "zinc-800",
+        textBlackHover: "#3b4149",
       },
       boxShadow: {
         DEFAULT:

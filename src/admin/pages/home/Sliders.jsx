@@ -108,9 +108,7 @@ const Sliders = () => {
 
                       <td className="p-2 whitespace-nowrap">
                         <div className="text-left font-medium">
-                          <div className="text-left ">
-                            <TruncatedHtml html={slider.title} maxLength={60} />
-                          </div>
+                          <div className="text-left ">{slider.title}</div>
                         </div>
                       </td>
 

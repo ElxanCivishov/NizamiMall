@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import MobileNavigation from "../MobileNavigation";
 import LinkBtn from "../elements/LinkBtn";
-import { FaLocationDot } from "react-icons/fa6";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -55,9 +54,11 @@ const Header = () => {
                 className="h-8"
                 alt="Logo"
               />
-              <span className="text-base md:text-xl font-semibold whitespace-nowrap text-zinc-800 group-hover:opacity-80 transition-all duration-150">
-                {layout ? layout.title : "Nizami Mall"}
-              </span>
+              {layout?.title && (
+                <span className="text-base md:text-xl font-semibold whitespace-nowrap text-zinc-800  transition-all duration-150">
+                  {layout.title}
+                </span>
+              )}
             </Link>
             <div className="items-center justify-between hidden w-full md:flex md:w-auto ">
               <ul className="flex gap-1 font-medium">
@@ -80,25 +81,12 @@ const Header = () => {
               <LinkBtn
                 label={
                   <span className="flex items-center gap-2 px-2">
-                    <FaLocationDot />
-                    <span className="hidden lg:inline-block text-sm">
-                      Mall xəritəsi
-                    </span>
+                    <span className="text-sm">Mall xəritəsi</span>
                   </span>
                 }
                 path="/map"
                 classBtn="max-w-max p-2 text-xs md:text-base font-medium text-center rounded-lg   text-white select-none hover:opacity-80 bg-colorPrimary"
               />
-              {/* <LinkBtn
-                label={
-                  <span className="flex items-center gap-2">
-                    <span className="hidden md:inline-block">Axtarış</span>
-                    <FaSearch />
-                  </span>
-                }
-                path="/axtaris"
-                classBtn="max-w-max p-2 text-xs md:text-base font-medium text-center rounded-lg   text-white select-none hover:opacity-80 bg-colorPrimary"
-              /> */}
             </div>
           </div>
         </nav>

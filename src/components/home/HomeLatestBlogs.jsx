@@ -43,11 +43,13 @@ const HomeLatestBlogs = () => {
                 />
               </div>
               <div className="p-4 bg-white rounded-lg mt-2 flex flex-col gap-2 md:gap-3 shadow-lg w-full h-full ">
-                <h5 className="text-sm md:text-base text-gray-600 font-semibold">
+                <h5 className="text-sm md:text-base text-zinc-700 font-semibold">
                   {blog.title}
                 </h5>
-                <div className="text-sm  font-normal text-colorLight">
-                  <TruncatedHtml html={blog.content || ""} maxLength={198} />
+                <div className="text-base  font-medium text-zinc-600 tracking-wide">
+                  {blog.content?.length > 100
+                    ? blog.content.substring(0, 100) + "..."
+                    : blog.content}
                 </div>
                 <div className="font-medium">
                   <span className="flex items-center justify-end border-b  max-w-max text-xs md:text-sm  text-colorBlack hover:text-colorPrimary hover:border-colorPrimary">

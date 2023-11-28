@@ -47,8 +47,8 @@ const Newsletter = () => {
     <div className="flex  w-full flex-col md:flex-row items-center p-4">
       <div className="w-full ">
         <div className="flex gap-2 items-center">
-          <IoSend className="text-gray-400 w-4 md:w-6" />
-          <h4 className="mb-0 text-gray-500 text-sm md:text-base">
+          <IoSend className="text-zinc-700 w-4 md:w-6" />
+          <h4 className="mb-0 text-zinc-700 text-sm md:text-base">
             Yeniliklərdən xəbərdar olmaq üçün
           </h4>
         </div>
@@ -59,12 +59,12 @@ const Newsletter = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
-            className="w-full  py-1 border-none outline-none rounded-l-md focus:ring-0 text-gray-600"
+            className="w-full  py-1 border-none outline-none rounded-l-md focus:ring-0 text-zinc-700"
             placeholder="Email ünvanı"
           />
           <button
             onClick={() => handleClick()}
-            className={` rounded-r-lg p-2 px-8  m-[1px]  hover:bg-colorPrimaryHover  text-white ${
+            className={`cursor-pointer rounded-r-lg p-2 px-8  m-[1px]  hover:bg-colorPrimaryHover  text-white ${
               showMessage && isSuccess
                 ? "bg-emerald-600"
                 : showMessage && isError

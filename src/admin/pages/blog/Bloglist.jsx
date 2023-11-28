@@ -8,7 +8,6 @@ import { convertDateTime } from "../../../helper/date-fns";
 
 import { Loader } from "../../../components";
 import { RESET, deleteBlog, getBlogs } from "../../../features/blogs/blogSlice";
-import TruncatedHtml from "../../../components/TruncatedHtml";
 import { FaEdit } from "react-icons/fa";
 import { FaCirclePlus } from "react-icons/fa6";
 import { Meta } from "../../../components/layout";
@@ -115,7 +114,9 @@ const Blogs = () => {
                       <td className="p-2 whitespace-nowrap">
                         <div className="text-left font-medium">
                           <div className="text-left ">
-                            <TruncatedHtml html={blog.content} maxLength={60} />
+                            {blog.content?.length > 20
+                              ? blog.content.substring(0, 15) + "..."
+                              : blog.content}
                           </div>
                         </div>
                       </td>

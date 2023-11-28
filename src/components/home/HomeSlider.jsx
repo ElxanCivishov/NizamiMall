@@ -58,16 +58,16 @@ const HomeSlider = () => {
                     <img
                       src={slider.image}
                       alt="marka"
-                      className="w-full h-full max-h-[80vh]  rounded-lg object-contain"
+                      className="w-full h-full  max-h-[80vh]  rounded-lg object-contain"
                     />
-                    {/* Overlay for improved text readability */}
-                    {/* <div className="absolute inset-0 rounded-lg bg-black bg-opacity-30"></div> */}
 
-                    <div className="flex flex-col gap-1 absolute bottom-20 left-20 text-white text-2xl z-10">
-                      <div className="text-base md:text-4xl shadow-inner bg-black bg-opacity-30 px-2 rounded-lg text-white">
-                        <TruncatedHtml html={slider.title} />
+                    {slider.title && (
+                      <div className="flex flex-col gap-1 absolute bottom-20 left-20 text-white text-2xl z-10">
+                        <div className="text-base md:text-4xl shadow-inner bg-black bg-opacity-30 px-2 rounded-lg text-white">
+                          {slider.title}
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </div>
               </SwiperSlide>

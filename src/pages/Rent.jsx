@@ -171,7 +171,6 @@ const Rent = () => {
               <Button
                 onClick={() => handleClick()}
                 classBtn="border-0 w-40"
-                disabled={!isDirty || isLoading}
                 type="submit"
                 isLoading={isLoading}
                 label="Göndər"

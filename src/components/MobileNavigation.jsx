@@ -22,7 +22,7 @@ const MobileNavigation = () => {
           <Link
             key={index}
             to={menu.url}
-            className="text-2xl text-gray-500 hover:text-colorPrimary hover:scale-105 transition-all duration-100"
+            className="text-2xl text-zinc-800 hover:text-colorPrimary hover:scale-105 transition-all duration-100"
           >
             {menu.icon}
           </Link>
