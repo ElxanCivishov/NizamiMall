@@ -10,8 +10,8 @@ module.exports = {
       },
       colors: {
         colorBlack: "#131921",
-        colorPrimary: "#f0af5b",
-        colorPrimaryHover: "#d0903d",
+        colorPrimary: "#ff8b00",
+        colorPrimaryHover: "#ff8b00",
         colorSecondary: "#3b4149",
         colorLight: "#777777",
         colorBorder: "#3b4149",

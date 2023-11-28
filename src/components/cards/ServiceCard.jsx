@@ -13,7 +13,7 @@ const ServiceCard = ({ service }) => {
               <img
                 src={service.logo}
                 alt=""
-                className="w-full h-full group-hover:scale-105 transition-all duration-200  object-cover rounded-lg"
+                className="w-full h-full group-hover:scale-105 transition-all duration-200  object-contain rounded-lg"
               />
             </div>
             <h2 className="group-hover:text-colorPrimary text-start text-sm md:text-base mt-4">

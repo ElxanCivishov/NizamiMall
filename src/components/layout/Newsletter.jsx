@@ -64,17 +64,13 @@ const Newsletter = () => {
           />
           <button
             onClick={() => handleClick()}
-            className={` rounded-r-lg p-2 m-[1px]  hover:bg-colorPrimaryHover  text-white ${
+            className={` rounded-r-lg p-2 px-8  m-[1px]  hover:bg-colorPrimaryHover  text-white ${
               showMessage && isSuccess
                 ? "bg-emerald-600"
                 : showMessage && isError
                 ? "bg-red-500"
                 : "bg-colorPrimary"
-            } ${
-              isLoading || !email || !isEmailValid(email)
-                ? "cursor-not-allowed opacity-80"
-                : "cursor-pointer opacity-100"
-            }`}
+            } `}
             disabled={isLoading || !email || !isEmailValid(email)}
           >
             {showMessage && isError ? (

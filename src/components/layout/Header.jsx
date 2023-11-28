@@ -55,7 +55,7 @@ const Header = () => {
                 className="h-8"
                 alt="Logo"
               />
-              <span className="text-base md:text-xl font-semibold whitespace-nowrap text-colorPrimary group-hover:opacity-80 transition-all duration-150">
+              <span className="text-base md:text-xl font-semibold whitespace-nowrap text-zinc-800 group-hover:opacity-80 transition-all duration-150">
                 {layout ? layout.title : "Nizami Mall"}
               </span>
             </Link>
@@ -64,7 +64,7 @@ const Header = () => {
                 {navs.map((nav, index) => (
                   <li
                     key={index}
-                    className="block py-2 px-3 text-gray-600 rounded "
+                    className="block py-2 px-3 text-gray-800 rounded font-bold "
                   >
                     <NavLink
                       to={nav.path}
@@ -79,9 +79,9 @@ const Header = () => {
             <div className="flex items-center gap-2">
               <LinkBtn
                 label={
-                  <span className="flex items-center gap-2">
+                  <span className="flex items-center gap-2 px-2">
                     <FaLocationDot />
-                    <span className="hidden lg:inline-block">
+                    <span className="hidden lg:inline-block text-sm">
                       Mall xəritəsi
                     </span>
                   </span>

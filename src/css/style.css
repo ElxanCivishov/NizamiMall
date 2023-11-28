@@ -12,8 +12,10 @@
 :root {
   --color-131921: #131921;
   --color-3b4149: #3b4149;
-  --color-febd69: #f0af5b;
-  --color-d0903d: #d0903d;
+  --color-febd69: #ff8b00;
+  /* --color-febd69: #f0af5b; */
+  --color-d0903d: #ff8b00;
+  /* --color-d0903d: #d0903d; */
   --color-232f3e: #232f3e;
   --color-bf4800: #bf4800;
   --color-f5f5f7: #f5f5f7;

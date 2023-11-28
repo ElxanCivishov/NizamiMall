@@ -98,7 +98,11 @@ const Rent = () => {
             İcarə Üçün Müraciət
           </h3>
           <div className="flex items-center justify-center">
-            <img src={rentImg} alt="rent" className="h-[200px]" />
+            <img
+              src={rentImg || "/images/rent.png"}
+              alt="rent"
+              className="h-[200px]"
+            />
           </div>
           <p className="text-sm text-zinc-500 font-semibold md:text-center tracking-wide px-4 mb-5">
             Müraciətinizə qısa zaman ərzində baxılacaqdır. Sizə geri dönüş

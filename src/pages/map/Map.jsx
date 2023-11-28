@@ -65,7 +65,7 @@ const Map = () => {
               {floorTabs.map((item) => (
                 <>
                   <div
-                    className={`border flex items-center justify-center p-3 w-12 h-12 font-semibold  rounded-full cursor-pointer hover:bg-colorPrimary hover:text-white ${
+                    className={`border-2 flex items-center justify-center p-3 w-12 h-12 font-semibold  rounded-lg cursor-pointer hover:bg-colorPrimary hover:text-white ${
                       floorNumber === item.num
                         ? "bg-colorPrimary text-white"
                         : "bg-white text-black"

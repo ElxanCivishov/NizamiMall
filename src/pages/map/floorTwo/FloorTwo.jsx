@@ -48,8 +48,8 @@ const FloorTwo = () => {
     <>
       <Meta title="İkinci mərtəbə" />
       <div className="bg-white rounded-lg w-full select-none h-auto">
-        <div className="flex gap-1 items-center max-w-max  p-2 rounded-lg text-black text-xs  md:text-base shadow-lg">
-          <AiFillCheckCircle className="text-emerald-500 animate-bounce" />
+        <div className="flex gap-2 items-center max-w-max  p-2 rounded-lg text-black text-xs  md:text-base shadow-lg">
+          <AiFillCheckCircle className="text-colorPrimary" />
           {activeMap?.company_name ? (
             <Link
               to={`/magaza-ve-restoranlar/${activeMap?.company_id}`}
@@ -79,7 +79,7 @@ const FloorTwo = () => {
                 key={item.uid}
                 {...item}
                 style={{
-                  fill: selected?.uid === item?.uid ? "#f0af5b" : "#fff",
+                  fill: selected?.uid === item?.uid ? "currentcolor" : "#fff",
                 }}
                 onClick={(e) => handleClick(item, e)}
               />

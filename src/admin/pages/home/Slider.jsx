@@ -2,14 +2,12 @@ import { useCallback, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 
 import { BiArrowBack } from "react-icons/bi";
 import { MdCloudUpload } from "react-icons/md";
 import { toast } from "react-toastify";
 import { addValidation } from "../../../features/dataSlice";
-import { Button, ReactQuillInput } from "../../../components/elements";
+import { Button, FormTextarea } from "../../../components/elements";
 import {
   RESET,
   createSlider,
@@ -17,10 +15,6 @@ import {
   updateSlider,
 } from "../../../features/home/slider/sliderSlice";
 import { Meta } from "../../../components/layout";
-
-let schema = yup.object().shape({
-  title: yup.string().required(" "),
-});
 
 const initialValue = {
   title: null,
@@ -45,7 +39,6 @@ const Slider = () => {
     reset: resetForm,
     formState: { errors, isDirty },
   } = useForm({
-    resolver: yupResolver(schema),
     defaultValues: initialValue,
   });
 
@@ -165,12 +158,12 @@ const Slider = () => {
               )}
             </div>
 
-            <ReactQuillInput
+            <FormTextarea
               register={register("title")}
-              errors={errors.title}
               label="Content"
               value={watch("title")}
               name="title"
+              rows={4}
             />
 
             <div className="flex items-center justify-center mb-5">
