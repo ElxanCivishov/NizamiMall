@@ -36,7 +36,7 @@ const AdminLayout = () => {
       </div>
     );
   }
-  return <Navigate to="/login" replace />;
+  return <Navigate to="/login" replace={true} />;
 };
 
 export default AdminLayout;

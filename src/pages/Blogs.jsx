@@ -83,7 +83,7 @@ const Blogs = () => {
           ) : blogs?.length === 0 ? (
             <NotResult title="Xəbər və ya yenilik tapılmadı" />
           ) : (
-            <div className="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8 ">
+            <div className="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 h-full gap-4 md:gap-8 ">
               {blogs.map((b) => (
                 <BlogCard key={b.id} blog={b} />
               ))}

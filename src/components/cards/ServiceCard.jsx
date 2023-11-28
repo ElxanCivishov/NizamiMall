@@ -16,7 +16,7 @@ const ServiceCard = ({ service }) => {
                 className="w-full h-full group-hover:scale-105 transition-all duration-200  object-cover rounded-lg"
               />
             </div>
-            <h2 className="group-hover:text-colorPrimary text-sm md:text-base mt-4">
+            <h2 className="group-hover:text-colorPrimary text-start text-sm md:text-base mt-4">
               {service.name}
             </h2>
             <p className=" text-sm flex gap-1 group-hover:text-colorPrimary ">
@@ -29,7 +29,6 @@ const ServiceCard = ({ service }) => {
                   ? "üç"
                   : null
               } - ${service.subcategory_name}`}
-              {}
             </p>
           </div>
         </Link>

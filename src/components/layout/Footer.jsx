@@ -120,7 +120,7 @@ const Footer = () => {
               : "justify-center"
           }`}
         >
-          <p className="text-center mb-0 text-gray-500">
+          <p className="mb-0 text-gray-500 text-xs sm:text-sm">
             &copy; {new Date().getFullYear()} Bütün hüquqlar qorunur!
           </p>
           {(layout?.instagram || layout?.facebook) && (
