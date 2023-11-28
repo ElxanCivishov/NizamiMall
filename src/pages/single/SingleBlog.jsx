@@ -48,7 +48,7 @@ const SingleBlog = () => {
                   {convertDateTimeAgo(blog.created_at)}
                 </p>
                 <div className="flex items-center w-full ">
-                  <h5 className="text-base md:text-xl font-semibold">
+                  <h5 className="text-base md:text-xl font-semibold text-black">
                     {blog.title}
                   </h5>
                 </div>

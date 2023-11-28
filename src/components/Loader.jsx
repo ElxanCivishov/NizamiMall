@@ -5,7 +5,7 @@ const Loader = ({ classLoader }) => {
     <div
       className={`w-full mx-auto min-h-[200px] flex items-center justify-center  backdrop-blur-lg ${classLoader}`}
     >
-      <FiLoader className="text-emerald-700 text-3xl animate-spin" />
+      <FiLoader className="text-colorPrimary text-3xl animate-spin" />
     </div>
   );
 };
