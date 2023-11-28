@@ -10,7 +10,7 @@ const BreadCrumb = ({ title, path, prev }) => {
         }`}
       >
         <div className="flex items-center">
-          <p className="flex items-center gap-2 text-xs md:text-base text-gray-700 font-semibold tracking-wide">
+          <p className="flex items-center gap-2 text-xs md:text-base text-black font-semibold tracking-wide">
             {title}
           </p>
         </div>
@@ -18,10 +18,10 @@ const BreadCrumb = ({ title, path, prev }) => {
           <p className="text-center">
             <Link
               to={path}
-              className="text-gray-400 flex items-center tracking-wide"
+              className="text-black flex items-center tracking-wide"
             >
               <BiSolidHomeAlt2 className="text-base md:text-xl mb-1" />
-              <span className="text-gray-700 font-semibold text-xs md:text-base ">
+              <span className="text-black font-semibold text-xs md:text-base ">
                 / {prev}
               </span>
             </Link>

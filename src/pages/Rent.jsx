@@ -94,7 +94,7 @@ const Rent = () => {
       <Meta title="İcarə üçün müraciət" />
       <section className="container p-4 my-5 ">
         <div className="w-full  mx-auto bg-white p-5 rounded-lg">
-          <h3 className="text-xl text-zinc-600 font-semibold md:text-center px-4 mb-3">
+          <h3 className="text-xl text-zinc-700 font-semibold md:text-center px-4 mb-3">
             İcarə Üçün Müraciət
           </h3>
           <div className="flex items-center justify-center">
@@ -104,7 +104,7 @@ const Rent = () => {
               className="h-[200px]"
             />
           </div>
-          <p className="text-sm text-zinc-500 font-semibold md:text-center tracking-wide px-4 mb-5">
+          <p className="text-sm text-zinc-700 font-semibold md:text-center tracking-wide px-4 mb-5">
             Müraciətinizə qısa zaman ərzində baxılacaqdır. Sizə geri dönüş
             edəcəyik. Müraciətiniz bizim üçün önəmlidir. Təşəkkürlər!
           </p>

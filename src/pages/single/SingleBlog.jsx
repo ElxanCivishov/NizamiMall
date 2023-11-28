@@ -44,7 +44,7 @@ const SingleBlog = () => {
                 </div>
               </div>
               <div className="p-4 w-full flex flex-col gap-2">
-                <p className="text-xs md:text-sm  font-normal text-colorLight">
+                <p className="text-xs md:text-sm  font-normal text-black">
                   {convertDateTimeAgo(blog.created_at)}
                 </p>
                 <div className="flex items-center w-full ">
@@ -52,8 +52,8 @@ const SingleBlog = () => {
                     {blog.title}
                   </h5>
                 </div>
-                <div className="text-xs md:text-sm  font-normal text-colorLight">
-                  <TruncatedHtml html={blog.content || ""} />
+                <div className="text-base  font-medium text-black">
+                  {blog.content}
                 </div>
               </div>
             </div>

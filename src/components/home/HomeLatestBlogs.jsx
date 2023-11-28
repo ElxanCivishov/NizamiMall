@@ -43,7 +43,7 @@ const HomeLatestBlogs = () => {
                 />
               </div>
               <div className="p-4 bg-white rounded-lg mt-2 flex flex-col gap-2 md:gap-3 shadow-lg w-full h-full ">
-                <h5 className="text-sm md:text-base text-zinc-700 font-semibold">
+                <h5 className="text-sm md:text-base text-black font-semibold">
                   {blog.title}
                 </h5>
                 <div className="text-base  font-medium text-zinc-600 tracking-wide">

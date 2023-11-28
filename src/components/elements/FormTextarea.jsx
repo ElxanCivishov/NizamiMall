@@ -19,7 +19,7 @@ const FormTextarea = ({
   return (
     <div className="flex flex-col gap-1 md:gap-2 w-full">
       {label && (
-        <label className="block  text-xs md:text-sm font-medium text-gray-500 dark:text-white">
+        <label className="block  text-xs md:text-sm font-medium text-zinc-700 dark:text-white">
           {label}
           {required && <span className="text-red-500">*</span>}
         </label>
@@ -29,7 +29,7 @@ const FormTextarea = ({
         {...register}
         autoComplete="off"
         value={defaultValue}
-        className={` text-gray-900 text-sm md:text-base rounded-lg focus:ring-gray-300 focus:border-gray-300 block w-full p-1 mdIp-2.5 transition duration-200 no-spin shadow-md min-h-[40px] ${classInput} ${
+        className={` text-zinc-800 text-sm md:text-base rounded-lg focus:ring-gray-300 focus:border-gray-300 block w-full placeholder:text-zinc-700 p-1 mdIp-2.5 transition duration-200 no-spin shadow-md min-h-[40px] ${classInput} ${
           errors && selectValid
             ? "border-red-300 border-3"
             : "border-slate-100 border"

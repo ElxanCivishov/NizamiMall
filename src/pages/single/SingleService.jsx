@@ -36,10 +36,10 @@ const SingleService = () => {
 
       <section className="container p-4 ">
         <p
-          className="cursor-pointer bg-white rounded-lg p-3 max-w-max my-3 flex items-center gap-2"
+          className="cursor-pointer bg-white rounded-lg p-3 max-w-max my-3 flex items-center gap-2 text-black"
           onClick={() => navigate(-1)}
         >
-          <FaArrowAltCircleLeft className="animate-bounce md:text-base" />
+          <FaArrowAltCircleLeft className="text-black md:text-base" />
           <span className="md:text-base font-semibold">Geri</span>
         </p>
         {isLoading ? (
@@ -56,11 +56,11 @@ const SingleService = () => {
               </div>
             </div>
             <div className="flex flex-col gap-2 px-3 py-10 mt-5">
-              <h5 className="text-base text-gray-600 font-semibold">
+              <h5 className="text-base text-black font-semibold">
                 {service.name}
               </h5>
               <div className="flex flex-col gap-2 py-3">
-                <span className="flex items-center text-sm md:text-base">
+                <span className="flex items-center text-sm md:text-base text-black">
                   <MdCategory className="me-1 " />
                   {service.floor === 1
                     ? "Birinci mərtəbə - "
@@ -72,8 +72,8 @@ const SingleService = () => {
                   {service.subcategory_name}
                 </span>
               </div>
-              <div className="text-sm md:text-base font-normal text-gray-500 tracking-wide ">
-                <TruncatedHtml html={service.description || ""} />
+              <div className="text-sm md:text-base font-medium text-black tracking-wide ">
+                {service.description}
               </div>
             </div>
           </div>

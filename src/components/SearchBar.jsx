@@ -21,7 +21,7 @@ const SearchBar = ({ placeholder }) => {
     <div className="flex gap-2 w-full items-center justify-end rounded-lg bg-white p-2 shadow-lg md:w-[300px]">
       <input
         placeholder={placeholder || "axtar..."}
-        className=" text-gray-900 text-xs md:text-sm  focus:ring-gray-300 focus:border-gray-300 block outline-none p-1 transition duration-200 no-spin placeholder:text-gray-400  w-full bg-white "
+        className=" text-black text-xs md:text-sm  focus:ring-gray-300 focus:border-gray-300 block outline-none p-1 transition duration-200 no-spin placeholder:text-black  w-full bg-white "
         value={search.get("search") ?? ""}
         onChange={onSearchChange}
       />

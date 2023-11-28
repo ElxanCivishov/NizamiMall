@@ -27,12 +27,12 @@ const Footer = () => {
     }
   }, [isSuccess, dispatch]);
   return (
-    <footer className="bg-white text-zinc-700">
+    <footer className="bg-white text-black">
       <div className="container p-4 md:p-0">
         <Newsletter />
         <div className="p-4 border-t border-t-slate-200">
           <div className="grid md:grid-cols-5">
-            <div className="flex mt-4 flex-col  col-span-2 gap-1 md:gap-2 text-zinc-700">
+            <div className="flex mt-4 flex-col  col-span-2 gap-1 md:gap-2 text-black">
               {layout && (
                 <>
                   <h4 className="  font-semibold">Bizimlə əlaqə</h4>
@@ -84,25 +84,23 @@ const Footer = () => {
               )}
             </div>
             <div className="mt-4 ">
-              <h4 className="text-zinc-700 mb-2 font-semibold">
-                Kateqoriyalar
-              </h4>
+              <h4 className="text-black mb-2 font-semibold">Kateqoriyalar</h4>
               <div className="flex flex-col gap-1 md:gap-2">
                 <Link
-                  className="text-zinc-700 hover:underline text-sm md:text-base"
+                  className="text-black hover:underline text-sm md:text-base"
                   to="/magaza-ve-restoranlar"
                 >
                   Mağaza və Restoran
                 </Link>
 
                 <Link
-                  className="text-zinc-700 hover:underline text-sm md:text-base"
+                  className="text-black hover:underline text-sm md:text-base"
                   to="/xeberler-ve-yenilikler"
                 >
                   Xəbər və Yenilik
                 </Link>
                 <Link
-                  className="text-zinc-700 hover:underline text-sm md:text-base"
+                  className="text-black hover:underline text-sm md:text-base"
                   to="/icare"
                 >
                   Icarə
@@ -127,7 +125,7 @@ const Footer = () => {
               : "justify-center"
           }`}
         >
-          <p className="mb-0 text-zinc-700 text-xs sm:text-sm font-medium">
+          <p className="mb-0 text-black text-xs sm:text-sm font-medium">
             &copy; {new Date().getFullYear()} Bütün hüquqlar qorunur!
           </p>
           {(layout?.instagram || layout?.facebook) && (

@@ -16,10 +16,10 @@ const ServiceCard = ({ service }) => {
                 className="w-full h-full group-hover:scale-105 transition-all duration-200  object-contain rounded-lg"
               />
             </div>
-            <h2 className="group-hover:text-colorPrimary text-start text-sm md:text-base mt-4">
+            <h2 className="group-hover:text-colorPrimary text-start text-sm md:text-base mt-4 text-black font-medium">
               {service.name}
             </h2>
-            <p className=" text-sm flex gap-1 group-hover:text-colorPrimary ">
+            <p className=" text-sm flex gap-1 group-hover:text-colorPrimary text-black font-medium">
               {`Mərtəbə ${
                 service.floor === 1
                   ? "bir"

@@ -32,7 +32,7 @@ const SimilarServices = ({ item }) => {
 
   return (
     <div className=" p-3 my-5 rounded-lg bg-white">
-      <h5 className="text-base font-semibold text-zinc-700 my-3">
+      <h5 className="text-base font-semibold text-black my-3">
         {item?.category_name}
       </h5>
 
@@ -59,7 +59,7 @@ const SimilarServices = ({ item }) => {
             spaceBetween: 15,
           },
           1200: {
-            slidesPerView: 4,
+            slidesPerView: 5,
             spaceBetween: 20,
           },
         }}

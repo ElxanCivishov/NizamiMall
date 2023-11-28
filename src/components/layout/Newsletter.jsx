@@ -47,8 +47,8 @@ const Newsletter = () => {
     <div className="flex  w-full flex-col md:flex-row items-center p-4">
       <div className="w-full ">
         <div className="flex gap-2 items-center">
-          <IoSend className="text-zinc-700 w-4 md:w-6" />
-          <h4 className="mb-0 text-zinc-700 text-sm md:text-base">
+          <IoSend className="text-black w-4 md:w-6" />
+          <h4 className="mb-0 text-black text-sm md:text-base">
             Yeniliklərdən xəbərdar olmaq üçün
           </h4>
         </div>
@@ -59,7 +59,7 @@ const Newsletter = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
-            className="w-full  py-1 border-none outline-none rounded-l-md focus:ring-0 text-zinc-700"
+            className="w-full  py-1 border-none outline-none rounded-l-md focus:ring-0 text-black placeholder:text-black"
             placeholder="Email ünvanı"
           />
           <button

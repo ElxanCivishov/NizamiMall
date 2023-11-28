@@ -20,7 +20,7 @@ const FormInput = ({
   return (
     <div className="flex flex-col w-full">
       {label && (
-        <label className="block  text-xs md:text-sm font-medium text-gray-500 dark:text-white">
+        <label className="block  text-xs md:text-sm font-medium text-zinc-700 dark:text-white">
           {label}
           {required && <span className="text-red-500">*</span>}
         </label>
@@ -31,7 +31,7 @@ const FormInput = ({
         autoComplete="on"
         placeholder={placeholder}
         {...register}
-        className={` text-gray-900 text-xs md:text-sm rounded-lg focus:ring-gray-300 focus:border-gray-300 block w-full p-2.5 transition duration-200 no-spin shadow-md placeholder:text-gray-400 ${classInput} ${
+        className={` text-zinc-800 text-xs md:text-sm rounded-lg focus:ring-gray-300 focus:border-gray-300 block w-full p-2.5 transition duration-200 no-spin shadow-md placeholder:text-zinc-700 ${classInput} ${
           errors && selectValid
             ? "border-red-300 border-3"
             : "border-slate-100 border"

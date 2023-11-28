@@ -114,7 +114,7 @@ const ShopsAndRestaurants = () => {
               <h1 class="mb-4 text-2xl  font-extrabold tracking-tight leading-none text-zinc-800 md:text-5xl lg:text-6xl dark:text-white">
                 {serviceText.title}
               </h1>
-              <p class="md:mb-8 text-sm font-normal text-zinc-700 md:text-base  lg:text-xl sm:px-10 lg:px-40 dark:text-gray-200">
+              <p class="md:mb-8 text-sm font-medium text-zinc-700 md:text-base  lg:text-xl sm:px-10 lg:px-40 dark:text-gray-200">
                 {serviceText.content}
               </p>
             </div>
@@ -122,7 +122,7 @@ const ShopsAndRestaurants = () => {
         )}
 
         <div className="my-5 flex flex-col  sm:flex-row items-center justify-between  gap-2">
-          <ul className="flex flex-wrap md:justify-start gap-2 w-full md:w-auto font-medium text-center text-gray-500 select-none">
+          <ul className="flex flex-wrap md:justify-start gap-2 w-full md:w-auto font-medium text-center text-zinc-700 select-none">
             <li
               className=" mb-2 cursor-pointer"
               onClick={() => {
@@ -136,7 +136,7 @@ const ShopsAndRestaurants = () => {
                 className={`${
                   !search.get("category")
                     ? "text-colorPrimary border-colorPrimary"
-                    : " text-gray-500 border-transparent"
+                    : " text-zinc-700 border-transparent"
                 } inline-flex items-center justify-center  border-b-2  rounded-t-lg hover:text-colorPrimary hover:border-colorPrimary group gap-1 md:gap-2  text-sm md:text-base transition-all duration-200`}
               >
                 <span>Hamısı</span>
@@ -154,7 +154,7 @@ const ShopsAndRestaurants = () => {
                   className={`${
                     Number(search.get("category")) === cat.id
                       ? "text-colorPrimary border-colorPrimary"
-                      : " text-gray-500 border-transparent"
+                      : " text-zinc-700 border-transparent"
                   } inline-flex items-center justify-center  border-b-2  rounded-t-lg hover:text-colorPrimary hover:border-colorPrimary group gap-1 md:gap-2  text-sm md:text-base transition-all duration-200`}
                 >
                   <span>{cat.name}</span>

@@ -16,19 +16,21 @@ const BlogCard = ({ blog }) => {
             />
           </div>
           <div className="p-4 bg-white mt-2 flex flex-col justify-between gap-2 md:gap-3">
-            <h5 className="text-sm md:text-base text-colorBlack font-semibold">
+            <h5 className="text-sm md:text-base text-black font-semibold">
               {blog.title}
             </h5>
-            <p className="text-[13px]  font-normal text-colorLight">
+            <p className="text-[13px]  font-normal text-black">
               <span className=" text-xs md:text-sm">
                 {convertDateTime(blog.created_at)}
               </span>
             </p>
-            <div className="text-[13px]  font-normal text-colorLight">
-              <TruncatedHtml html={blog.content} maxLength={200} />
+            <div className="text-[15px]  font-medium text-black">
+              {blog.content?.length > 150
+                ? blog.content?.substring(0, 150) + "..."
+                : blog.content}
             </div>
-            <p className="font-medium px-3">
-              <span className="flex items-center border-b  max-w-max text-xs md:text-sm  text-colorBlack hover:text-colorPrimary hover:border-colorPrimary">
+            <p className="font-medium">
+              <span className="flex items-center border-b  max-w-max text-xs md:text-sm  text-black hover:text-colorPrimary hover:border-colorPrimary">
                 Ətraflı <MdArrowRightAlt className="ms-1" />
               </span>
             </p>

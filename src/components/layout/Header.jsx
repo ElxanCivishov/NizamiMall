@@ -55,7 +55,7 @@ const Header = () => {
                 alt="Logo"
               />
               {layout?.title && (
-                <span className="text-base md:text-xl font-semibold whitespace-nowrap text-zinc-800  transition-all duration-150">
+                <span className="text-base md:text-xl font-semibold whitespace-nowrap text-black  transition-all duration-150">
                   {layout.title}
                 </span>
               )}
@@ -65,7 +65,7 @@ const Header = () => {
                 {navs.map((nav, index) => (
                   <li
                     key={index}
-                    className="block py-2 px-3 text-gray-800 rounded font-bold "
+                    className="block py-2 px-3 text-black rounded font-bold "
                   >
                     <NavLink
                       to={nav.path}
