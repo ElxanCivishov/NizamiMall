@@ -17,7 +17,7 @@ import {
 import { Meta } from "../../../components/layout";
 
 const initialValue = {
-  title: null,
+  title: "",
   image: "",
 };
 

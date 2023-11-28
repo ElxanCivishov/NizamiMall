@@ -7,7 +7,6 @@ import { Pagination, Navigation, Autoplay } from "swiper/modules";
 
 import { RESET, getSliders } from "../../features/home/slider/sliderSlice";
 import Loader from "../Loader";
-import TruncatedHtml from "../TruncatedHtml";
 import { Navigate } from "react-router-dom";
 
 const HomeSlider = () => {
