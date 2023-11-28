@@ -35,7 +35,23 @@ let schema = yup.object().shape({
   category_id: yup.number().typeError(" ").required(" "),
   subcategory_id: yup.number().typeError(" ").required(" "),
   description: yup.string().required(" "),
+  floor: yup.number().typeError(" ").required(" "),
 });
+
+const floorOptions = [
+  {
+    id: 1,
+    name: "Bir",
+  },
+  {
+    id: 2,
+    name: "Iki",
+  },
+  {
+    id: 3,
+    name: "Üç",
+  },
+];
 
 const initialValue = {
   name: "",
@@ -43,6 +59,7 @@ const initialValue = {
   category_id: null,
   subcategory_id: null,
   logo: "",
+  floor: null,
 };
 
 const Service = () => {
@@ -125,6 +142,7 @@ const Service = () => {
       formData.append("logo", values.logo);
     }
     formData.append("name", values.name);
+    formData.append("floor", values.floor);
     formData.append("description", values.description);
     formData.append("category_id", values.category_id);
     formData.append("subcategory_id", values.subcategory_id);
@@ -229,6 +247,15 @@ const Service = () => {
                 options={subcats}
                 register={register("subcategory_id")}
                 value={watch("subcategory_id")}
+                required={true}
+              />
+              <SelectWithSearch
+                label="Mərtəbə"
+                errors={errors.floor}
+                trigger={trigger}
+                options={floorOptions}
+                register={register("floor")}
+                value={watch("floor")}
                 required={true}
               />
             </div>

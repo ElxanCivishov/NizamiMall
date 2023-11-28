@@ -33,7 +33,16 @@ const SingleBlog = () => {
           <Loader classLoader="h-600px" />
         ) : blog ? (
           <>
-            <div className="p-3 bg-white rounded-lg my-4  grid grid-cols-2 gap-4">
+            <div className="p-3 bg-white rounded-lg my-4  grid md:grid-cols-2 gap-4">
+              <div className="p-4 w-full group ">
+                <div className=" min-h-[200px] max-h-[350px] md:h-full overflow-hidden rounded-lg w-full">
+                  <img
+                    className="h-full w-full max-w-full object-contain rounded-lg group-hover:scale-105 transition-all duration-200"
+                    src={blog.image}
+                    alt=""
+                  />
+                </div>
+              </div>
               <div className="p-4 w-full flex flex-col gap-2">
                 <p className="text-xs md:text-sm  font-normal text-colorLight">
                   {convertDateTimeAgo(blog.created_at)}
@@ -45,15 +54,6 @@ const SingleBlog = () => {
                 </div>
                 <div className="text-xs md:text-sm  font-normal text-colorLight">
                   <TruncatedHtml html={blog.content || ""} />
-                </div>
-              </div>
-              <div className="p-4 w-full group">
-                <div className=" min-h-[200px] max-h-[350px] md:h-full overflow-hidden rounded-lg w-full">
-                  <img
-                    className="h-full w-full max-w-full object-contain rounded-lg group-hover:scale-105 transition-all duration-200"
-                    src={blog.image}
-                    alt=""
-                  />
                 </div>
               </div>
             </div>

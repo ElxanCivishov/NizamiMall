@@ -63,11 +63,11 @@ const Blogs = () => {
           <Loader />
         ) : (
           blogText && (
-            <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-20 z-10 relative">
-              <h1 class="mb-4 text-2xl  font-extrabold tracking-tight leading-none text-gray-600 md:text-5xl lg:text-6xl dark:text-white">
+            <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-20 z-10 relative">
+              <h1 className="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-600 md:text-5xl lg:text-6xl dark:text-white">
                 {blogText.title}
               </h1>
-              <p class="md:mb-8 text-sm font-normal text-gray-600 md:text-base  lg:text-xl sm:px-10 lg:px-40 dark:text-gray-200">
+              <p className="md:mb-8 text-sm font-normal text-gray-600 md:text-base lg:text-xl sm:px-10 lg:px-40 dark:text-gray-200">
                 {blogText.content}
               </p>
             </div>
@@ -83,7 +83,7 @@ const Blogs = () => {
           ) : blogs?.length === 0 ? (
             <NotResult title="Xəbər və ya yenilik tapılmadı" />
           ) : (
-            <div className="grid md:grid-cols-3 gap-4 md:gap-8 ">
+            <div className="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8 ">
               {blogs.map((b) => (
                 <BlogCard key={b.id} blog={b} />
               ))}

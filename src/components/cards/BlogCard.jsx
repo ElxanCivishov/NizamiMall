@@ -7,13 +7,13 @@ const BlogCard = ({ blog }) => {
   return (
     <Link
       to={`/xeber/${blog.id}`}
-      className=" rounded-md w-full  hover:-translate-y-2 transition-all duration-200 h-full overflow-hidden"
+      className=" rounded-md w-full  hover:-translate-y-2 transition-all duration-200 h-full  min-h-[200px]"
     >
       <div className="w-full relative rounded-lg p-2 bg-white ">
         <img
           src={blog.image || noimage}
           alt="yenilik"
-          className="w-full h-full rounded-lg"
+          className="w-full h-full  rounded-lg"
         />
       </div>
       <div className="p-4 bg-white rounded-lg mt-2 flex flex-col gap-2 md:gap-3 shadow-lg h-full">
