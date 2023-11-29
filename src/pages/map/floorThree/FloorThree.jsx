@@ -48,7 +48,7 @@ const FloorThree = () => {
       <Meta title="Üçüncü mərtəbə" />
       <div className="bg-white rounded-lg w-full select-none">
         <div className="flex gap-2 items-center max-w-max  p-2 rounded-lg text-black text-xs  md:text-base shadow-lg">
-          <AiFillCheckCircle className="text-text-colorPrimary " />
+          <AiFillCheckCircle className="text-colorPrimary" />
           {activeMap?.company_name ? (
             <Link
               to={`/magaza-ve-restoranlar/${activeMap?.company_id}`}

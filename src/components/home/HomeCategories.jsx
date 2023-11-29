@@ -39,7 +39,7 @@ const categories = [
 const HomeCategories = () => {
   return (
     <section className="container px-4 ">
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+      <div className="grid  xs:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
         {categories.map((item, index) => (
           <Link to={item.path} key={index}>
             <div className="w-full h-[150px] p-4 flex items-center justify-center gap-2 bg-white hover:bg-colorPrimary transition-all duration-100 rounded-lg shadow-lg group hover:-translate-y-2 text-black">

@@ -6,6 +6,7 @@ import { RESET, getBlog } from "../../features/blogs/blogSlice";
 import { Loader } from "../../components";
 import { NotResult } from "../../admin/components";
 import { convertDateTimeAgo } from "../../helper/date-fns";
+import TruncatedText from "../../components/TruncatedText";
 
 const SingleBlog = () => {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const SingleBlog = () => {
                   </h5>
                 </div>
                 <div className="text-base  font-medium text-black">
-                  {blog.content}
+                  <TruncatedText text={blog.content || ""} />
                 </div>
               </div>
             </div>

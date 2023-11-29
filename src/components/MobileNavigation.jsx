@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { FaBlog, FaShoppingCart } from "react-icons/fa";
 import { MdContactPage } from "react-icons/md";
@@ -15,6 +15,7 @@ const Menus = [
 ];
 
 const MobileNavigation = () => {
+  const pathname = useLocation().pathname;
   return (
     <div className="dropdown w-full fixed bottom-0 left-0 z-50 select-none">
       <div className="h-16 flex justify-between items-center bg-white border-2 container mx-auto px-4 rounded-t-lg">
@@ -22,7 +23,11 @@ const MobileNavigation = () => {
           <Link
             key={index}
             to={menu.url}
-            className="text-2xl text-zinc-800 hover:text-colorPrimary hover:scale-105 transition-all duration-100"
+            className={`text-2xl hover:text-colorPrimary hover:scale-110  transition-all duration-100 ${
+              pathname === menu.url
+                ? "text-colorPrimary scale-110"
+                : "text-zinc-800 scale-100"
+            }`}
           >
             {menu.icon}
           </Link>

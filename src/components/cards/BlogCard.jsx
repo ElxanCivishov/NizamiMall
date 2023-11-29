@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { MdArrowRightAlt } from "react-icons/md";
 import noimage from "/images/noImage.png";
-import { convertDateTime } from "../../helper/date-fns";
-import TruncatedHtml from "../TruncatedText";
+import { convertDateTimeAgo } from "../../helper/date-fns";
+import TruncatedText from "../TruncatedText";
 const BlogCard = ({ blog }) => {
   return (
     blog && (
@@ -16,18 +16,16 @@ const BlogCard = ({ blog }) => {
             />
           </div>
           <div className="p-4 bg-white mt-2 flex flex-col justify-between gap-2 md:gap-3">
-            <h5 className="text-sm md:text-base text-black font-semibold">
+            <h5 className="text-sm md:text-base text-black font-bold">
               {blog.title}
             </h5>
-            <p className="text-[13px]  font-normal text-black">
+            <p className="text-[13px]  font-semibold text-black">
               <span className=" text-xs md:text-sm">
-                {convertDateTime(blog.created_at)}
+                {convertDateTimeAgo(blog.created_at)}
               </span>
             </p>
             <div className="text-[15px]  font-medium text-black">
-              {blog.content?.length > 150
-                ? blog.content?.substring(0, 150) + "..."
-                : blog.content}
+              <TruncatedText text={blog?.content || ""} maxLength={150} />
             </div>
             <p className="font-medium">
               <span className="flex items-center border-b  max-w-max text-xs md:text-sm  text-black hover:text-colorPrimary hover:border-colorPrimary">

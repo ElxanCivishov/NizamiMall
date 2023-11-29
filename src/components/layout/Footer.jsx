@@ -65,7 +65,7 @@ const Footer = () => {
                       to={`mailto:${layout.email}`}
                       className=" hover:underline text-sm md:text-base flex items-center gap-2"
                     >
-                      <FaEnvelope />
+                      <FaEnvelope className="text-zinc-800" />
                       {layout.email}
                     </Link>
                   )}
@@ -124,7 +124,7 @@ const Footer = () => {
               : "justify-center"
           }`}
         >
-          <p className="mb-0 text-black text-xs sm:text-sm font-medium">
+          <p className="mb-0 text-black text-sm md:text-base font-medium">
             &copy; {new Date().getFullYear()} Bütün hüquqlar qorunur!
           </p>
           {(layout?.instagram || layout?.facebook) && (
@@ -132,14 +132,14 @@ const Footer = () => {
               <Link
                 to={layout?.instagram}
                 target="_blank"
-                className="flex w-full flex-col items-center justify-center group hover:text-red-500"
+                className="flex w-full flex-col items-center justify-center text-red-500 hover:text-red-600"
               >
                 <FaInstagramSquare className="text-3xl" />
               </Link>
               <Link
                 to={layout?.facebook}
                 target="_blank"
-                className="flex w-full flex-col items-center justify-center group hover:text-blue-500"
+                className="flex w-full flex-col items-center justify-center text-blue-500 hover:text-blue-600"
               >
                 <FaFacebookSquare className="text-3xl" />
               </Link>

@@ -43,7 +43,7 @@ const Rent = () => {
     register,
     reset,
     trigger,
-    formState: { errors, isDirty },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: initialValue,

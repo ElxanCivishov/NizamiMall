@@ -28,7 +28,7 @@ const EditLayout = () => {
 
   useEffect(() => {
     dispatch(getLayout());
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     if (layout) {

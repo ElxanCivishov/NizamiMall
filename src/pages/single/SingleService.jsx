@@ -9,6 +9,7 @@ import { Loader } from "../../components";
 import { useNavigate, useParams } from "react-router-dom";
 import SimilarServices from "../../components/SimilarServices";
 import { NotResult } from "../../admin/components";
+import TruncatedText from "../../components/TruncatedText";
 
 const SingleService = () => {
   const dispatch = useDispatch();
@@ -72,7 +73,7 @@ const SingleService = () => {
                 </span>
               </div>
               <div className="text-sm md:text-base font-medium text-black tracking-wide ">
-                {service.description}
+                <TruncatedText text={service.description || ""} />
               </div>
             </div>
           </div>

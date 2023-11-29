@@ -42,10 +42,8 @@ const HomeLatestBlogs = () => {
                 />
               </div>
               <div className="p-4 bg-white rounded-lg mt-2 flex flex-col gap-2 md:gap-3 shadow-lg w-full h-full ">
-                <h5 className="text-sm md:text-base text-black font-semibold">
-                  {blog.title}
-                </h5>
-                <div className="text-base  font-medium text-black tracking-wide">
+                <h5 className="text-base text-black font-bold">{blog.title}</h5>
+                <div className="text-sm md:text-base   font-medium text-black tracking-wide">
                   <TruncatedText text={blog?.content || ""} maxLength={100} />
                 </div>
                 <div className="font-medium">

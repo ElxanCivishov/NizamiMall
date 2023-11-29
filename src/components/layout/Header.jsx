@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import MobileNavigation from "../MobileNavigation";
 import LinkBtn from "../elements/LinkBtn";
 
@@ -30,7 +30,7 @@ const navs = [
 
 const Header = () => {
   const dispatch = useDispatch();
-
+  const pathname = useLocation().pathname;
   const { isSuccess, layout } = useSelector((state) => state.layout);
 
   useEffect(() => {
@@ -69,7 +69,11 @@ const Header = () => {
                   >
                     <NavLink
                       to={nav.path}
-                      className="text-sm uppercase hover:text-colorPrimary"
+                      className={`text-sm uppercase hover:text-colorPrimary transition-all duration-100 ${
+                        pathname === nav.path
+                          ? "text-colorPrimary scale-110"
+                          : "text-zinc-800 scale-100"
+                      }`}
                     >
                       {nav.title}
                     </NavLink>

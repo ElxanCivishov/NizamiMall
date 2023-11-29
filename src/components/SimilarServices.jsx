@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // import required modules
-import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 
 import { useEffect, useState } from "react";
 import { ServiceCard } from "./cards";
@@ -26,8 +26,6 @@ const SimilarServices = ({ item }) => {
     fetchServices();
   }, [item]);
 
-  console.log("data", data);
-
   if (isError || data?.length === 0) return null;
 
   return (
@@ -42,8 +40,8 @@ const SimilarServices = ({ item }) => {
         grabCursor={true}
         loop={true}
         pagination={{
-          clickable: true,
-          dynamicBullets: true,
+          clickable: false,
+          dynamicBullets: false,
         }}
         breakpoints={{
           300: {
@@ -68,12 +66,12 @@ const SimilarServices = ({ item }) => {
           disableOnInteraction: false,
         }}
         navigation={true}
-        modules={[Pagination, Navigation, Autoplay]}
-        className="mySwiper"
+        modules={[Navigation, Autoplay]}
+        className=" w-full mb-8 grid transition-all duration-400 h-full mySwiper"
       >
         {data.map((s) => (
-          <SwiperSlide className="h-full">
-            <ServiceCard key={s.id} service={s} />
+          <SwiperSlide key={s.id} className="h-full w-full">
+            <ServiceCard service={s} />
           </SwiperSlide>
         ))}
       </Swiper>

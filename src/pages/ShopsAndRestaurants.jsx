@@ -15,6 +15,7 @@ import {
   getServiceInfo,
   RESET as SERVICEBANNERRESET,
 } from "../features/service/serviceInfoSlice";
+import TruncatedText from "../components/TruncatedText";
 
 const ShopsAndRestaurants = () => {
   const dispatch = useDispatch();
@@ -105,18 +106,18 @@ const ShopsAndRestaurants = () => {
     <main className="flex flex-col gap-14 pb-10">
       <Meta title="Mağaza və Restoranlar" />
       {isLoading && <ProgressBarLoader isLoading={isLoading} />}
-      <section class="container px-4">
+      <section className="container px-4">
         {bannerLoading ? (
           <Loader />
         ) : (
           serviceText && (
-            <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-20 z-10 relative">
-              <h1 class="mb-4 text-2xl  font-extrabold tracking-tight leading-none text-zinc-800 md:text-5xl lg:text-6xl dark:text-white">
+            <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-20 z-10 relative">
+              <h1 className="mb-4 text-2xl  font-extrabold tracking-tight leading-none text-zinc-800 md:text-5xl lg:text-6xl dark:text-white">
                 {serviceText.title}
               </h1>
-              <p class="md:mb-8 text-sm font-medium text-zinc-700 md:text-base  lg:text-xl sm:px-10 lg:px-40 dark:text-gray-200">
-                {serviceText.content}
-              </p>
+              <div className="md:mb-8 text-sm font-medium text-zinc-700 md:text-base  lg:text-xl sm:px-10 lg:px-40 dark:text-gray-200">
+                <TruncatedText text={serviceText.content || ""} />
+              </div>
             </div>
           )
         )}
@@ -171,7 +172,7 @@ const ShopsAndRestaurants = () => {
           ) : services?.length === 0 ? (
             <NotResult title="Mağaza və ya Restoran tapılmadı" />
           ) : (
-            <div className="grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-7 my-3 transition-all duration-400">
+            <div className="grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-7 my-6 transition-all duration-400">
               {services.map((s) => (
                 <ServiceCard key={s.id} service={s} />
               ))}

@@ -10,6 +10,7 @@ import {
   getBlogInfo,
   RESET as BLOGBANNERRESET,
 } from "../features/blogs/blogInfoSlice";
+import TruncatedText from "../components/TruncatedText";
 
 const Blogs = () => {
   const dispatch = useDispatch();
@@ -67,9 +68,9 @@ const Blogs = () => {
               <h1 className="mb-4 text-2xl font-extrabold tracking-tight leading-none text-zinc-800 md:text-5xl lg:text-6xl dark:text-white">
                 {blogText.title}
               </h1>
-              <p className="md:mb-8 text-sm font-medium tracking-wide text-zinc-700 md:text-base lg:text-xl sm:px-10 lg:px-40 dark:text-gray-200">
-                {blogText.content}
-              </p>
+              <div className="md:mb-8 text-sm font-medium tracking-wide text-zinc-700 md:text-base lg:text-xl sm:px-10 lg:px-40 dark:text-gray-200">
+                <TruncatedText text={blogText.content || ""} />
+              </div>
             </div>
           )
         )}
