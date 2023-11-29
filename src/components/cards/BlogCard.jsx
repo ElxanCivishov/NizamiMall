@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { MdArrowRightAlt } from "react-icons/md";
 import noimage from "/images/noImage.png";
-import { convertDateTimeAgo } from "../../helper/date-fns";
+import { convertDateTime } from "../../helper/date-fns";
 import TruncatedText from "../TruncatedText";
 const BlogCard = ({ blog }) => {
   return (
@@ -20,8 +20,8 @@ const BlogCard = ({ blog }) => {
               {blog.title}
             </h5>
             <p className="text-[13px]  font-semibold text-black">
-              <span className=" text-xs md:text-sm">
-                {convertDateTimeAgo(blog.created_at)}
+              <span className=" text-xs md:text-sm capitalize">
+                {convertDateTime(blog.updated_at)}
               </span>
             </p>
             <div className="text-[15px]  font-medium text-black">

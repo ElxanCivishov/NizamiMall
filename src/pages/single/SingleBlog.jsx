@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { RESET, getBlog } from "../../features/blogs/blogSlice";
 import { Loader } from "../../components";
 import { NotResult } from "../../admin/components";
-import { convertDateTimeAgo } from "../../helper/date-fns";
+import { convertDateTime } from "../../helper/date-fns";
 import TruncatedText from "../../components/TruncatedText";
 
 const SingleBlog = () => {
@@ -45,7 +45,7 @@ const SingleBlog = () => {
               </div>
               <div className="p-4 w-full flex flex-col gap-2">
                 <p className="text-xs md:text-sm  font-normal text-black">
-                  {convertDateTimeAgo(blog.created_at)}
+                  {convertDateTime(blog.updated_at)}
                 </p>
                 <div className="flex items-center w-full ">
                   <h5 className="text-base md:text-xl font-semibold text-black">

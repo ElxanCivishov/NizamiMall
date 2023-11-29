@@ -12,7 +12,7 @@ export const convertDate = (date) => {
     // Parse the MongoDB date string to a JavaScript Date object
     const jsDate = parseISO(date);
     // Format the JavaScript Date using the Azerbaijani locale
-    return format(jsDate, "MM/dd/yyyy", { locale: az });
+    return format(jsDate, "dd MMM yyyy", { locale: az });
   }
 };
 
@@ -21,7 +21,7 @@ export const convertDateTime = (date) => {
     // Parse the MongoDB date string to a JavaScript Date object
     const jsDate = parseISO(date);
     // Format the JavaScript Date using the Azerbaijani locale
-    return format(jsDate, "MM/dd/yyyy p", { locale: az });
+    return format(jsDate, "dd MMM yyyy p", { locale: az });
   }
   return "Etibarsız tarix";
 };
