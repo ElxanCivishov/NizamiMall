@@ -5,8 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 import { RESET, getBlogs } from "../../features/blogs/blogSlice";
 import Loader from "../Loader";
-import TruncatedHtml from "../TruncatedHtml";
-import { convertDateTime } from "../../helper/date-fns";
+import TruncatedText from "../TruncatedText";
 
 const HomeLatestBlogs = () => {
   const dispatch = useDispatch();
@@ -46,13 +45,11 @@ const HomeLatestBlogs = () => {
                 <h5 className="text-sm md:text-base text-black font-semibold">
                   {blog.title}
                 </h5>
-                <div className="text-base  font-medium text-zinc-600 tracking-wide">
-                  {blog.content?.length > 100
-                    ? blog.content.substring(0, 100) + "..."
-                    : blog.content}
+                <div className="text-base  font-medium text-black tracking-wide">
+                  <TruncatedText text={blog?.content || ""} maxLength={100} />
                 </div>
                 <div className="font-medium">
-                  <span className="flex items-center justify-end border-b  max-w-max text-xs md:text-sm  text-colorBlack hover:text-colorPrimary hover:border-colorPrimary">
+                  <span className="flex items-center justify-end border-b  max-w-max text-xs md:text-sm  text-black hover:text-colorPrimary hover:border-colorPrimary">
                     Ətraflı <FaArrowRight className="ms-1" />
                   </span>
                 </div>

@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { RESET, getService } from "../../features/service/serviceSlice";
 import { Loader } from "../../components";
 import { useNavigate, useParams } from "react-router-dom";
-import TruncatedHtml from "../../components/TruncatedHtml";
 import SimilarServices from "../../components/SimilarServices";
 import { NotResult } from "../../admin/components";
 

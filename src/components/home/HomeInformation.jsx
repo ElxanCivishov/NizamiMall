@@ -8,6 +8,7 @@ import {
   getServiceInfo,
 } from "../../features/home/service/serviceInfoSlice";
 import Loader from "../Loader";
+import TruncatedText from "../TruncatedText";
 
 const HomeInformation = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const HomeInformation = () => {
               </h5>
 
               <div className="text-xl md:text-2xl  text-center tracking-wide font-normal text-black">
-                {serviceInfo.content}
+                <TruncatedText text={serviceInfo?.content || ""} />
               </div>
               <p className="flex items-center justify-center gap-3 group">
                 <Link to="/magaza-ve-restoranlar">

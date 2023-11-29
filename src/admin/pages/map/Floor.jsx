@@ -1,17 +1,10 @@
 import { useEffect } from "react";
-import {  useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
-import {
-  RESET,
-  createMap,
-  getMap,
-  updateMap,
-} from "../../../features/map/mapSlice";
+import { RESET, getMap, updateMap } from "../../../features/map/mapSlice";
 import { addValidation } from "../../../features/dataSlice";
 import {
   Button,
@@ -27,14 +20,6 @@ import {
 } from "../../../features/service/serviceSlice";
 import { Loader } from "../../../components";
 
-let schema = yup.object().shape({
-  uid: yup.number().typeError(" ").required(" "),
-});
-
-const initialValue = {
-  floor: 3,
-};
-
 const Floor = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -49,10 +34,9 @@ const Floor = () => {
     setValue,
     register,
     reset: resetForm,
-    formState: { errors, isDirty },
+    formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
-    defaultValues: initialValue,
+    defaultValues: map,
   });
 
   useEffect(() => {
@@ -60,17 +44,14 @@ const Floor = () => {
     dispatch(RESET());
     dispatch(getServices());
     dispatch(RESETSERVICES());
-    resetForm(initialValue);
     if (id !== undefined) {
       dispatch(getMap(id));
     } else {
-      resetForm(initialValue);
     }
   }, [id]);
 
   useEffect(() => {
     if (isSuccess) {
-      resetForm(initialValue);
       dispatch(addValidation(false));
       navigate(-1);
     }
@@ -80,16 +61,12 @@ const Floor = () => {
   useEffect(() => {
     if (map && id !== "undefined") {
       resetForm(map);
-    } else {
-      resetForm(initialValue);
     }
   }, [map]);
 
   const onSubmit = handleSubmit((values) => {
     if (id !== undefined) {
       dispatch(updateMap({ id, data: values }));
-    } else {
-      dispatch(createMap(values));
     }
   });
 

@@ -5,6 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { RESET, getBlogInfo } from "../../features/home/blog/blogInfoSlice";
 import Loader from "../Loader";
 import HomeLatestBlogs from "./HomeLatestBlogs";
+import TruncatedText from "../TruncatedText";
 
 const HomeBlogInfo = () => {
   const dispatch = useDispatch();
@@ -36,15 +37,11 @@ const HomeBlogInfo = () => {
               />
               <div className="absolute inset-0 !z-[3] bg-black bg-opacity-70  text-white "></div>
               <h5 className="text-3xl md:text-5xl font-bold flex flex-col text-white transition-all duration-150  !z-10 ">
-                {blogInfo?.title?.split("\r\n")?.map((text) => (
-                  <span>{text}</span>
-                ))}
+                <TruncatedText text={blogInfo?.title || ""} />
               </h5>
-              <p className="text-white transition-all duration-150 flex items-center text-2xl z-10">
-                {blogInfo?.content?.split("\r\n")?.map((text) => (
-                  <span>{text}</span>
-                ))}
-              </p>
+              <div className="text-white transition-all duration-150 flex items-center text-2xl z-10">
+                <TruncatedText text={blogInfo?.content || ""} />
+              </div>
               <Link
                 to="/xeberler-ve-yenilikler"
                 className="text-white transition-all duration-150 mt-8 hover:text-colorPrimary hover:underline flex items-center text-2xl z-10"

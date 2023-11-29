@@ -6,12 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addValidation } from "../../../features/dataSlice";
 
-import {
-  Button,
-  FormInput,
-  FormTextarea,
-  ReactQuillInput,
-} from "../../../components/elements";
+import { Button, FormInput, FormTextarea } from "../../../components/elements";
 import { Meta } from "../../../components/layout";
 import {
   RESET,
@@ -73,6 +68,8 @@ const ServisInfo = () => {
       dispatch(addValidation(false));
     }
   };
+
+  console.log(serviceInfo);
 
   return (
     <>

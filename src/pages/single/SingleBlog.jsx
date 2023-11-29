@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { RESET, getBlog } from "../../features/blogs/blogSlice";
 import { Loader } from "../../components";
 import { NotResult } from "../../admin/components";
-import TruncatedHtml from "../../components/TruncatedHtml";
 import { convertDateTimeAgo } from "../../helper/date-fns";
 
 const SingleBlog = () => {

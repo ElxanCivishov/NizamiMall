@@ -30,7 +30,7 @@ let schema = yup.object().shape({
 
 const initialValue = {
   title: "",
-  content: null,
+  content: "",
   image: "",
 };
 

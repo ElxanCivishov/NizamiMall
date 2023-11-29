@@ -18,7 +18,6 @@ import {
   Button,
   FormInput,
   FormTextarea,
-  ReactQuillInput,
   SelectWithSearch,
 } from "../../../components/elements";
 
@@ -53,15 +52,6 @@ const floorOptions = [
   },
 ];
 
-const initialValue = {
-  name: "",
-  description: "",
-  category_id: null,
-  subcategory_id: null,
-  logo: "",
-  floor: null,
-};
-
 const Service = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -83,7 +73,6 @@ const Service = () => {
     formState: { errors, isDirty },
   } = useForm({
     resolver: yupResolver(schema),
-    defaultValues: initialValue,
   });
 
   useEffect(() => {
@@ -91,6 +80,7 @@ const Service = () => {
   }, [
     watch("name"),
     watch("description"),
+    watch("floor"),
     watch("category_id"),
     watch("subcategory_id"),
   ]);
@@ -100,28 +90,30 @@ const Service = () => {
     dispatch(RESET());
     getDatasFromDB();
     resetDataAfterGet();
-    resetForm(initialValue);
+    resetForm();
+    setPreviewImage();
     if (id !== undefined) {
       dispatch(getService(id));
     } else {
-      resetForm(initialValue);
+      resetForm();
     }
   }, [id]);
 
   useEffect(() => {
     if (isSuccess) {
-      resetForm(initialValue);
+      resetForm();
       dispatch(addValidation(false));
       navigate("/admin/services");
     }
     dispatch(RESET());
+    setPreviewImage();
   }, [dispatch, isSuccess, navigate]);
 
   useEffect(() => {
     if (service && id !== "undefined") {
       resetForm(service);
     } else {
-      resetForm(initialValue);
+      resetForm();
     }
   }, [service]);
 

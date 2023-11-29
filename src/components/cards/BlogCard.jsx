@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { MdArrowRightAlt } from "react-icons/md";
 import noimage from "/images/noImage.png";
 import { convertDateTime } from "../../helper/date-fns";
-import TruncatedHtml from "../TruncatedHtml";
+import TruncatedHtml from "../TruncatedText";
 const BlogCard = ({ blog }) => {
   return (
     blog && (

@@ -8,7 +8,6 @@ import { convertDateTime } from "../../../helper/date-fns";
 
 import { Loader } from "../../../components";
 
-import TruncatedHtml from "../../../components/TruncatedHtml";
 import { FaEdit } from "react-icons/fa";
 import { FaCirclePlus } from "react-icons/fa6";
 import {

@@ -13,6 +13,7 @@ import {
   getBlogInfo,
   updateBlogInfo,
 } from "../../../features/home/blog/blogInfoSlice";
+import TruncatedText from "../../../components/TruncatedText";
 
 let schema = yup.object().shape({
   title: yup.string().required(" "),
@@ -97,8 +98,6 @@ const BlogInfo = () => {
     }
   }, [dispatch, errors]);
 
-  console.log(watch("opacity"));
-
   return (
     <>
       <Meta title="Xəbər info" />
@@ -140,22 +139,17 @@ const BlogInfo = () => {
               ></div>
 
               <h5 className="text-3xl md:text-5xl  font-bold flex flex-col text-white transition-all duration-150  !z-10">
-                {blogInfo?.title?.split("\r\n")?.map((text) => (
-                  <span>{text}</span>
-                ))}
+                <TruncatedText text={blogInfo?.title || ""} />
               </h5>
-              <p className="text-white transition-all duration-150 flex items-center text-2xl z-10">
-                {blogInfo?.content?.split("\r\n")?.map((text) => (
-                  <span>{text}</span>
-                ))}
-              </p>
+              <div className="text-white transition-all duration-150 flex items-center text-2xl z-10">
+                <TruncatedText text={blogInfo?.content || ""} />
+              </div>
             </div>
           </div>
           <FormInput
             register={register("opacity")}
             errors={errors.opacity}
             label="Şəffaflıq"
-            value={watch("opacity")}
             min={0}
             max={100}
             type="Number"
