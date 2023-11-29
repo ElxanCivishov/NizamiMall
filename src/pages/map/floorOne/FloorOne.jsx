@@ -70,9 +70,12 @@ const FloorOne = () => {
             className="w-full h-full p-4"
           >
             <defs>
-              <style>{`.cls-1{letter-spacing:-.01em;font-weight:600 ;cursor:pointer;}
-            .cls-2{letter-spacing:0em;font-weight:600 ;cursor:pointer;}
-            .cls-3,.cls-4{fill:#000;font-weight:600 ;cursor:pointer;}.cls-5{letter-spacing:0em;}.cls-6{font-size:19.44px;}.cls-6,.cls-7,.cls-8,.cls-9,.cls-10,.cls-11,.cls-12,.cls-13,.cls-14,.cls-15,.cls-16{fill:#4d4d4d;font-family:Raleway-Regular, Raleway;isolation:isolate;font-weight:600 ;cursor:pointer;}.cls-7{font-size:20.27px;}.cls-8{font-size:18.29px;}.cls-9{font-size:18.7px;}.cls-17{letter-spacing:-.02em;}.cls-10{font-size:20.75px;}.cls-18{letter-spacing:-.02em;}.cls-19{letter-spacing:-.11em;}.cls-11{font-size:19.56px;}.cls-20{letter-spacing:-.01em;}.cls-21{letter-spacing:0em;}.cls-12{font-size:26.86px;}.cls-22{letter-spacing:-.03em;}.cls-23{letter-spacing:-.01em;}.cls-24{fill:#22b37f;}.cls-25{letter-spacing:-.01em;}.cls-13{font-size:20.9px;}.cls-26{letter-spacing:-.02em;}.cls-27{letter-spacing:0em;}.cls-28{letter-spacing:0em;}.cls-29{letter-spacing:0em;}.cls-30{fill:none;}.cls-30,.cls-4{stroke:#4d4d4d;stroke-miterlimit:10;}.cls-31{letter-spacing:-.03em;}.cls-14{font-size:22px;font-weight:600 ;cursor:pointer;}.cls-32{letter-spacing:0em;}.cls-15{font-size:16px;font-weight:600 ;cursor:pointer;}.cls-33{letter-spacing:0em;}.cls-34{letter-spacing:0em;}.cls-35{letter-spacing:-.02em;}.cls-36{letter-spacing:0em;}.cls-37{letter-spacing:-.02em;}.cls-16{font-size:21.02px;}.cls-38{letter-spacing:-.11em;}.cls-39{letter-spacing:0em;}.cls-40{letter-spacing:0em;}.cls-41{letter-spacing:-.01em;}.cls-42{letter-spacing:-.03em;}.cls-43{letter-spacing:-.03em;}.cls-44{fill:#57be92;}.cls-45{letter-spacing:-.03em;}.cls-46{letter-spacing:-.03em;}
+              <style>{`
+             .cls-10{fill:#4d4d4d;font-weight:800 ;cursor:pointer;font-size:15px;letter-spacing:-.02em;}
+             .cls-30{fill:none;}.cls-30,
+          .cls-4{stroke:#4d4d4d;stroke-miterlimit:10;}
+         .cls-44{fill:#57be92;}
+          }
           `}</style>
             </defs>
 
@@ -89,7 +92,7 @@ const FloorOne = () => {
             {svgTexts.map((item) => (
               <text
                 key={item.uid}
-                transform
+                className="cls-10"
                 {...item}
                 style={{
                   fill:

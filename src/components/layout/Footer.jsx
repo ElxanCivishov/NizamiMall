@@ -84,7 +84,7 @@ const Footer = () => {
               )}
             </div>
             <div className="mt-4 ">
-              <h4 className="text-black mb-2 font-semibold">Kateqoriyalar</h4>
+              <h4 className="text-black mb-2 font-semibold">Keçidlər</h4>
               <div className="flex flex-col gap-1 md:gap-2">
                 <Link
                   className="text-black hover:underline text-sm md:text-base"

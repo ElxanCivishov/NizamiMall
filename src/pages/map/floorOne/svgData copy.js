@@ -75,58 +75,72 @@ export const svgPaths = [
 export const svgTexts = [
   {
     uid: 10,
+    className: "cls-13",
     transform: "translate(492.71 726.78) rotate(-73.96)",
   },
   {
     uid: 9,
+    className: "cls-14",
     transform: "translate(429.05 511.62) rotate(-73.96)",
   },
   {
     uid: 8,
+    className: "cls-9",
     transform: "translate(478.61 361.23) rotate(-98.27)",
   },
   {
     uid: 2,
+    className: "cls-12",
     transform: "translate(796.15 177.62) rotate(-104.32)",
   },
   {
     uid: 1,
+    className: "cls-12",
     transform: "translate(909.73 138.47) rotate(-104.32)",
   },
   {
     uid: 6,
+    className: "cls-10",
     transform: "translate(242.27 260.66) rotate(-107.8) scale(1.1 1)",
   },
   {
     uid: 3,
+    className: "cls-16",
     transform: "translate(372.1 226.29) rotate(-104.43) scale(1.1 1)",
   },
   {
     uid: 12,
+    className: "cls-8",
     transform: "translate(501.57 533.39) rotate(-73.96)",
   },
   {
     uid: 11,
+    className: "cls-11",
     transform: "translate(367.63 698.81) rotate(-73.96)",
   },
   {
     uid: 14,
+    className: "cls-6",
     transform: "translate(505.11 167.78) rotate(-103.34) scale(1.1 1)",
   },
   {
     uid: 16,
+    className: "cls-15",
     transform: "translate(601.27 169.88) rotate(-101.69) scale(1.1 1)",
   },
   {
     uid: 15,
+    className: "cls-7",
     transform: "translate(158.81 459.14) rotate(-87.88)",
   },
   {
     uid: 13,
+    className: "cls-7",
     transform: "translate(655.81 570.14) rotate(-75.88)",
   },
   {
     uid: 7,
+    className: "cls-7",
     transform: "translate(265.81 438.14) rotate(-47.88)",
   },
 ];

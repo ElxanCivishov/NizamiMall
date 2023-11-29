@@ -71,7 +71,17 @@ const FloorTwo = () => {
             className="w-full h-full p-4"
           >
             <defs>
-              <style>{`.cls-1{letter-spacing:-.03em;}.cls-2{font-size:12.9px;font-weight:600 ;cursor:pointer;}.cls-2,.cls-3,.cls-4,.cls-5,.cls-6,.cls-7,.cls-8,.cls-9,.cls-10,.cls-11,.cls-12,.cls-13,.cls-14,.cls-15,.cls-16,.cls-17,.cls-18,.cls-19,.cls-20,.cls-21,.cls-22,.cls-23,.cls-24,.cls-25,.cls-26,.cls-27,.cls-28,.cls-29,.cls-30,.cls-31,.cls-32,.cls-33{fill:#4d4d4d;font-family:Raleway-Regular, Raleway;isolation:isolate;font-weight:600 ;cursor:pointer;}.cls-34{letter-spacing:-.02em;}.cls-35{letter-spacing:0em;}.cls-3{font-size:14.99px;font-weight:600 ;cursor:pointer;}.cls-36{letter-spacing:-.02em;}.cls-37{letter-spacing:-.03em;}.cls-38{fill:#1f6524;font-weight:600 ;cursor:pointer;}.cls-39,.cls-40{fill:#fff;}.cls-41{letter-spacing:0em;}.cls-42{letter-spacing:-.01em;}.cls-43{letter-spacing:-.03em;}.cls-44{letter-spacing:0em;}.cls-4{font-size:11.56px;font-weight:600 ;cursor:pointer;}.cls-5{font-size:12.78px;font-weight:600 ;cursor:pointer;}.cls-45{letter-spacing:0em;}.cls-6{font-size:14.93px;font-weight:600 ;cursor:pointer;}.cls-46{letter-spacing:-.02em;}.cls-47{letter-spacing:0em;}.cls-48{letter-spacing:-.02em;}.cls-49{letter-spacing:0em;}.cls-50{letter-spacing:-.05em;}.cls-51{letter-spacing:0em;}.cls-7{font-size:16.43px;font-weight:600 ;cursor:pointer;}.cls-52{letter-spacing:0em;}.cls-8{font-size:16.73px;font-weight:600 ;cursor:pointer;}.cls-53{letter-spacing:0em;}.cls-54{letter-spacing:-.01em;}.cls-55{letter-spacing:-.02em;}.cls-56{letter-spacing:0em;}.cls-9{font-size:12.05px;font-weight:600 ;cursor:pointer;}.cls-57{letter-spacing:-.11em;}.cls-58{letter-spacing:0em;}.cls-10{font-size:16.93px;font-weight:600 ;cursor:pointer;}.cls-59{letter-spacing:0em;}.cls-11{font-size:13.75px;font-weight:600 ;cursor:pointer;}.cls-60{letter-spacing:-.01em;}.cls-61{letter-spacing:0em;}.cls-62{letter-spacing:0em;}.cls-63{letter-spacing:0em;}.cls-64{letter-spacing:-.03em;}.cls-65{fill:#f5f8f9;}.cls-12{font-size:10.05px;font-weight:600 ;cursor:pointer;}.cls-66{letter-spacing:-.02em;}.cls-67{letter-spacing:-.01em;}.cls-68{letter-spacing:-.11em;}.cls-13{font-size:16.93px;font-weight:600 ;cursor:pointer;}.cls-69{letter-spacing:0em;}.cls-70{fill:#22b37f;}.cls-71{letter-spacing:0em;}.cls-72{letter-spacing:-.03em;}.cls-73{letter-spacing:-.01em;}.cls-74{letter-spacing:0em;}.cls-75{letter-spacing:-.01em;}.cls-76{letter-spacing:0em;}.cls-14{font-size:14.7px;font-weight:600 ;cursor:pointer;}.cls-77{letter-spacing:0em;}.cls-15{font-size:14.89px;font-weight:600 ;cursor:pointer;}.cls-78{letter-spacing:0em;}.cls-79{letter-spacing:0em;}.cls-80{fill:#918291;}.cls-81{letter-spacing:-.01em;}.cls-82{fill:#7a6d79;}.cls-83{letter-spacing:-.03em;}.cls-84{letter-spacing:0em;}.cls-16{font-size:15.86px;font-weight:600 ;cursor:pointer;}.cls-17{font-size:16.49px;font-weight:600 ;cursor:pointer;}.cls-85{letter-spacing:0em;}.cls-18{font-size:12.13px;font-weight:600 ;cursor:pointer;}.cls-19{font-size:11.22px;font-weight:600 ;cursor:pointer;}.cls-86{letter-spacing:0em;}.cls-87{fill:none;}.cls-87,.cls-40{stroke:#4d4d4d;stroke-miterlimit:10;}.cls-20{font-size:28.8px;font-weight:600 ;cursor:pointer;}.cls-21{font-size:10.94px;font-weight:600 ;cursor:pointer;}.cls-22{font-size:10.89px;font-weight:600 ;cursor:pointer;}.cls-88{letter-spacing:0em;}.cls-89{letter-spacing:0em;}.cls-23{font-size:11.66px;font-weight:600 ;cursor:pointer;}.cls-24{font-size:13.63px;font-weight:600 ;cursor:pointer;}.cls-25{font-size:14.78px;font-weight:600 ;cursor:pointer;}.cls-90{letter-spacing:-.01em;}.cls-91{letter-spacing:-.03em;}.cls-92{letter-spacing:0em;}.cls-93{letter-spacing:0em;}.cls-94{letter-spacing:0em;}.cls-95{letter-spacing:-.09em;}.cls-96{letter-spacing:0em;}.cls-97{letter-spacing:0em;}.cls-98{letter-spacing:-.02em;}.cls-26{font-size:17.99px;font-weight:600 ;cursor:pointer;}.cls-99{letter-spacing:-.03em;}.cls-100{letter-spacing:-.03em;}.cls-27{font-size:10.82px;font-weight:600 ;cursor:pointer;}.cls-101{letter-spacing:0em;}.cls-102{letter-spacing:0em;}.cls-28{font-size:18.48px;font-weight:600 ;cursor:pointer;}.cls-103{letter-spacing:-.01em;}.cls-104{fill:#57be92;}.cls-105{letter-spacing:0em;}.cls-106{letter-spacing:-.03em;}.cls-107{letter-spacing:-.01em;}.cls-29{font-size:16.52px;font-weight:600 ;cursor:pointer;}.cls-108{fill:#685e68;}.cls-109{letter-spacing:0em;}.cls-110{letter-spacing:-.06em;}.cls-111{letter-spacing:-.03em;}.cls-30{font-size:12.09px;font-weight:600 ;cursor:pointer;}.cls-112{letter-spacing:-.03em;}.cls-31{font-size:17.28px;font-weight:600 ;cursor:pointer;}.cls-113{letter-spacing:-.03em;}.cls-114{letter-spacing:-.01em;}.cls-115{letter-spacing:-.03em;}.cls-116{letter-spacing:0em;}.cls-32{font-size:13.63px;font-weight:600 ;cursor:pointer;}.cls-117{letter-spacing:-.02em;}.cls-118{letter-spacing:0em;}.cls-119{letter-spacing:0em;}.cls-120{letter-spacing:0em;}.cls-121{letter-spacing:-.02em;}.cls-33{font-size:13.63px;font-weight:600 ;cursor:pointer;}`}</style>
+              <style>
+                {`
+                 .cls-10{font-weight:700 ;cursor:pointer;font-size:10px;letter-spacing:-.01em;}
+              .cls-39,.cls-40{fill:#fff;}
+              .cls-70{fill:#22b37f;}
+              .cls-80{fill:#918291;}
+              .cls-87{fill:none;}
+              .cls-87,
+              .cls-40{stroke:#4d4d4d;stroke-miterlimit:10;}
+              .cls-104{fill:#57be92;}`}
+              </style>
             </defs>
 
             {svgPaths.map((item) => (
@@ -88,6 +98,7 @@ const FloorTwo = () => {
               <polygon
                 key={item.uid}
                 {...item}
+                className="cls-40"
                 style={{
                   fill: selected?.uid === item?.uid ? "currentcolor" : "#fff",
                 }}
@@ -99,13 +110,16 @@ const FloorTwo = () => {
               <text
                 key={item.uid}
                 {...item}
+                className={`fill-[#4d4d4d] font-extrabold  cursor-pointer ${
+                  item.uid === 15 ? "text-xs" : "text-[9px]"
+                }`}
                 style={{
                   fill: selected?.uid === item?.uid ? "#fff" : "#000",
                 }}
                 onClick={(e) => handleClick(item, e)}
               >
                 {maps?.length > 0 &&
-                  convertToText({ dynamicNames: maps, item })}
+                  convertToText({ dynamicNames: maps, item, maxlength: 11 })}
               </text>
             ))}
 

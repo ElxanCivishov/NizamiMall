@@ -627,12 +627,14 @@ export const svgPolygons = [
   // ns moda
   {
     uid: 41,
+    className: "cls-40",
     points:
       "282.98 288.73 404.28 319.03 403.58 343.93 274.78 311.63 282.98 288.73",
   },
   // dossi
   {
     uid: 42,
+    className: "cls-40",
     points:
       "575.38 357.33 576.68 297.93 449.98 296.73 445.98 343.73 506.48 351.13 552.78 357.33 575.38 357.33",
   },
@@ -646,30 +648,35 @@ export const svgPolygons = [
   // esko
   {
     uid: 44,
+    className: "cls-40",
     points:
       "834.78 166.93 832.98 114.73 786.98 115.73 789.98 167.73 834.78 166.93",
   },
   // hale accessory
   {
     uid: 45,
+    className: "cls-40",
     points:
       "330.98 325.93 319.18 373.73 394.28 392.23 403.58 343.93 330.98 325.93",
   },
   // aztel
   {
     uid: 46,
+    className: "cls-40",
     points:
       "271.88 310.93 330.98 325.93 319.18 373.73 257.48 358.33 271.88 310.93",
   },
   // vm store
   {
     uid: 47,
+    className: "cls-40",
     points:
       "300.08 206.53 263.08 215.73 273.38 260.03 310.38 251.83 300.08 206.53",
   },
   // parfume de as
   {
     uid: 48,
+    className: "cls-40",
     points:
       "299.08 206.53 309.38 251.83 352.08 242.03 341.28 196.23 299.08 206.53",
   },
@@ -677,6 +684,7 @@ export const svgPolygons = [
   // intime azerbaijan
   {
     uid: 49,
+    className: "cls-40",
     points:
       "526.98 229.73 498.98 230.73 478.98 158.73 512.98 150.73 526.88 229.23",
   },
@@ -686,237 +694,284 @@ export const svgTexts = [
   // şahmat
   {
     uid: 28,
+    className: "cls-10",
     transform: "translate(333.04 491.06) rotate(-71.46)",
   },
   // ramzotti
   {
     uid: 27,
+    className: "cls-13",
     transform: "translate(265.83 478.11) rotate(-73.13)",
   },
   // zera
   {
     uid: 25,
+    className: "cls-6",
     transform: "translate(141.9 430.99) rotate(-68.17)",
   },
   // esko
   {
     uid: 44,
+    className: "cls-23",
     transform: "translate(808.26 155.85) rotate(-90.72)",
   },
   // aska butik
   {
     uid: 5,
+    className: "cls-23",
     transform: "translate(765.04 158.07) rotate(-93.65)",
   },
   // ayna boutique
   {
     uid: 12,
+    className: "cls-23",
     transform: "translate(653.98 160.81) rotate(-93.65)",
   },
   // procosmetics
   {
     uid: 14,
+    className: "cls-22",
     transform: "translate(617.13 163.1) rotate(-104.89)",
   },
   // Shamplena
   {
     uid: 13,
+    className: "cls-12",
     transform: "translate(597.29 182.6) rotate(-108.15)",
   },
   // Luxury brandiju
   {
     uid: 4,
+    className: "cls-9",
     transform: "translate(562.78 193.85) rotate(-109.21)",
   },
   // prada parfum
   {
     uid: 10,
+    className: "cls-9",
     transform:
       "translate(540.76 213.94) rotate(-100.6) scale(.88 1) skewX(-.21)",
   },
   // intime Azerbaijan
   {
     uid: 49,
+    className: "cls-21",
     transform: "translate(505.3 207.19) rotate(-104.77)",
   },
   // Elpidio Baku
   {
     uid: 2,
+    className: "cls-12",
     transform: "translate(488.05 222.9) rotate(-108.15)",
   },
   // Add dress
   {
     uid: 11,
+    className: "cls-12",
     transform: "translate(464.75 222.9) rotate(-108.15)",
   },
   //Flame.az
   {
     uid: 24,
+    className: "cls-31",
     transform: "translate(100.25 430.8) rotate(-68.46)",
   },
   //Connect
   {
     uid: 23,
+    className: "cls-32",
     transform: "translate(95.4 221.73) rotate(-127.97)",
   },
   //Junior gentleman ladies
   {
     uid: 26,
+    className: "cls-16",
     transform: "translate(184.74 437.65) rotate(-70.74)",
   },
   //Misstyle
   {
     uid: 33,
+    className: "cls-33",
     transform: "translate(126.53 204.31) rotate(-110.27)",
   },
   //style bag
   {
     uid: 22,
+    className: "cls-24",
     transform: "translate(152.65 201.27) rotate(-105.67)",
   },
   //fiore silver
   {
     uid: 35,
+    className: "cls-32",
     transform: "translate(198.71 179.09) rotate(-103.62)",
   },
   //Iris collection
   {
     uid: 36,
+    className: "cls-2",
     transform: "translate(258.28 153.12) rotate(-101.5)",
   },
   // Dr.B rown
   {
     uid: 20,
+    className: "cls-2",
     transform: "translate(303.08 162.82) rotate(-101.5)",
   },
   // Mulen ruj
   {
     uid: 9,
+    className: "cls-2",
     transform: "translate(385.56 251.21) rotate(-101.5)",
   },
   // parfume de as
   {
     uid: 48,
+    className: "cls-5",
     transform: "translate(329.25 243.06) rotate(-104.7)",
   },
   //  boş zona
   {
     uid: 8,
+    className: "cls-5",
     transform: "translate(161.99 320.86) rotate(-64.7)",
   },
   // Vm store
   {
     uid: 47,
+    className: "cls-5",
     transform: "translate(291.99 255.86) rotate(-104.7)",
   },
   // Sonia
   {
     uid: 37,
+    className: "cls-7",
     transform: "translate(381.67 141.15) rotate(-102.38)",
   },
   // boş zona
   {
     uid: 18,
+    className: "cls-2",
     transform: "translate(331.67 158.15) rotate(-102.38)",
   },
   // roni wear
   {
     uid: 38,
+    className: "cls-25",
     transform: "translate(451.37 115.72) rotate(-106.24)",
   },
   // aska sport
   {
     uid: 3,
+    className: "cls-28",
     transform: "translate(415.61 129.14) rotate(-106.24)",
   },
   // catreen
   {
     uid: 19,
+    className: "cls-14",
     transform: "translate(500.29 115.45) rotate(-104.17)",
   },
   // aura studio
   {
     uid: 15,
+    className: "cls-20",
     transform: "translate(928.56 69.21) rotate(-.58) scale(1.03 1)",
   },
   // rose girl
   {
     uid: 17,
+    className: "cls-11",
     transform: "translate(543.34 102.88) rotate(-104.17)",
   },
   // nb accessories
   {
     uid: 16,
+    className: "cls-30",
     transform: "translate(575.19 74.34) rotate(-106.93)",
   },
   // vn toys
   {
     uid: 7,
+    className: "cls-3",
     transform: "translate(649.01 82.74) rotate(-93.96)",
   },
   // Bakust reet
   {
     uid: 39,
+    className: "cls-3",
     transform: "translate(468.03 271.87) rotate(-1.21)",
   },
   // Unix ayyaqqabı
   {
     uid: 1,
+    className: "cls-19",
     transform: "translate(321.11 263.4) rotate(9.93)",
   },
   // Eloor
   {
     uid: 43,
+    className: "cls-4",
     transform: "translate(330.6 293.23) rotate(10.84)",
   },
   //  NS moda
   {
     uid: 41,
+    className: "cls-4",
     transform: "translate(311.85 315.17) rotate(10.84)",
   },
   //  hale accessory
   {
     uid: 45,
+    className: "cls-18",
     transform: "translate(355.82 369.07) rotate(-76.86) scale(.97 1)",
   },
   //  aztel
   {
     uid: 46,
+    className: "cls-8",
     transform: "translate(292.31 363.14) rotate(-74.26) scale(.97 1)",
   },
   //   Dosso dossi
   {
     uid: 42,
+    className: "cls-26",
     transform: "translate(458.96 320.97) rotate(3.47)",
   },
   //   glent
   {
     uid: 6,
+    className: "cls-17",
     transform: "translate(721.8 77.3) rotate(-89.17)",
   },
   //   agat ametist
   {
     uid: 34,
+    className: "cls-32",
     transform: "translate(168.31 184.2) rotate(-103.2)",
   },
   //   sis
   {
     uid: 21,
+    className: "cls-29",
     transform: "translate(235.87 167.02) rotate(-103.2)",
   },
   //   izim accessories
   {
     uid: 29,
+    className: "cls-27",
     transform: "translate(246.01 339.42) rotate(-74.26) scale(.97 1)",
   },
   //  turkuaz
   {
     uid: 31,
+    className: "cls-15",
     transform: "translate(50.46 404.8) rotate(-59.5)",
   },
   //  rizanna
   {
     uid: 32,
+    className: "cls-15",
     transform: "translate(24.61 376.52) rotate(-52.81)",
   },
 ];

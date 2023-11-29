@@ -1,4 +1,4 @@
-export const convertToText = ({ dynamicNames, item }) => {
+export const convertToText = ({ dynamicNames, item, maxlength = 9 }) => {
   const field = dynamicNames.find((i) => i?.uid === item?.uid);
   console.log(field, item);
   const { x1, x2, y1, y2 } = field;
@@ -7,9 +7,9 @@ export const convertToText = ({ dynamicNames, item }) => {
       ?.trim()
       .split(" ")
       .map((word, index) => {
-        if (word.length > 9) {
-          const firstPart = word.slice(0, 7);
-          const secondPart = word.slice(7);
+        if (word.length >= maxlength) {
+          const firstPart = word.slice(0, Math.ceil(word.length / 2));
+          const secondPart = word.slice(Math.ceil(word.length / 2));
 
           return (
             <tspan key={index}>
