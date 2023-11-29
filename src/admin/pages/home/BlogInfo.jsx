@@ -132,7 +132,7 @@ const BlogInfo = () => {
               <img
                 src={previewImage ? previewImage : blogInfo?.image}
                 alt=""
-                className="absolute w-full h-full inset-0  !z-1  rounded-lg"
+                className="absolute w-full h-full inset-0  !z-1  rounded-lg object-cover group-hover:scale-105 transition-all duration-300  "
               />
               <div
                 style={{ opacity: `${parseFloat(watch("opacity"))}%` }}
