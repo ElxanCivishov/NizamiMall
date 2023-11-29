@@ -15,11 +15,11 @@ const HomeBlogInfo = () => {
 
   useEffect(() => {
     dispatch(getBlogInfo());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(RESET());
-  }, [isSuccess, dispatch]);
+  }, [isSuccess]);
 
   return (
     <section className="container p-4">
@@ -30,18 +30,20 @@ const HomeBlogInfo = () => {
           <div className="flex flex-col md:flex-row gap-10 relative">
             <div className="rounded-lg shadow-lg w-full md:max-w-max p-3 overflow-hidden bg-white flex flex-col gap-4 px-5 md:px-10 justify-center min-h-[350px] relative group">
               <img
-                src="/images/blogInfoBanner.jpg"
+                src={blogInfo?.image}
                 alt=""
-                className="absolute w-full h-full inset-0  group-hover:scale-105 transition-all duration-200   !z-1  rounded-lg"
+                className="absolute w-full h-full inset-0  group-hover:scale-105 transition-all duration-300   !z-1  rounded-lg"
               />
               <div className="absolute inset-0 !z-[3] bg-black bg-opacity-70  text-white "></div>
-              <h5 className="text-3xl md:text-5xl font-bold flex flex-col text-white transition-all duration-150  !z-10">
-                <span>Ən son </span>
-                <span>Yeniliklərdən </span>
-                <span>Xəbərdar Olun!</span>
+              <h5 className="text-3xl md:text-5xl font-bold flex flex-col text-white transition-all duration-150  !z-10 ">
+                {blogInfo?.title?.split("\r\n")?.map((text) => (
+                  <span>{text}</span>
+                ))}
               </h5>
               <p className="text-white transition-all duration-150 flex items-center text-2xl z-10">
-                {blogInfo.content}
+                {blogInfo?.content?.split("\r\n")?.map((text) => (
+                  <span>{text}</span>
+                ))}
               </p>
               <Link
                 to="/xeberler-ve-yenilikler"

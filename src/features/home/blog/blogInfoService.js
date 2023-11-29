@@ -7,10 +7,7 @@ const getBlogInfo = async () => {
 };
 
 const updateBlogInfo = async (bloginfo) => {
-  const response = await axios.post(`${base_url}home-blog`, {
-    title: bloginfo.title,
-    content: bloginfo.content,
-  });
+  const response = await axios.post(`${base_url}home-blog`, bloginfo);
   return response.data;
 };
 
