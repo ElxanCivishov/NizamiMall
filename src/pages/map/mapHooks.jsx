@@ -1,6 +1,5 @@
 export const convertToText = ({ dynamicNames, item, maxlength = 9 }) => {
   const field = dynamicNames.find((i) => i?.uid === item?.uid);
-  console.log(field, item);
   const { x1, x2, y1, y2 } = field;
   if (field?.company_name?.trim() != null) {
     const words = field?.company_name
@@ -36,24 +35,20 @@ export const convertToText = ({ dynamicNames, item, maxlength = 9 }) => {
 
     return words;
   } else {
-    return (
-      <tspan x={x2} dy={y2}>
-        {"Boş zona"
-          .trim()
-          .split(" ")
-          .map((word, index) => {
-            return (
-              <tspan
-                style={{ fill: "red" }}
-                key={index}
-                x={x1}
-                dy={index > 0 ? y1 : y2}
-              >
-                {word}
-              </tspan>
-            );
-          })}
-      </tspan>
-    );
+    return "Boş zona"
+      .trim()
+      .split(" ")
+      .map((word, index) => {
+        return (
+          <tspan
+            style={{ fill: "red" }}
+            key={index}
+            x={x1}
+            dy={index > 0 ? y1 : y2}
+          >
+            {word}
+          </tspan>
+        );
+      });
   }
 };

@@ -46,18 +46,22 @@ const FloorThree = () => {
   return (
     <>
       <Meta title="Üçüncü mərtəbə" />
-      <div className="bg-white rounded-lg w-full select-none">
-        <div className="flex gap-2 items-center max-w-max  p-2 rounded-lg text-black text-xs  md:text-base shadow-lg">
-          <AiFillCheckCircle className="text-colorPrimary" />
+      <div className="bg-white rounded-lg w-full select-none ">
+        <div className=" p-2 rounded-lg text-black text-xs  md:text-base shadow-lg max-w-max ">
           {activeMap?.company_name ? (
             <Link
               to={`/magaza-ve-restoranlar/${activeMap?.company_id}`}
-              className=" hover:underline hover:text-colorPrimary cursor-pointer min-w-[200px]"
+              className="flex gap-2 items-center text-black hover:underline hover:text-colorPrimary   cursor-pointer min-w-[100px] px-2"
             >
+              <img
+                src={activeMap.company_logo}
+                className="w-10 h-10 md:w-20 md:h-20 object-cover rounded-full"
+                alt="logo"
+              />
               {activeMap?.company_name}
             </Link>
           ) : (
-            <span className=" hover:underline hover:text-colorPrimary cursor-pointer min-w-[200px]">
+            <span className="text-black hover:text-colorPrimary px-4">
               {selected ? "Boş zona " : "Seçin..."}
             </span>
           )}

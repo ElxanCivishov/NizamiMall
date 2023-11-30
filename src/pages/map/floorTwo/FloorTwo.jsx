@@ -48,17 +48,21 @@ const FloorTwo = () => {
     <>
       <Meta title="İkinci mərtəbə" />
       <div className="bg-white rounded-lg w-full select-none h-auto">
-        <div className="flex gap-2 items-center max-w-max  p-2 rounded-lg text-black text-xs  md:text-base shadow-lg">
-          <AiFillCheckCircle className="text-colorPrimary" />
+        <div className=" p-2 rounded-lg text-black text-xs  md:text-base shadow-lg max-w-max ">
           {activeMap?.company_name ? (
             <Link
               to={`/magaza-ve-restoranlar/${activeMap?.company_id}`}
-              className=" hover:underline hover:text-colorPrimary cursor-pointer min-w-[200px]"
+              className="flex gap-2 items-center text-black hover:underline hover:text-colorPrimary   cursor-pointer min-w-[100px] px-2"
             >
+              <img
+                src={activeMap.company_logo}
+                className="w-10 h-10 md:w-20 md:h-20 object-cover rounded-full"
+                alt="logo"
+              />
               {activeMap?.company_name}
             </Link>
           ) : (
-            <span className=" hover:underline hover:text-colorPrimary cursor-pointer min-w-[200px]">
+            <span className="text-black hover:text-colorPrimary px-4">
               {selected ? "Boş zona " : "Seçin..."}
             </span>
           )}
@@ -142,7 +146,7 @@ const FloorTwo = () => {
               y2="209.73"
             />
             <path
-              class="cls-87"
+              className="cls-87"
               d="M400.98,413.73c45.8,6.9,91.6,13.8,137.4,20.7l14.4-77.2h22.6l4.1-168.8,58.7-14.4,45.3-5.1,1-51.5,62.3-.5,3.6,53,84.4-3.1-1-25.7h15.4v-23.7l72-1,4.1,122.5c46.3-1.4,92.6-2.7,138.9-4.1"
             />
             <polyline

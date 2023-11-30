@@ -63,20 +63,19 @@ const Map = () => {
           <div className="flex flex-col gap-2 w-full h-full">
             <div className="flex items-center justify-center bg-white rounded-lg p-2 gap-2 w-full select-none">
               {floorTabs.map((item) => (
-                <>
-                  <div
-                    className={`border-2 flex items-center justify-center p-3 w-12 h-12 font-semibold  rounded-lg cursor-pointer hover:bg-colorPrimary hover:text-white ${
-                      floorNumber === item.num
-                        ? "bg-colorPrimary text-white"
-                        : "bg-white text-black"
-                    }`}
-                    onClick={() => {
-                      handleChangeFloor(item.num);
-                    }}
-                  >
-                    <span>{item.num}</span>
-                  </div>
-                </>
+                <div
+                  key={item.num}
+                  className={`border-2 flex items-center justify-center p-3 w-12 h-12 font-semibold  rounded-lg cursor-pointer hover:bg-colorPrimary hover:text-white ${
+                    floorNumber === item.num
+                      ? "bg-colorPrimary text-white"
+                      : "bg-white text-black"
+                  }`}
+                  onClick={() => {
+                    handleChangeFloor(item.num);
+                  }}
+                >
+                  <span>{item.num}</span>
+                </div>
               ))}
             </div>
 
