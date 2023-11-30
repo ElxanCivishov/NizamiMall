@@ -11,7 +11,7 @@ const InfoModal = ({ handleClose, text }) => {
       tabIndex="-1"
       className="modal fixed top-0 left-0 right-0 z-50 p-4 overflow-x-hidden overflow-y-auto h-full max-h-full flex items-center justify-center bg-[rgba(0,0,0,0.4)] dark:bg-[rgba(255,255,255,0.4)]"
     >
-      <div className="relative w-full max-w-md max-h-full">
+      <div className="relative w-full max-w-4xl max-h-full">
         <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
           <button
             type="button"
@@ -51,7 +51,7 @@ const InfoModal = ({ handleClose, text }) => {
                 d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
               />
             </svg>
-            <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+            <h3 className="mb-5 text-lg font-normal text-gray-700 dark:text-gray-400">
               {text}
             </h3>
           </div>

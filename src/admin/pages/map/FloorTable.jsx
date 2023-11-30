@@ -2,19 +2,18 @@ import { memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getMaps } from "../../../features/map/mapSlice";
-import { NotResult } from "../../components";
+import { InfoModal, NotResult } from "../../components";
 import { convertDateTime } from "../../../helper/date-fns";
 import notImage from "/images/noImage.png";
 import { Loader } from "../../../components";
 import { Meta } from "../../../components/layout";
-import { FaEdit } from "react-icons/fa";
-import { FaCirclePlus } from "react-icons/fa6";
+import { FaEdit, FaInfoCircle } from "react-icons/fa";
 
 const FloorTable = ({ floor, text }) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+  const [open, setOpen] = useState(false);
   const { maps } = useSelector((state) => state.maps);
-
   useEffect(() => {
     dispatch(getMaps(`floor=${floor}`));
   }, [floor]);
@@ -22,6 +21,10 @@ const FloorTable = ({ floor, text }) => {
   useEffect(() => {
     setLoading(false);
   }, [maps]);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <>
@@ -31,6 +34,12 @@ const FloorTable = ({ floor, text }) => {
           <h2 className="font-semibold md:text-2xl text-gray-600 dark:text-slate-100">
             Mərtəbə {text}
           </h2>
+          <span
+            className="border-b cursor-pointer"
+            onClick={() => setOpen(true)}
+          >
+            <FaInfoCircle className="text-2xl text-emerald-500 animate-bounce " />
+          </span>
         </header>
 
         <div className="p-3">
@@ -143,6 +152,40 @@ const FloorTable = ({ floor, text }) => {
           </div>
         </div>
       </div>
+      {open && (
+        <InfoModal
+          handleClose={handleClose}
+          text={
+            <div>
+              <p className="font-semibold text-base md:text-xl my-2">
+                (X, Y) kordinantlarının istifadəsi
+              </p>
+              <p className="text-black text-sm md:text-base ">
+                Əgər hər bir sözün uzunluğu 8 dən böyük olarsa onda onda həmin
+                sözü arasına tire atmaqla iki hissəyə ayırır kənara çıxmalar
+                olmaması üçün. İkinci və ya üçüncü mərtəbə üçün bu uzunluq 9 və
+                ya 10 qalxa bilər.Otaq sayı çox və ya xanaların ölçü isə nisbət
+                böyük olduğu üçün (istisna xanalar xaric). Bu bölünən sözləri x
+                kodinantı üzrə hərəkət üçün x1 istifadə olunur. Bölünən sözlərin
+                ilkini y kordinantı üzrə hərəkət üçün isə y2 istifadə olunur.
+                Bölünən sözlər arasındakı məsafə isə y1 ilə verilir. Hərəkət
+                elətdirmək istədiyiniz söz ilk söz deyilsə və ya uzunluğu (5, 8]
+                arasnda olarsa, x kordinantı üzrə x1 əks halda x2 istifadə
+                olunur. Hərəkət elətdirmək istədiyiniz söz ilk söz deyilsə y
+                kordinantı üzrə y1 əks halda y2 istifadə olunur. Boş zonalarda
+                isə x üzrə x1 , y üzrə isə hərəkət üçün y2, sözlər arasında
+                məsafə üçün isə y1 istifadə edilir.
+              </p>
+              <p className="text-black my-1 text-sm md:text-base">
+                Tövsiyyə edilən aralıq (-20 ; 20)
+              </p>
+              <p className="text-red-400 my-1 text-sm md:text-base">
+                MƏNFİ QİYMƏTLƏRDƏ HƏMÇİNİN İSTİFADƏ OLUNUR.
+              </p>
+            </div>
+          }
+        />
+      )}
     </>
   );
 };

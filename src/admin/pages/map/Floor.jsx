@@ -93,10 +93,6 @@ const Floor = () => {
             <BiArrowBack className="me-2" /> Geri
           </button>
         </header>
-        <p className="font-semibold text-slate-400 text-xs py-2 px-5 dark:text-slate-100">
-          X,Y kordinantlarından istifadə etməklə xəritədə servis adını hərəkət
-          etdirə bilərsiz. Tövsiyyə edilən aralıq (-20 ; 20)
-        </p>
         <hr />
         {isLoading ? (
           <Loader />
