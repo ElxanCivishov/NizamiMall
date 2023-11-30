@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { AiFillCheckCircle } from "react-icons/ai";
 import { convertToText } from "../mapHooks";
 import { svgPaths, svgTexts } from "./svgData";
 import { Link, Navigate, useSearchParams } from "react-router-dom";
@@ -43,8 +42,6 @@ const FloorOne = () => {
 
   const activeMap = maps.find((item) => item?.uid === selected?.uid);
 
-  console.log(activeMap);
-
   return (
     <>
       <Meta title="Birinci mərtəbə" />
@@ -57,7 +54,7 @@ const FloorOne = () => {
             >
               <img
                 src={activeMap.company_logo}
-                className="w-10 h-10 md:w-20 md:h-20 object-cover rounded-full"
+                className="w-10 h-10 md:w-14 md:h-14 object-cover rounded-full"
                 alt="logo"
               />
               {activeMap?.company_name}
@@ -69,7 +66,7 @@ const FloorOne = () => {
           )}
         </div>
 
-        <div className="relative w-full max-w-4xl mx-auto group h-[500px]  text-colorPrimary  mb-5">
+        <div className="relative w-full  mx-auto group h-[600px]  text-colorPrimary  mb-5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 951.1 757.69"
@@ -101,10 +98,7 @@ const FloorOne = () => {
                 className="cls-10"
                 {...item}
                 style={{
-                  fill:
-                    selected?.uid === item?.uid && item?.uid !== 16
-                      ? "#FFF"
-                      : "#000",
+                  fill: selected?.uid === item?.uid ? "#FFF" : "#000",
                 }}
                 onClick={(e) => handleClick(item, e)}
               >
