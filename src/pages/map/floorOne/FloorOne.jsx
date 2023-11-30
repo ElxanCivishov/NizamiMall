@@ -66,7 +66,7 @@ const FloorOne = () => {
           )}
         </div>
 
-        <div className="relative w-full  mx-auto group h-[600px]  text-colorPrimary  mb-5">
+        <div className="relative w-full  mx-auto group h-[400px] md:h-[600px]  text-colorPrimary  mb-5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 951.1 757.69"

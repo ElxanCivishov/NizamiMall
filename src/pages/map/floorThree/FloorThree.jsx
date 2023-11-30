@@ -55,7 +55,7 @@ const FloorThree = () => {
             >
               <img
                 src={activeMap.company_logo}
-                className="w-10 h-10 md:w-20 md:h-20 object-cover rounded-full"
+                className="w-10 h-10 md:w-14 md:h-14 object-cover rounded-full"
                 alt="logo"
               />
               {activeMap?.company_name}
