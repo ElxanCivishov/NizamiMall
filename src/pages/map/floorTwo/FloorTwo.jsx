@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { AiFillCheckCircle } from "react-icons/ai";
 
 import { svgPaths, svgPolygons, svgTexts } from "./svgData";
 import { convertToText } from "../mapHooks";
@@ -37,6 +36,7 @@ const FloorTwo = () => {
 
   const handleClick = (item) => {
     setSelected(item);
+    console.log(item);
   };
 
   if (isLoading) return <Loader />;
@@ -95,7 +95,7 @@ const FloorTwo = () => {
                 style={{
                   fill: selected?.uid === item?.uid ? "currentcolor" : "#fff",
                 }}
-                onClick={(e) => handleClick(item, e)}
+                onClick={() => handleClick(item)}
               />
             ))}
             {svgPolygons.map((item) => (
@@ -106,7 +106,7 @@ const FloorTwo = () => {
                 style={{
                   fill: selected?.uid === item?.uid ? "currentcolor" : "#fff",
                 }}
-                onClick={(e) => handleClick(item, e)}
+                onClick={() => handleClick(item)}
               />
             ))}
 
@@ -114,13 +114,11 @@ const FloorTwo = () => {
               <text
                 key={item.uid}
                 {...item}
-                className={`fill-[#4d4d4d] font-extrabold  cursor-pointer ${
-                  item.uid === 15 ? "text-xs" : "text-[9px]"
-                }`}
+                className="fill-[#4d4d4d] font-extrabold  cursor-pointer text-[9px]"
                 style={{
                   fill: selected?.uid === item?.uid ? "#fff" : "#000",
                 }}
-                onClick={(e) => handleClick(item, e)}
+                onClick={() => handleClick(item)}
               >
                 {maps?.length > 0 &&
                   convertToText({ dynamicNames: maps, item, maxlength: 11 })}
