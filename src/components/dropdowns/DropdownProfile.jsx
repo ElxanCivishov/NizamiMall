@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Transition from "../../utils/Transition";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import { logout } from "../../features/auth/authSlice";
 
 function DropdownProfile({ align }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const { user } = useSelector((state) => state.auth);
@@ -42,7 +43,9 @@ function DropdownProfile({ align }) {
 
   const handleLogout = () => {
     setDropdownOpen(!dropdownOpen);
+    localStorage.removeItem("MallAdmin");
     dispatch(logout());
+    navigate("/login");
   };
 
   return (

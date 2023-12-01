@@ -35,7 +35,10 @@ const HomeBlogInfo = () => {
                 alt=""
                 className="absolute w-full h-full inset-0  group-hover:scale-105 transition-all duration-300   !z-1  rounded-lg object-cover"
               />
-              <div className="absolute inset-0 !z-[3] bg-black bg-opacity-70  text-white "></div>
+              <div
+                style={{ opacity: `${blogInfo?.opacity}%` }}
+                className="absolute inset-0 !z-[3] bg-black   text-white "
+              ></div>
               <h5 className="text-3xl md:text-5xl font-bold flex flex-col text-white transition-all duration-150  !z-10 ">
                 <TruncatedText text={blogInfo?.title || ""} />
               </h5>
