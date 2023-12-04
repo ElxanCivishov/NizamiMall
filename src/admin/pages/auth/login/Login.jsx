@@ -42,7 +42,7 @@ const Login = () => {
 
   useEffect(() => {
     if (user) {
-      navigate("/");
+      navigate("/admin");
     }
   }, []);
 
@@ -53,7 +53,7 @@ const Login = () => {
   useEffect(() => {
     dispatch(addValidation(false));
     if (user && isLoggedIn) {
-      navigate("/");
+      navigate("/admin");
     }
 
     if (isError) {

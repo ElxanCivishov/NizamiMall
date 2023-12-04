@@ -8,8 +8,6 @@ import "swiper/css/pagination";
 // main style
 import "./css/style.css";
 
-import "react-quill/dist/quill.snow.css";
-
 import { Layout } from "./components/layout";
 
 import { SingleBlog, SingleService } from "./pages/single";

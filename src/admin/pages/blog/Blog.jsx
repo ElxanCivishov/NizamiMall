@@ -13,12 +13,7 @@ import {
   updateBlog,
 } from "../../../features/blogs/blogSlice";
 import { addValidation } from "../../../features/dataSlice";
-import {
-  Button,
-  FormInput,
-  FormTextarea,
-  ReactQuillInput,
-} from "../../../components/elements";
+import { Button, FormInput, FormTextarea } from "../../../components/elements";
 import { MdCloudUpload } from "react-icons/md";
 import { toast } from "react-toastify";
 import { Meta } from "../../../components/layout";

@@ -32,7 +32,7 @@ const HomeInformation = () => {
           <Loader />
         ) : (
           serviceInfo && (
-            <div className="p-6 bg-white rounded-lg   md:p-20 flex flex-col gap-4 md:gap-6 shadow-lg transition-all duration-200 group hover:-translate-y-0.5">
+            <div className="p-6 bg-white rounded-lg   md:p-20 flex flex-col gap-4 md:gap-6 shadow-lg transition-all duration-200 group ">
               <h5 className="text-sm xs:text-2xl md:text-4xl text-black tracking-wide  font-bold  text-center h-auto">
                 {serviceInfo.title}
               </h5>
