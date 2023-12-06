@@ -103,7 +103,7 @@ const Footer = () => {
                   className="text-black hover:underline text-sm md:text-base"
                   to="/icare"
                 >
-                  Icarə
+                  İcarə
                 </Link>
               </div>
             </div>

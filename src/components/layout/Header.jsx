@@ -12,7 +12,7 @@ import { RESET, getLayout } from "../../features/layout/layoutSlice";
 const navs = [
   {
     path: "/",
-    title: "Ana Səhifə",
+    title: "ANA SƏHİFƏ",
   },
   {
     path: "/magaza-ve-restoranlar",
@@ -69,7 +69,7 @@ const Header = () => {
                   >
                     <NavLink
                       to={nav.path}
-                      className={`text-sm uppercase hover:text-colorPrimary transition-all duration-100 ${
+                      className={`text-sm hover:text-colorPrimary transition-all duration-100 ${
                         pathname === nav.path
                           ? "text-colorPrimary scale-110"
                           : "text-zinc-800 scale-100"
