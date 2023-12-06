@@ -48,16 +48,16 @@ const EditLayout = () => {
     const formData = new FormData();
 
     if (previewLogo) {
-      formData.append("logo", values.logo);
+      formData.append("logo", values.logo || "");
     }
-    formData.append("title", values.title);
-    formData.append("email", values.email);
-    formData.append("number_1", values.number_1);
-    formData.append("number_2", values.number_2);
-    formData.append("address", values.address);
-    formData.append("address_url", values.address_url);
-    formData.append("facebook", values.facebook);
-    formData.append("instagram", values.instagram);
+    formData.append("title", values.title || "");
+    formData.append("email", values.email || "");
+    formData.append("number_1", values.number_1 || "");
+    formData.append("number_2", values.number_2 || "");
+    formData.append("address", values.address || "");
+    formData.append("address_url", values.address_url || "");
+    formData.append("facebook", values.facebook || "");
+    formData.append("instagram", values.instagram || "");
 
     dispatch(updateLayout({ data: formData }));
   });
