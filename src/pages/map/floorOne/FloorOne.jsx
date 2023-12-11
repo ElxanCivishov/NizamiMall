@@ -45,8 +45,8 @@ const FloorOne = () => {
   return (
     <>
       <Meta title="Birinci mərtəbə" />
-      <div className="bg-white rounded-lg w-full select-none relative">
-        <div className=" p-2 rounded-lg text-black text-xs  md:text-base shadow-lg max-w-max absolute top-2 left-2">
+      <div className="bg-white rounded-lg w-full select-none ">
+        <div className="p-2 rounded-lg text-black text-xs  md:text-base shadow-lg max-w-max">
           {activeMap?.company_name ? (
             <Link
               to={`/magaza-ve-restoranlar/${activeMap?.company_id}`}

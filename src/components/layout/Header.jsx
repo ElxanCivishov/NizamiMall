@@ -24,7 +24,7 @@ const navs = [
   },
   {
     path: "/icare",
-    title: "İcarə",
+    title: "İCARƏ",
   },
 ];
 
