@@ -94,10 +94,8 @@ const Service = () => {
     setPreviewImage();
     if (id !== undefined) {
       dispatch(getService(id));
-    } else {
-      resetForm();
     }
-  }, [id]);
+  }, []);
 
   useEffect(() => {
     if (isSuccess) {
@@ -157,17 +155,12 @@ const Service = () => {
     }
   };
 
-  const handleImageChange = useCallback(
-    (e, field) => {
-      const selectedImage = e.target.files[0];
-      setValue(field, selectedImage);
-      const preview = URL.createObjectURL(selectedImage);
-      if (field === "logo") {
-        setPreviewImage(preview);
-      }
-    },
-    [setValue, setPreviewImage]
-  );
+  const handleImageChange = (e) => {
+    const selectedImage = e.target.files[0];
+    setValue("logo", selectedImage);
+    const preview = URL.createObjectURL(selectedImage);
+    setPreviewImage(preview);
+  };
 
   return (
     <>
@@ -198,7 +191,7 @@ const Service = () => {
                 id="photo"
                 type="file"
                 accept="image/*"
-                onChange={(e) => handleImageChange(e, "logo")}
+                onChange={(e) => handleImageChange(e)}
               />
               <label
                 htmlFor="photo"
