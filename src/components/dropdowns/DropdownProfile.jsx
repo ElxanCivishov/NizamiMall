@@ -43,9 +43,9 @@ function DropdownProfile({ align }) {
 
   const handleLogout = () => {
     setDropdownOpen(!dropdownOpen);
-    localStorage.removeItem("MallAdmin");
-    dispatch(logout());
     navigate("/login");
+    localStorage.clear();
+    dispatch(logout());
   };
 
   return (

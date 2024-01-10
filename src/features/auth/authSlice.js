@@ -131,7 +131,7 @@ export const authSlice = createSlice({
         state.isSuccess = true;
         state.isLoggedIn = false;
         state.user = null;
-        localStorage.setItem("MallAdmin", null);
+        localStorage.clear();
         state.message = payload;
       })
 
@@ -150,7 +150,6 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.user = payload;
-        // localStorage.setItem("MallAdmin", JSON.stringify(payload));
       })
       .addCase(getUser.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -190,7 +189,7 @@ export const authSlice = createSlice({
         state.isSuccess = true;
         state.message = payload;
         state.user = null;
-        localStorage.setItem("MallAdmin", null);
+        localStorage.clear();
         toast.success("Şifrə yeniləndi");
       })
       .addCase(changePassword.rejected, (state, { payload }) => {
